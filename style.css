@@ -55,7 +55,6 @@ nav {
     height: 50px;
     object-fit: fill;
     filter: drop-shadow(0 0 10px rgba(74, 222, 128, 0.3));
-    margin-left: 20px;
 }
 
 .nav-links {
