@@ -9,6 +9,21 @@ document.addEventListener('DOMContentLoaded', () => {
     // Google Form Configuration
     const FORM_ID = "1FAIpQLSdkJsQxencJNdT4qzuNmdG6mlWrsrBL11DqU_q5zwLGWNt3Iw";
     const googleFormUrl = `https://docs.google.com/forms/u/0/d/e/${FORM_ID}/formResponse`;
+    
+    // Show/Hide Other Brand Input logic
+    const brandSelect = document.getElementById('carBrandSelect');
+    const otherBrandGroup = document.getElementById('otherBrandGroup');
+    const otherBrandInput = document.getElementById('otherBrandInput');
+
+    brandSelect.addEventListener('change', function() {
+        if (this.value === 'Other') {
+            otherBrandGroup.style.display = 'block';
+            otherBrandInput.required = true;
+        } else {
+            otherBrandGroup.style.display = 'none';
+            otherBrandInput.required = false;
+        }
+    });
 
     bookingForm.addEventListener('submit', function (event) {
         event.preventDefault();
@@ -22,7 +37,10 @@ document.addEventListener('DOMContentLoaded', () => {
         googleFormData.append('entry.902874580', this.user_email.value);
         googleFormData.append('entry.1192564498', this.user_phone.value);
         googleFormData.append('entry.1800244039', this.service_type.value);
-        googleFormData.append('entry.1775344095', this.car_brand.value);
+        
+        // Use manual brand if 'Other' is selected
+        const finalBrand = this.car_brand.value === 'Other' ? this.car_brand_other.value : this.car_brand.value;
+        googleFormData.append('entry.1775344095', finalBrand);
         googleFormData.append('entry.2074342323', this.car_model.value);
         googleFormData.append('entry.748221579', this.service_date.value);
         googleFormData.append('entry.1020267720', this.message.value);
@@ -36,6 +54,8 @@ document.addEventListener('DOMContentLoaded', () => {
         .then(() => {
             document.getElementById('bookingPopup').style.display = 'flex';
             bookingForm.reset();
+            otherBrandGroup.style.display = 'none';
+            otherBrandInput.required = false;
             // Automatically close popup after 3.5 seconds
             setTimeout(() => {
                 window.closePopup();
@@ -100,6 +120,59 @@ document.addEventListener('DOMContentLoaded', () => {
             updateCarousel(nextIndex);
         }, slideInterval);
     });
+
+    // Reviews Carousel Logic
+    const reviewsTrack = document.querySelector('.reviews-track');
+    const reviewsNext = document.querySelector('.reviews-btn.next');
+    const reviewsPrev = document.querySelector('.reviews-btn.prev');
+    const reviewCards = Array.from(document.querySelectorAll('.review-card'));
+    
+    let reviewIndex = 0;
+
+    const getVisibleCards = () => {
+        if (window.innerWidth <= 600) return 1;
+        if (window.innerWidth <= 992) return 2;
+        return 3;
+    };
+
+    const updateReviewsCarousel = () => {
+        const visibleCards = getVisibleCards();
+        const maxIndex = Math.max(0, reviewCards.length - visibleCards);
+        
+        if (reviewIndex > maxIndex) reviewIndex = maxIndex;
+        if (reviewIndex < 0) reviewIndex = 0;
+
+        const cardWidth = reviewCards[0].offsetWidth;
+        const gap = 30;
+        const offset = reviewIndex * (cardWidth + gap);
+        
+        reviewsTrack.style.transform = `translateX(-${offset}px)`;
+        
+        // Disable/Enable buttons
+        reviewsPrev.style.opacity = reviewIndex === 0 ? '0.3' : '1';
+        reviewsNext.style.opacity = reviewIndex >= maxIndex ? '0.3' : '1';
+    };
+
+    reviewsNext.addEventListener('click', () => {
+        const maxIndex = reviewCards.length - getVisibleCards();
+        if (reviewIndex < maxIndex) {
+            reviewIndex++;
+            updateReviewsCarousel();
+        }
+    });
+
+    reviewsPrev.addEventListener('click', () => {
+        if (reviewIndex > 0) {
+            reviewIndex--;
+            updateReviewsCarousel();
+        }
+    });
+
+    // Handle window resize for carousel responsiveness
+    window.addEventListener('resize', updateReviewsCarousel);
+    
+    // Initial call to set positions
+    setTimeout(updateReviewsCarousel, 100);
 
     // Mobile Navigation Menu Toggle
     const menuIcon = document.querySelector('.menu-icon');
