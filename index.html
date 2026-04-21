@@ -33,23 +33,30 @@
     </nav>
 
     <section class="hero"
-            style="background-image: linear-gradient(rgba(8, 8, 8, 0.7), rgba(8, 8, 8, 0.9)), url('assets/background.gif'); background-size: cover; background-position: center; align-items: flex-start; text-align: left; padding-left: 5%; min-height: 100vh;">
-            <div style="max-width: 800px;">
-                <h1>Your Car Deserves <span>Better</span></h1>
-                <p style="margin-left: 0;">Premium car care services — from deep cleaning to ceramic coating. We treat
-                    every car like it's our own.</p>
+        style="background-image: linear-gradient(rgba(8, 8, 8, 0.7), rgba(8, 8, 8, 0.9)), url('assets/background.gif'); background-size: cover; background-position: center; align-items: flex-start; text-align: left; padding-left: 5%; padding-right: 5%; min-height: 100vh;">
+        <div style="width: 100%;">
+            <h1>Your Car Deserves <span>Better</span></h1>
+            <p style="margin-left: 0;">Premium car care services — from deep cleaning to ceramic coating. We treat
+                every car like it's our own.</p>
 
-                <p style="margin-bottom: 30px; color: var(--text-gray); font-size: 1.1rem;">
-                    Providing our services in <span style="color: var(--text-white); font-weight: 500;">
-                        <i class="fas fa-map-marker-alt" style="margin-right: 4px; color: var(--primary-green);"></i>Dhamtari, 
-                        <i class="fas fa-map-marker-alt" style="margin-right: 4px; color: var(--primary-green);"></i>Kanker, and 
-                        <i class="fas fa-map-marker-alt" style="margin-right: 4px; color: var(--primary-green);"></i>Bilaspur
-                    </span>
-                </p>
+            <p style="margin-bottom: 30px; color: var(--text-gray); font-size: 1.1rem;">
+                Providing our services in <span style="color: var(--text-white); font-weight: 500;">
+                    <br><br><i class="fas fa-map-marker-alt"
+                        style="margin-right: 4px; color: var(--primary-green);"></i>
+                    Dhamtari,
+                    <i class="fas fa-map-marker-alt" style="margin-right: 4px; color: var(--primary-green);"></i>
+                    Kanker
+                    and
+                    <i class="fas fa-map-marker-alt" style="margin-right: 4px; color: var(--primary-green);"></i>
+                    Bilaspur
+                </span>
+            </p>
 
+            <div
+                style="display: flex; justify-content: space-between; align-items: center; width: 100%; flex-wrap: wrap; gap: 20px;">
                 <div class="counter-container"
-                    style="margin-bottom: 35px; display: inline-block; background: rgba(74, 222, 128, 0.1); padding: 15px 25px; border-radius: 12px; border: 1px solid rgba(74, 222, 128, 0.2);">
-                    <p style="margin: 0; font-size: 1.1rem; color: var(--text-gray);">
+                    style="display: inline-block; padding: 15px 25px; border-radius: 12px; margin: 0;">
+                    <p style="margin: 0; font-size: 2.1rem; color: var(--text-gray);">
                         Served over <span class="counter" data-target="50000"
                             style="font-size: 1.8rem; font-weight: bold; color: var(--primary-green);">0</span><span
                             style="font-size: 1.8rem; font-weight: bold; color: var(--primary-green);">+</span>
@@ -57,66 +64,67 @@
                     </p>
                 </div>
 
-                <div class="hero-btns" style="justify-content: flex-start; margin-top: 0;">
+                <div class="hero-btns" style="justify-content: flex-end; margin-top: 0; flex: 1;">
                     <a href="#booking" class="btn-primary">Book a Service</a>
                     <a href="#services" class="btn-outline">Our Services</a>
                 </div>
             </div>
-        </section>
+        </div>
+    </section>
 
-    <div class="container">
-        <section id="services">
-            <div class="section-title">
-                <h2>Our <span>Services</span></h2>
-                <p>Everything your car needs under one roof.</p>
-            </div>
-
-            <div class="services-grid">
-                <div class="service-card"
+    <section id="services" style="width: 100%; padding: 0 5%;">
+        <div class="section-title">
+            <h2>Our <span>Services</span></h2>
+            <p>Everything your car needs under one roof.</p>
+        </div>
+            <div class="services-carousel-container">
+                <div class="service-card" onclick="centerCard(this)"
                     style="background-image: linear-gradient(rgba(18, 18, 18, 0.75), rgba(18, 18, 18, 0.85)), url('assets/images/services/washing.jpeg'); background-size: cover; background-position: center; border: none; box-shadow: inset 0 0 0 1px var(--border-color);">
                     <i class="fas fa-soap" style="text-shadow: 0 2px 4px rgba(0,0,0,0.5);"></i>
                     <h3 style="text-shadow: 0 2px 4px rgba(0,0,0,0.5);">Washing & Cleaning</h3>
                     <p style="text-shadow: 0 1px 3px rgba(0,0,0,0.5);">Choose from our standard foam wash, foam wash
                         with premium wax, or our ultimate foam wash with UV wax protection.</p>
                 </div>
-                <div class="service-card"
+                <div class="service-card" onclick="centerCard(this)"
                     style="background-image: linear-gradient(rgba(18, 18, 18, 0.75), rgba(18, 18, 18, 0.85)), url('assets/images/services/polishing.jpeg'); background-size: cover; background-position: center; border: none; box-shadow: inset 0 0 0 1px var(--border-color);">
                     <i class="fas fa-shield-alt" style="text-shadow: 0 2px 4px rgba(0,0,0,0.5);"></i>
                     <h3 style="text-shadow: 0 2px 4px rgba(0,0,0,0.5);">Detailing & Coatings</h3>
                     <p style="text-shadow: 0 1px 3px rgba(0,0,0,0.5);">Ultimate paint protection and showroom shine
                         featuring advanced Ceramic, Teflon, Graphene, and other high-end protective coatings.</p>
                 </div>
-                <div class="service-card"
+                <div class="service-card" onclick="centerCard(this)"
                     style="background-image: linear-gradient(rgba(18, 18, 18, 0.75), rgba(18, 18, 18, 0.85)), url('assets/images/services/interiorcleaning.jpeg'); background-size: cover; background-position: center; border: none; box-shadow: inset 0 0 0 1px var(--border-color);">
                     <i class="fas fa-broom" style="text-shadow: 0 2px 4px rgba(0,0,0,0.5);"></i>
                     <h3 style="text-shadow: 0 2px 4px rgba(0,0,0,0.5);">Interior Cleaning</h3>
                     <p style="text-shadow: 0 1px 3px rgba(0,0,0,0.5);">Comprehensive cabin care offering Classic
                         Interior, Premium Interior, Germ Clean Interior, and specialized Sofa Cleaning services.</p>
                 </div>
-                <div class="service-card"
+                <div class="service-card" onclick="centerCard(this)"
                     style="background-image: linear-gradient(rgba(18, 18, 18, 0.75), rgba(18, 18, 18, 0.85)), url('assets/images/services/lightchange.jpeg'); background-size: cover; background-position: center; border: none; box-shadow: inset 0 0 0 1px var(--border-color);">
                     <i class="fas fa-tools" style="text-shadow: 0 2px 4px rgba(0,0,0,0.5);"></i>
                     <h3 style="text-shadow: 0 2px 4px rgba(0,0,0,0.5);">General Service</h3>
                     <p style="text-shadow: 0 1px 3px rgba(0,0,0,0.5);">Complete mechanical maintenance including precise
                         oil changes, thorough engine care, and highly convenient Door Step Service.</p>
                 </div>
-                <div class="service-card"
+                <div class="service-card" onclick="centerCard(this)"
                     style="background-image: linear-gradient(rgba(18, 18, 18, 0.75), rgba(18, 18, 18, 0.85)), url('assets/images/services/dentingpainting.jpeg'); background-size: cover; background-position: center; border: none; box-shadow: inset 0 0 0 1px var(--border-color);">
                     <i class="fas fa-paint-roller" style="text-shadow: 0 2px 4px rgba(0,0,0,0.5);"></i>
                     <h3 style="text-shadow: 0 2px 4px rgba(0,0,0,0.5);">Denting & Painting</h3>
                     <p style="text-shadow: 0 1px 3px rgba(0,0,0,0.5);">Professional dent removal and high-quality paint
                         matching using premium paints and clear coats for a flawless finish.</p>
                 </div>
-                <div class="service-card"
+                <div class="service-card" onclick="centerCard(this)"
                     style="background-image: linear-gradient(rgba(18, 18, 18, 0.75), rgba(18, 18, 18, 0.85)), url('assets/images/services/bodyworks.jpeg'); background-size: cover; background-position: center; border: none; box-shadow: inset 0 0 0 1px var(--border-color);">
                     <i class="fas fa-car-crash" style="text-shadow: 0 2px 4px rgba(0,0,0,0.5);"></i>
                     <h3 style="text-shadow: 0 2px 4px rgba(0,0,0,0.5);">Body Works</h3>
                     <p style="text-shadow: 0 1px 3px rgba(0,0,0,0.5);">Comprehensive body repairs, structural fixes, and
                         precise replacement of headlamps, tail lights, and side mirrors.</p>
                 </div>
-            </div>
-        </section>
+            </div>  </div>
+        </div>
+    </section>
 
+    <div class="container">
         <section id="about" class="about-section" style="padding: 80px 0;">
             <div class="section-title">
                 <h2>About <span>Us</span></h2>
@@ -517,7 +525,7 @@
                 </div>
 
                 <div class="form-group"><textarea name="message"
-                        placeholder="Any other requirements? (optional)"></textarea></div>
+                        placeholder="Mention Coating Type/Any other requirements?(optional)"></textarea></div>
 
                 <button type="submit" class="btn-primary submit-btn">Confirm Booking</button>
             </form>
@@ -582,11 +590,26 @@
                         </div>
                     </div>
 
-                    <div class="map-container"
-                        style="border-radius: 20px; overflow: hidden; border: 1px solid var(--border-color); min-height: 300px;">
-                        <iframe src="https://www.google.com/maps?q=20.6925308,81.5478162&z=17&output=embed" width="100%"
-                            height="100%" style="border:0;" allowfullscreen="" loading="lazy"
-                            referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    <div style="display: flex; flex-direction: column; gap: 15px; width: 100%;">
+                        <div style="display: flex; flex-wrap: wrap; gap: 10px;">
+                            <button class="map-btn active"
+                                onclick="changeMap(this, 'https://www.google.com/maps?q=20.6925308,81.5478162&z=17&output=embed')">📍
+                                Dhamtari</button>
+                            <button class="map-btn"
+                                onclick="changeMap(this, 'https://www.google.com/maps?q=22.1064259,82.1647232&z=17&output=embed')">📍
+                                Bilaspur</button>
+                            <button class="map-btn"
+                                onclick="changeMap(this, 'https://www.google.com/maps?q=CAR+SALOON+KANKER&output=embed')">📍
+                                Kanker</button>
+                        </div>
+
+                        <div class="map-container"
+                            style="border-radius: 20px; overflow: hidden; border: 1px solid var(--border-color); height: 320px;">
+                            <iframe id="mapFrame"
+                                src="https://www.google.com/maps?q=20.6925308,81.5478162&z=17&output=embed" width="100%"
+                                height="100%" style="border:0;" allowfullscreen="" loading="lazy"
+                                referrerpolicy="no-referrer-when-downgrade"></iframe>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -620,7 +643,8 @@
     </div>
 
     <!-- WhatsApp Floating Button -->
-    <a href="https://wa.me/919617205555" class="whatsapp-btn" target="_blank" rel="noopener noreferrer" aria-label="Chat on WhatsApp">
+    <a href="https://wa.me/919617205555" class="whatsapp-btn" target="_blank" rel="noopener noreferrer"
+        aria-label="Chat on WhatsApp">
         <i class="fab fa-whatsapp"></i>
     </a>
 

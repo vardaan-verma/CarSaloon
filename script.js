@@ -267,4 +267,87 @@ document.addEventListener('DOMContentLoaded', () => {
         
         observer.observe(counter);
     });
+
+    // Map Selector Logic
+    window.changeMap = function(btnElement, mapUrl) {
+        // Change iframe src
+        document.getElementById('mapFrame').src = mapUrl;
+        
+        // Remove active class from all map buttons
+        document.querySelectorAll('.map-btn').forEach(btn => btn.classList.remove('active'));
+        
+        // Add active class to clicked button
+        btnElement.classList.add('active');
+    };
+
+    // Services Carousel Logic (True Circular Queue 3D)
+    const servicesContainer = document.querySelector('.services-carousel-container');
+    const cards = document.querySelectorAll('.services-carousel-container .service-card');
+    
+    if (servicesContainer && cards.length > 0) {
+        let currentIndex = 0;
+        let autoPlayInterval;
+
+        function updateCarousel() {
+            cards.forEach((card, i) => {
+                // Determine logical distance from center (-3 to +3 for 6 items)
+                let diff = i - currentIndex;
+                const halfLength = Math.floor(cards.length / 2);
+                
+                // Wrap around safely
+                if (diff > halfLength) diff -= cards.length;
+                if (diff < -halfLength) diff += cards.length;
+
+                // Adjust positioning math for pseudo-3D coverflow
+                const translateX = diff * 220; // Spread distance horizontally
+                const scale = 1 - Math.abs(diff) * 0.15; // Cards shrink as they move away
+                const zIndex = 10 - Math.abs(diff); // Center card is always top
+                const opacity = Math.abs(diff) > 2 ? 0 : 1 - (Math.abs(diff) * 0.4); // Very far cards fade out
+
+                card.style.transform = `translateX(${translateX}px) scale(${scale})`;
+                card.style.zIndex = zIndex;
+                card.style.opacity = opacity;
+
+                if (diff === 0) {
+                    card.classList.add('active-slide');
+                } else {
+                    card.classList.remove('active-slide');
+                }
+            });
+        }
+
+        const startAutoPlay = () => {
+            clearInterval(autoPlayInterval);
+            autoPlayInterval = setInterval(() => {
+                currentIndex = (currentIndex + 1) % cards.length;
+                updateCarousel();
+            }, 2000);
+        };
+
+        const stopAutoPlay = () => clearInterval(autoPlayInterval);
+        
+        // Touch/Mouse interaction interrupts the carousel slightly to read
+        servicesContainer.addEventListener('mouseenter', stopAutoPlay);
+        servicesContainer.addEventListener('mouseleave', startAutoPlay);
+        servicesContainer.addEventListener('touchstart', stopAutoPlay);
+        servicesContainer.addEventListener('touchend', startAutoPlay);
+
+        // Click to set center card explicitly
+        window.centerCard = function(clickedElement) {
+            const idx = Array.from(cards).indexOf(clickedElement);
+            if (idx > -1) {
+                currentIndex = idx;
+                updateCarousel();
+                stopAutoPlay();
+                // We do not instantly restart to give them time to read if they clicked
+                setTimeout(startAutoPlay, 2000);
+            }
+        };
+
+        // Initialize state
+        setTimeout(() => {
+            updateCarousel();
+            startAutoPlay();
+        }, 100);
+    }
 });
