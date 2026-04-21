@@ -97,12 +97,21 @@ document.addEventListener('DOMContentLoaded', () => {
 
     let currentIndex = 0;
     const slideInterval = 5000; // 5 seconds
+    let autoPlay;
 
     const stopAllVideos = () => {
         slides.forEach(slide => {
             const video = slide.querySelector('video');
-            if (video) video.pause();
+            if (video) {
+                video.pause();
+                video.currentTime = 0; // reset video to start
+            }
         });
+    };
+
+    const nextSlide = () => {
+        const nextIndex = (currentIndex + 1) % slides.length;
+        updateCarousel(nextIndex);
     };
 
     const updateCarousel = (index) => {
@@ -111,12 +120,34 @@ document.addEventListener('DOMContentLoaded', () => {
             dot.classList.toggle('active', i === index);
         });
         currentIndex = index;
+        
         stopAllVideos();
+        clearInterval(autoPlay);
+
+        const currentSlide = slides[currentIndex];
+        const video = currentSlide.querySelector('video');
+        
+        if (video) {
+            video.muted = true; // Ensure it starts muted automatically
+            const playPromise = video.play();
+            if (playPromise !== undefined) {
+                playPromise.catch(error => {
+                    console.log("Autoplay blocked by browser. Proceeding normal interval:", error);
+                    autoPlay = setInterval(nextSlide, slideInterval);
+                });
+            }
+            // Trigger next slide exclusively when the video naturally ends
+            video.onended = () => {
+                nextSlide();
+            };
+        } else {
+            // Normal 5 second flip for images
+            autoPlay = setInterval(nextSlide, slideInterval);
+        }
     };
 
     nextButton.addEventListener('click', () => {
-        const nextIndex = (currentIndex + 1) % slides.length;
-        updateCarousel(nextIndex);
+        nextSlide();
     });
 
     prevButton.addEventListener('click', () => {
@@ -130,35 +161,21 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // Auto-play
-    let autoPlay = setInterval(() => {
-        const nextIndex = (currentIndex + 1) % slides.length;
-        updateCarousel(nextIndex);
-    }, slideInterval);
-
-    // Pause auto-play on hover
+    // Pause auto-play timers on hover
     const carouselContainer = document.querySelector('.carousel-container');
     carouselContainer.addEventListener('mouseenter', () => clearInterval(autoPlay));
+    
     carouselContainer.addEventListener('mouseleave', () => {
-        autoPlay = setInterval(() => {
-            const nextIndex = (currentIndex + 1) % slides.length;
-            updateCarousel(nextIndex);
-        }, slideInterval);
-    });
-
-    slides.forEach(slide => {
-        const video = slide.querySelector('video');
-        if (video) {
-            video.addEventListener('play', () => clearInterval(autoPlay));
-            video.addEventListener('pause', () => {
-                clearInterval(autoPlay);
-                autoPlay = setInterval(() => {
-                    const nextIndex = (currentIndex + 1) % slides.length;
-                    updateCarousel(nextIndex);
-                }, slideInterval);
-            });
+        const currentSlide = slides[currentIndex];
+        const video = currentSlide.querySelector('video');
+        // Resume timer only if an image is showing, or if video is paused/done
+        if (!video || video.paused || video.ended) {
+            autoPlay = setInterval(nextSlide, slideInterval);
         }
     });
+
+    // Boot up the carousel properly
+    updateCarousel(0);
     // Reviews Carousel Logic
     const reviewsTrack = document.querySelector('.reviews-track');
     const reviewsNext = document.querySelector('.reviews-btn.next');
