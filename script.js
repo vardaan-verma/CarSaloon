@@ -174,6 +174,26 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
+    // Swipe logic for Our Work
+    let startX = 0;
+    let endX = 0;
+    track.addEventListener('touchstart', e => {
+        startX = e.touches[0].clientX;
+    }, {passive: true});
+    track.addEventListener('touchmove', e => {
+        endX = e.touches[0].clientX;
+    }, {passive: true});
+    track.addEventListener('touchend', () => {
+        if (startX > endX + 50) {
+            nextSlide();
+        } else if (startX < endX - 50 && endX !== 0) {
+            const prevIndex = (currentIndex - 1 + slides.length) % slides.length;
+            updateCarousel(prevIndex);
+        }
+        startX = 0;
+        endX = 0;
+    });
+
     // Boot up the carousel properly
     updateCarousel(0);
     // Reviews Carousel Logic
@@ -346,8 +366,33 @@ document.addEventListener('DOMContentLoaded', () => {
         // Touch/Mouse interaction interrupts the carousel slightly to read
         servicesContainer.addEventListener('mouseenter', stopAutoPlay);
         servicesContainer.addEventListener('mouseleave', startAutoPlay);
-        servicesContainer.addEventListener('touchstart', stopAutoPlay);
-        servicesContainer.addEventListener('touchend', startAutoPlay);
+        
+        let serviceStartX = 0;
+        let serviceEndX = 0;
+        
+        servicesContainer.addEventListener('touchstart', e => {
+            stopAutoPlay();
+            serviceStartX = e.touches[0].clientX;
+        }, {passive: true});
+
+        servicesContainer.addEventListener('touchmove', e => {
+            serviceEndX = e.touches[0].clientX;
+        }, {passive: true});
+
+        servicesContainer.addEventListener('touchend', () => {
+            if (serviceStartX > serviceEndX + 50 && serviceEndX !== 0) {
+                // Swiped left
+                currentIndex = (currentIndex + 1) % cards.length;
+                updateCarousel();
+            } else if (serviceStartX < serviceEndX - 50 && serviceEndX !== 0) {
+                // Swiped right
+                currentIndex = (currentIndex - 1 + cards.length) % cards.length;
+                updateCarousel();
+            }
+            serviceStartX = 0;
+            serviceEndX = 0;
+            startAutoPlay();
+        });
 
         // Click to set center card explicitly
         window.centerCard = function(clickedElement) {

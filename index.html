@@ -33,8 +33,8 @@
     </nav>
 
     <section class="hero"
-        style="background-image: linear-gradient(rgba(8, 8, 8, 0.7), rgba(8, 8, 8, 0.9)), url('assets/background.gif'); background-size: cover; background-position: center; align-items: flex-start; text-align: left; padding-left: 5%; padding-right: 5%; min-height: 100vh;">
-        <div style="width: 100%;">
+        style="background-image: linear-gradient(rgba(8, 8, 8, 0.85), rgba(8, 8, 8, 0.95)), url('assets/background.gif'); background-position: center; align-items: flex-start; text-align: left; padding-left: 5%; padding-right: 5%; min-height: 100vh;">
+        <div style="width:fit-content;">
             <h1>Your Car Deserves <span>Better</span></h1>
             <p style="margin-left: 0;">Premium car care services — from deep cleaning to ceramic coating. We treat
                 every car like it's our own.</p>
@@ -51,23 +51,22 @@
                     Bilaspur
                 </span>
             </p>
+        </div>
 
-            <div
-                style="display: flex; justify-content: space-between; align-items: center; width: 100%; flex-wrap: wrap; gap: 20px;">
-                <div class="counter-container"
-                    style="display: inline-block; padding: 15px 25px; border-radius: 12px; margin: 0;">
-                    <p style="margin: 0; font-size: 2.1rem; color: var(--text-gray);">
-                        Served over <span class="counter" data-target="50000"
-                            style="font-size: 1.8rem; font-weight: bold; color: var(--primary-green);">0</span><span
-                            style="font-size: 1.8rem; font-weight: bold; color: var(--primary-green);">+</span>
-                        customers since <span style="color: var(--text-white); font-weight: bold;">13 May 2016</span>
-                    </p>
-                </div>
+        <div
+            style="display: flex; justify-content: space-between; align-items: center; width: 100%; flex-wrap: wrap; gap: 20px; align-self: stretch;">
+            <div class="counter-container" style="display: inline-block; border-radius: 12px; margin: 0;">
+                <p style="margin: 0; font-size: 2.1rem; color: var(--text-gray);">
+                    Served over <span class="counter" data-target="50000"
+                        style="font-size: 1.8rem; font-weight: bold; color: var(--primary-green);">0</span><span
+                        style="font-size: 1.8rem; font-weight: bold; color: var(--primary-green);">+</span>
+                    customers since <span style="color: var(--text-white); font-weight: bold;">13 May 2016</span>
+                </p>
+            </div>
 
-                <div class="hero-btns" style="justify-content: flex-end; margin-top: 0; flex: 1;">
-                    <a href="#booking" class="btn-primary">Book a Service</a>
-                    <a href="#services" class="btn-outline">Our Services</a>
-                </div>
+            <div class="hero-btns hero-buttons-container">
+                <a href="#booking" class="btn-primary">Book a Service</a>
+                <a href="#services" class="btn-outline">Our Services</a>
             </div>
         </div>
     </section>
@@ -77,50 +76,51 @@
             <h2>Our <span>Services</span></h2>
             <p>Everything your car needs under one roof.</p>
         </div>
-            <div class="services-carousel-container">
-                <div class="service-card" onclick="centerCard(this)"
-                    style="background-image: linear-gradient(rgba(18, 18, 18, 0.75), rgba(18, 18, 18, 0.85)), url('assets/images/services/washing.jpeg'); background-size: cover; background-position: center; border: none; box-shadow: inset 0 0 0 1px var(--border-color);">
-                    <i class="fas fa-soap" style="text-shadow: 0 2px 4px rgba(0,0,0,0.5);"></i>
-                    <h3 style="text-shadow: 0 2px 4px rgba(0,0,0,0.5);">Washing & Cleaning</h3>
-                    <p style="text-shadow: 0 1px 3px rgba(0,0,0,0.5);">Choose from our standard foam wash, foam wash
-                        with premium wax, or our ultimate foam wash with UV wax protection.</p>
-                </div>
-                <div class="service-card" onclick="centerCard(this)"
-                    style="background-image: linear-gradient(rgba(18, 18, 18, 0.75), rgba(18, 18, 18, 0.85)), url('assets/images/services/polishing.jpeg'); background-size: cover; background-position: center; border: none; box-shadow: inset 0 0 0 1px var(--border-color);">
-                    <i class="fas fa-shield-alt" style="text-shadow: 0 2px 4px rgba(0,0,0,0.5);"></i>
-                    <h3 style="text-shadow: 0 2px 4px rgba(0,0,0,0.5);">Detailing & Coatings</h3>
-                    <p style="text-shadow: 0 1px 3px rgba(0,0,0,0.5);">Ultimate paint protection and showroom shine
-                        featuring advanced Ceramic, Teflon, Graphene, and other high-end protective coatings.</p>
-                </div>
-                <div class="service-card" onclick="centerCard(this)"
-                    style="background-image: linear-gradient(rgba(18, 18, 18, 0.75), rgba(18, 18, 18, 0.85)), url('assets/images/services/interiorcleaning.jpeg'); background-size: cover; background-position: center; border: none; box-shadow: inset 0 0 0 1px var(--border-color);">
-                    <i class="fas fa-broom" style="text-shadow: 0 2px 4px rgba(0,0,0,0.5);"></i>
-                    <h3 style="text-shadow: 0 2px 4px rgba(0,0,0,0.5);">Interior Cleaning</h3>
-                    <p style="text-shadow: 0 1px 3px rgba(0,0,0,0.5);">Comprehensive cabin care offering Classic
-                        Interior, Premium Interior, Germ Clean Interior, and specialized Sofa Cleaning services.</p>
-                </div>
-                <div class="service-card" onclick="centerCard(this)"
-                    style="background-image: linear-gradient(rgba(18, 18, 18, 0.75), rgba(18, 18, 18, 0.85)), url('assets/images/services/lightchange.jpeg'); background-size: cover; background-position: center; border: none; box-shadow: inset 0 0 0 1px var(--border-color);">
-                    <i class="fas fa-tools" style="text-shadow: 0 2px 4px rgba(0,0,0,0.5);"></i>
-                    <h3 style="text-shadow: 0 2px 4px rgba(0,0,0,0.5);">General Service</h3>
-                    <p style="text-shadow: 0 1px 3px rgba(0,0,0,0.5);">Complete mechanical maintenance including precise
-                        oil changes, thorough engine care, and highly convenient Door Step Service.</p>
-                </div>
-                <div class="service-card" onclick="centerCard(this)"
-                    style="background-image: linear-gradient(rgba(18, 18, 18, 0.75), rgba(18, 18, 18, 0.85)), url('assets/images/services/dentingpainting.jpeg'); background-size: cover; background-position: center; border: none; box-shadow: inset 0 0 0 1px var(--border-color);">
-                    <i class="fas fa-paint-roller" style="text-shadow: 0 2px 4px rgba(0,0,0,0.5);"></i>
-                    <h3 style="text-shadow: 0 2px 4px rgba(0,0,0,0.5);">Denting & Painting</h3>
-                    <p style="text-shadow: 0 1px 3px rgba(0,0,0,0.5);">Professional dent removal and high-quality paint
-                        matching using premium paints and clear coats for a flawless finish.</p>
-                </div>
-                <div class="service-card" onclick="centerCard(this)"
-                    style="background-image: linear-gradient(rgba(18, 18, 18, 0.75), rgba(18, 18, 18, 0.85)), url('assets/images/services/bodyworks.jpeg'); background-size: cover; background-position: center; border: none; box-shadow: inset 0 0 0 1px var(--border-color);">
-                    <i class="fas fa-car-crash" style="text-shadow: 0 2px 4px rgba(0,0,0,0.5);"></i>
-                    <h3 style="text-shadow: 0 2px 4px rgba(0,0,0,0.5);">Body Works</h3>
-                    <p style="text-shadow: 0 1px 3px rgba(0,0,0,0.5);">Comprehensive body repairs, structural fixes, and
-                        precise replacement of headlamps, tail lights, and side mirrors.</p>
-                </div>
-            </div>  </div>
+        <div class="services-carousel-container">
+            <div class="service-card" onclick="centerCard(this)"
+                style="background-image: linear-gradient(rgba(18, 18, 18, 0.75), rgba(18, 18, 18, 0.85)), url('assets/images/services/washing.jpeg'); background-size: cover; background-position: center; border: none; box-shadow: inset 0 0 0 1px var(--border-color);">
+                <i class="fas fa-soap" style="text-shadow: 0 2px 4px rgba(0,0,0,0.5);"></i>
+                <h3 style="text-shadow: 0 2px 4px rgba(0,0,0,0.5);">Washing & Cleaning</h3>
+                <p style="text-shadow: 0 1px 3px rgba(0,0,0,0.5);">Choose from our standard foam wash, foam wash
+                    with premium wax, or our ultimate foam wash with UV wax protection.</p>
+            </div>
+            <div class="service-card" onclick="centerCard(this)"
+                style="background-image: linear-gradient(rgba(18, 18, 18, 0.75), rgba(18, 18, 18, 0.85)), url('assets/images/services/polishing.jpeg'); background-size: cover; background-position: center; border: none; box-shadow: inset 0 0 0 1px var(--border-color);">
+                <i class="fas fa-shield-alt" style="text-shadow: 0 2px 4px rgba(0,0,0,0.5);"></i>
+                <h3 style="text-shadow: 0 2px 4px rgba(0,0,0,0.5);">Detailing & Coatings</h3>
+                <p style="text-shadow: 0 1px 3px rgba(0,0,0,0.5);">Ultimate paint protection and showroom shine
+                    featuring advanced Ceramic, Teflon, Graphene, and other high-end protective coatings.</p>
+            </div>
+            <div class="service-card" onclick="centerCard(this)"
+                style="background-image: linear-gradient(rgba(18, 18, 18, 0.75), rgba(18, 18, 18, 0.85)), url('assets/images/services/interiorcleaning.jpeg'); background-size: cover; background-position: center; border: none; box-shadow: inset 0 0 0 1px var(--border-color);">
+                <i class="fas fa-broom" style="text-shadow: 0 2px 4px rgba(0,0,0,0.5);"></i>
+                <h3 style="text-shadow: 0 2px 4px rgba(0,0,0,0.5);">Interior Cleaning</h3>
+                <p style="text-shadow: 0 1px 3px rgba(0,0,0,0.5);">Comprehensive cabin care offering Classic
+                    Interior, Premium Interior, Germ Clean Interior, and specialized Sofa Cleaning services.</p>
+            </div>
+            <div class="service-card" onclick="centerCard(this)"
+                style="background-image: linear-gradient(rgba(18, 18, 18, 0.75), rgba(18, 18, 18, 0.85)), url('assets/images/services/lightchange.jpeg'); background-size: cover; background-position: center; border: none; box-shadow: inset 0 0 0 1px var(--border-color);">
+                <i class="fas fa-tools" style="text-shadow: 0 2px 4px rgba(0,0,0,0.5);"></i>
+                <h3 style="text-shadow: 0 2px 4px rgba(0,0,0,0.5);">General Service</h3>
+                <p style="text-shadow: 0 1px 3px rgba(0,0,0,0.5);">Complete mechanical maintenance including precise
+                    oil changes, thorough engine care, and highly convenient Door Step Service.</p>
+            </div>
+            <div class="service-card" onclick="centerCard(this)"
+                style="background-image: linear-gradient(rgba(18, 18, 18, 0.75), rgba(18, 18, 18, 0.85)), url('assets/images/services/dentingpainting.jpeg'); background-size: cover; background-position: center; border: none; box-shadow: inset 0 0 0 1px var(--border-color);">
+                <i class="fas fa-paint-roller" style="text-shadow: 0 2px 4px rgba(0,0,0,0.5);"></i>
+                <h3 style="text-shadow: 0 2px 4px rgba(0,0,0,0.5);">Denting & Painting</h3>
+                <p style="text-shadow: 0 1px 3px rgba(0,0,0,0.5);">Professional dent removal and high-quality paint
+                    matching using premium paints and clear coats for a flawless finish.</p>
+            </div>
+            <div class="service-card" onclick="centerCard(this)"
+                style="background-image: linear-gradient(rgba(18, 18, 18, 0.75), rgba(18, 18, 18, 0.85)), url('assets/images/services/bodyworks.jpeg'); background-size: cover; background-position: center; border: none; box-shadow: inset 0 0 0 1px var(--border-color);">
+                <i class="fas fa-car-crash" style="text-shadow: 0 2px 4px rgba(0,0,0,0.5);"></i>
+                <h3 style="text-shadow: 0 2px 4px rgba(0,0,0,0.5);">Body Works</h3>
+                <p style="text-shadow: 0 1px 3px rgba(0,0,0,0.5);">Comprehensive body repairs, structural fixes, and
+                    precise replacement of headlamps, tail lights, and side mirrors.</p>
+            </div>
+        </div>
+        </div>
         </div>
     </section>
 
@@ -155,7 +155,7 @@
                         <video controls playsinline preload="metadata"
                             style="width: 100%; height: 500px; object-fit: contain; background: #000;">
                             <source
-                                src="assets/videos/AQMbCXOfIfp_2yh9FM-oVuuDxNUngYtWGw6tnwpllPSEe5OtTgSu6oGzeUi2Bsx1vpLPDzd5u4siIyimowvs5ouIJ7JB5MEH5lXNM1I.mp4"
+                                src="assets/videos/AQMbCXOfIfp_2yh9FM-oVuuDxNUngYtWGw6tnwpllPSEe5OtTgSu6oGzeUi2Bsx1vpLPDzd5u4siIyimowvs5ouIJ7JB5MEH5lXNM1I (1).mp4"
                                 type="video/mp4">
                         </video>
                     </div>
