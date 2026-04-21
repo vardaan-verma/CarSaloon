@@ -31,44 +31,61 @@ document.addEventListener('DOMContentLoaded', () => {
         submitBtn.innerText = 'Processing...';
         submitBtn.disabled = true;
 
-        // 1. Prepare Google Form Data (Mapped from your pre-filled link)
-        const googleFormData = new FormData();
-        googleFormData.append('entry.1378675246', this.user_name.value);
-        googleFormData.append('entry.902874580', this.user_email.value);
-        googleFormData.append('entry.1192564498', this.user_phone.value);
-        googleFormData.append('entry.1800244039', this.service_type.value);
-        
-        // Use manual brand if 'Other' is selected
+        // 1. Prepare Data for EmailJS and Google Form
         const finalBrand = this.car_brand.value === 'Other' ? this.car_brand_other.value : this.car_brand.value;
-        googleFormData.append('entry.1775344095', finalBrand);
-        googleFormData.append('entry.2074342323', this.car_model.value);
-        googleFormData.append('entry.748221579', this.service_date.value);
-        googleFormData.append('entry.1020267720', this.message.value);
+        
+        const templateParams = {
+            user_name: this.user_name.value,
+            user_email: this.user_email.value,
+            user_phone: this.user_phone.value,
+            service_type: this.service_type.value,
+            car_brand: finalBrand,
+            car_model: this.car_model.value,
+            service_date: this.service_date.value,
+            message: this.message.value || "No extra requirements provided."
+        };
 
-        // 2. Submit to Google Form
-        fetch(googleFormUrl, {
-            method: 'POST',
-            mode: 'no-cors',
-            body: googleFormData
-        })
-        .then(() => {
-            document.getElementById('bookingPopup').style.display = 'flex';
-            bookingForm.reset();
-            otherBrandGroup.style.display = 'none';
-            otherBrandInput.required = false;
-            // Automatically close popup after 3.5 seconds
-            setTimeout(() => {
-                window.closePopup();
-            }, 3500);
-        })
-        .catch((error) => {
-            console.error('Submission error:', error);
-            alert('Oops! Something went wrong. Please try again.');
-        })
-        .finally(() => {
-            submitBtn.innerText = 'Confirm Booking';
-            submitBtn.disabled = false;
-        });
+        // 2. Prepare Google Form Data (Optional backup)
+        const googleFormData = new FormData();
+        googleFormData.append('entry.1378675246', templateParams.user_name);
+        googleFormData.append('entry.902874580', templateParams.user_email);
+        googleFormData.append('entry.1192564498', templateParams.user_phone);
+        googleFormData.append('entry.1800244039', templateParams.service_type);
+        googleFormData.append('entry.1775344095', templateParams.car_brand);
+        googleFormData.append('entry.2074342323', templateParams.car_model);
+        googleFormData.append('entry.748221579', templateParams.service_date);
+        googleFormData.append('entry.1020267720', templateParams.message);
+
+        // 3. Send via EmailJS (Replace 'YOUR_SERVICE_ID' and 'YOUR_TEMPLATE_ID')
+        emailjs.send('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', templateParams)
+            .then(function(response) {
+                console.log('EmailJS SUCCESS!', response.status, response.text);
+                
+                // 4. Also submit to Google Form for logs (no-cors)
+                fetch(googleFormUrl, {
+                    method: 'POST',
+                    mode: 'no-cors',
+                    body: googleFormData
+                });
+
+                // Show Success Popup
+                document.getElementById('bookingPopup').style.display = 'flex';
+                bookingForm.reset();
+                otherBrandGroup.style.display = 'none';
+                otherBrandInput.required = false;
+
+                // Automatically close popup after 3.5 seconds
+                setTimeout(() => {
+                    window.closePopup();
+                }, 3500);
+            }, function(error) {
+                console.error('EmailJS FAILED...', error);
+                alert('Oops! Submission failed. Please try again or call us directly.');
+            })
+            .finally(() => {
+                submitBtn.innerText = 'Confirm Booking';
+                submitBtn.disabled = false;
+            });
     });
     // Carousel Logic
     const track = document.querySelector('.carousel-track');
@@ -81,12 +98,20 @@ document.addEventListener('DOMContentLoaded', () => {
     let currentIndex = 0;
     const slideInterval = 5000; // 5 seconds
 
+    const stopAllVideos = () => {
+        slides.forEach(slide => {
+            const video = slide.querySelector('video');
+            if (video) video.pause();
+        });
+    };
+
     const updateCarousel = (index) => {
         track.style.transform = `translateX(-${index * 100}%)`;
         dots.forEach((dot, i) => {
             dot.classList.toggle('active', i === index);
         });
         currentIndex = index;
+        stopAllVideos();
     };
 
     nextButton.addEventListener('click', () => {
@@ -121,6 +146,19 @@ document.addEventListener('DOMContentLoaded', () => {
         }, slideInterval);
     });
 
+    slides.forEach(slide => {
+        const video = slide.querySelector('video');
+        if (video) {
+            video.addEventListener('play', () => clearInterval(autoPlay));
+            video.addEventListener('pause', () => {
+                clearInterval(autoPlay);
+                autoPlay = setInterval(() => {
+                    const nextIndex = (currentIndex + 1) % slides.length;
+                    updateCarousel(nextIndex);
+                }, slideInterval);
+            });
+        }
+    });
     // Reviews Carousel Logic
     const reviewsTrack = document.querySelector('.reviews-track');
     const reviewsNext = document.querySelector('.reviews-btn.next');
@@ -200,5 +238,33 @@ document.addEventListener('DOMContentLoaded', () => {
             icon.classList.remove('fa-times');
             icon.classList.add('fa-bars');
         });
+    });
+
+    // Counter Animation Logic
+    const counters = document.querySelectorAll('.counter');
+    const speed = 200;
+
+    counters.forEach(counter => {
+        const updateCount = () => {
+            const target = +counter.getAttribute('data-target');
+            const count = +counter.innerText;
+            const inc = target / speed;
+
+            if (count < target) {
+                counter.innerText = Math.ceil(count + inc);
+                setTimeout(updateCount, 20);
+            } else {
+                counter.innerText = target;
+            }
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            if(entries[0].isIntersecting) {
+                updateCount();
+                observer.disconnect();
+            }
+        }, { threshold: 0.5 });
+        
+        observer.observe(counter);
     });
 });
