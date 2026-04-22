@@ -326,10 +326,11 @@ document.addEventListener('DOMContentLoaded', () => {
             const inc = target / speed;
 
             if (count < target) {
-                counter.innerText = Math.ceil(count + inc);
+                const nextCount = Math.ceil(count + inc);
+                counter.innerText = nextCount > target ? target.toLocaleString() : nextCount.toLocaleString();
                 setTimeout(updateCount, 20);
             } else {
-                counter.innerText = target;
+                counter.innerText = target.toLocaleString();
             }
         };
 
