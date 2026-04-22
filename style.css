@@ -196,16 +196,39 @@ nav {
     position: relative;
     overflow: hidden;
     border-bottom: 1px solid var(--border-color);
-    background-image: linear-gradient(to right, rgba(0, 0, 0, 0.98) 0%, rgba(8, 8, 8, 0.4) 50%, rgba(8, 8, 8, 0.5) 100%), url('assets/images/bg_new.png');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
+    background-color: #000; /* Fallback */
+}
+
+.hero-video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 0;
+}
+
+.hero::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to right, rgba(0, 0, 0, 0.95) 0%, rgba(0, 0, 0, 0.4) 50%, rgba(0, 0, 0, 0.6) 100%);
+    z-index: 1;
+    pointer-events: none;
+}
+
+.hero-content,
+.hero-btns {
+    position: relative;
+    z-index: 2;
 }
 
 @media (max-width: 768px) {
     .hero {
-        background-position: 80% center;
-        /* Shows more of the right portion on mobile */
         padding-top: 150px;
         min-height: 90vh;
     }
@@ -358,7 +381,7 @@ nav {
 }
 
 .stat-number {
-    display: block;
+    display: inline-block;
     font-size: 1.6rem;
     font-weight: 800;
     line-height: 1.1;
