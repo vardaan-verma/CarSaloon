@@ -435,10 +435,33 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         };
 
-        // Initialize state
         setTimeout(() => {
             updateCarousel();
             startAutoPlay();
         }, 100);
     }
+
+    // Reveal Animations on Scroll
+    const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+    };
+
+    const revealObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('active');
+            }
+        });
+    }, observerOptions);
+
+    document.querySelectorAll('.reveal-text, .reveal-item, .heading-fill').forEach(el => {
+        revealObserver.observe(el);
+    });
+
+    // Auto-trigger hero animations
+    setTimeout(() => {
+        const hero = document.querySelector('.hero');
+        if (hero) hero.classList.add('active');
+    }, 200);
 });

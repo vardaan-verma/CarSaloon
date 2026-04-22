@@ -224,6 +224,7 @@ nav {
         opacity: 0;
         transform: translateY(30px);
     }
+
     to {
         opacity: 1;
         transform: translateY(0);
@@ -238,14 +239,70 @@ nav {
 }
 
 .hero h1 span {
-    color: var(--primary-green);
+    position: relative;
+    display: inline-block;
+    color: #fff;
+    background: linear-gradient(to right, var(--primary-green) 50%, #fff 50%);
+    background-size: 200% 100%;
+    background-position: 100% 0;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    transition: background-position 1.2s cubic-bezier(0.4, 0, 0.2, 1) 0.6s;
+}
+
+.hero.active h1 span {
+    background-position: 0 0;
+    text-shadow: 0 0 10px rgba(74, 222, 128, 0.5);
 }
 
 .hero p {
     color: var(--text-gray);
     margin-bottom: 40px;
     max-width: 600px;
+}
 
+/* Heading Fill Animation */
+.heading-fill {
+    display: inline-block;
+    color: #fff;
+    background: linear-gradient(to right, var(--primary-green) 50%, #fff 50%);
+    background-size: 200% 100%;
+    background-position: 100% 0;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    transition: background-position 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+    opacity: 0;
+    transform: translateY(20px);
+}
+
+.heading-fill.active {
+    background-position: 0 0;
+    opacity: 1;
+    transform: translateY(0);
+    text-shadow: 0 0 20px rgba(74, 222, 128, 0.3);
+}
+
+.heading-fill span {
+    color: inherit;
+    background: inherit;
+    -webkit-background-clip: inherit;
+    -webkit-text-fill-color: inherit;
+}
+
+/* Scroll Reveal Animations (for other elements) */
+.reveal-text, .reveal-item {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s ease-out, transform 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.reveal-text.active, .reveal-item.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.section-title p.reveal-text {
+    transition-delay: 0.2s;
 }
 
 .hero-logo-container {
@@ -500,13 +557,17 @@ footer {
 
 .section-title h1,
 .section-title h2 {
-    margin-top: 100px;
     font-size: 2.5rem;
 }
 
 .section-title h1 span,
 .section-title h2 span {
     color: var(--primary-green);
+}
+
+/* Ensure fill animation works on spans */
+.heading-fill span {
+    color: inherit !important;
 }
 
 .section-title p {
