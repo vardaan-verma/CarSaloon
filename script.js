@@ -214,58 +214,78 @@ document.addEventListener('DOMContentLoaded', () => {
         }, 100);
     }
 
-    // Reviews Carousel Logic
-    const reviewsTrack = document.querySelector('.reviews-track');
-    const reviewsNext = document.querySelector('.reviews-btn.next');
-    const reviewsPrev = document.querySelector('.reviews-btn.prev');
-    const reviewCards = Array.from(document.querySelectorAll('.review-card'));
-    
-    let reviewIndex = 0;
-
-    const getVisibleCards = () => {
-        if (window.innerWidth <= 600) return 1;
-        if (window.innerWidth <= 992) return 2;
-        return 3;
+    // ===== BRANCH SWITCHER: Reviews + Contact =====
+    const branchData = {
+        dhamtari: {
+            address: '<i class="fas fa-map-marker-alt" style="color: var(--primary-green); width: 25px;"></i> <strong>Address:</strong><br>Beside Akash Ganga Colony, Rudri Road, Dhamtari, CG',
+            phone: '<i class="fas fa-phone" style="color: var(--primary-green); width: 25px;"></i> <strong>Phone:</strong><br><a href="tel:9617205555" style="color:#fff;text-decoration:none;">9617205555</a> / <a href="tel:9993923000" style="color:#fff;text-decoration:none;">9993923000</a>',
+            mapSrc: 'https://www.google.com/maps?q=20.6925308,81.5478162&z=17&output=embed',
+            justdial: 'https://www.justdial.com/Dhamtari/Car-Saloon-Beside-Akashganga-Colony-Opposite-Amaltas-Puram-Colony-Dhamtari-I-Ward/9999P7722-7722-190912194757-B8M9_BZDET'
+        },
+        kanker: {
+            address: '<i class="fas fa-map-marker-alt" style="color: var(--primary-green); width: 25px;"></i> <strong>Address:</strong><br>Gyani dhaba chowk, dudhawa road, near Durga mandir, Kanker, Chhattisgarh 494334',
+            phone: '<i class="fas fa-phone" style="color: var(--primary-green); width: 25px;"></i> <strong>Phone:</strong><br><a href="tel:8461905555" style="color:#fff;text-decoration:none;">84619 05555</a>',
+            mapSrc: 'https://www.google.com/maps?q=CAR+SALOON+KANKER&output=embed',
+            justdial: 'https://www.justdial.com/Kanker/Car-Saloon-Kanker-Kodabhat-Near-Durga-Mandir-Bardebhata-Kanker-Road/9999P7868-7868-250221095508-P8J3_BZDET'
+        },
+        bilaspur: {
+            address: '<i class="fas fa-map-marker-alt" style="color: var(--primary-green); width: 25px;"></i> <strong>Address:</strong><br>Beside S.B.I.S.M.E, Vyapar Vihar Road, Bilaspur, Chhattisgarh 495001',
+            phone: '<i class="fas fa-phone" style="color: var(--primary-green); width: 25px;"></i> <strong>Phone:</strong><br><a href="tel:1234567890" style="color:#fff;text-decoration:none;">1234567890</a>',
+            mapSrc: 'https://www.google.com/maps?q=22.1064259,82.1647232&z=17&output=embed',
+            justdial: 'https://www.justdial.com/Bilaspur-Chhattisgarh/Car-Saloon-Vyapar-Vihar-Road/9999P7752-7752-181124163744-X1J3_BZDET'
+        }
     };
 
-    const updateReviewsCarousel = () => {
-        const visibleCards = getVisibleCards();
-        const maxIndex = Math.max(0, reviewCards.length - visibleCards);
-        
-        if (reviewIndex > maxIndex) reviewIndex = maxIndex;
-        if (reviewIndex < 0) reviewIndex = 0;
+    window.switchBranch = function(branch) {
+        // 1. Toggle review panels
+        ['dhamtari', 'kanker', 'bilaspur'].forEach(b => {
+            document.getElementById('reviews-' + b).style.display = b === branch ? 'block' : 'none';
+        });
 
-        const cardWidth = reviewCards[0].offsetWidth;
+        // 2. Sync review selector buttons
+        ['dhamtari', 'kanker', 'bilaspur'].forEach(b => {
+            const revBtn = document.getElementById('rev-btn-' + b);
+            const contactBtn = document.getElementById('contact-btn-' + b);
+            if (revBtn) revBtn.classList.toggle('active', b === branch);
+            if (contactBtn) contactBtn.classList.toggle('active', b === branch);
+        });
+
+        // 3. Update Contact Details
+        const data = branchData[branch];
+        const addrEl = document.getElementById('contact-address');
+        const phoneEl = document.getElementById('contact-phone');
+        const jdLink  = document.getElementById('contact-justdial-link');
+        const mapFrame = document.getElementById('mapFrame');
+
+        if (addrEl)  addrEl.innerHTML  = data.address;
+        if (phoneEl) phoneEl.innerHTML = data.phone;
+        if (jdLink)  jdLink.href       = data.justdial;
+        if (mapFrame) mapFrame.src     = data.mapSrc;
+    };
+
+    // Per-branch review sliding
+    const reviewOffsets = { dhamtari: 0, kanker: 0, bilaspur: 0 };
+
+    window.slideReviews = function(branch, dir) {
+        const track = document.getElementById('track-' + branch);
+        if (!track) return;
+        const cards = track.querySelectorAll('.review-card');
+        const visible = window.innerWidth <= 600 ? 1 : window.innerWidth <= 992 ? 2 : 3;
+        const max = Math.max(0, cards.length - visible);
+        reviewOffsets[branch] = Math.min(max, Math.max(0, reviewOffsets[branch] + dir));
+        const cardWidth = cards[0].offsetWidth;
         const gap = 30;
-        const offset = reviewIndex * (cardWidth + gap);
-        
-        reviewsTrack.style.transform = `translateX(-${offset}px)`;
-        
-        // Disable/Enable buttons
-        reviewsPrev.style.opacity = reviewIndex === 0 ? '0.3' : '1';
-        reviewsNext.style.opacity = reviewIndex >= maxIndex ? '0.3' : '1';
+        track.style.transform = `translateX(-${reviewOffsets[branch] * (cardWidth + gap)}px)`;
     };
 
-    reviewsNext.addEventListener('click', () => {
-        const maxIndex = reviewCards.length - getVisibleCards();
-        if (reviewIndex < maxIndex) {
-            reviewIndex++;
-            updateReviewsCarousel();
-        }
+    window.addEventListener('resize', () => {
+        ['dhamtari', 'kanker', 'bilaspur'].forEach(b => {
+            reviewOffsets[b] = 0;
+            const track = document.getElementById('track-' + b);
+            if (track) track.style.transform = 'translateX(0)';
+        });
     });
 
-    reviewsPrev.addEventListener('click', () => {
-        if (reviewIndex > 0) {
-            reviewIndex--;
-            updateReviewsCarousel();
-        }
-    });
-
-    // Handle window resize for carousel responsiveness
-    window.addEventListener('resize', updateReviewsCarousel);
-    
-    // Initial call to set positions
-    setTimeout(updateReviewsCarousel, 100);
 
     // Mobile Navigation Menu Toggle
     const menuIcon = document.querySelector('.menu-icon');
@@ -323,17 +343,7 @@ document.addEventListener('DOMContentLoaded', () => {
         observer.observe(counter);
     });
 
-    // Map Selector Logic
-    window.changeMap = function(btnElement, mapUrl) {
-        // Change iframe src
-        document.getElementById('mapFrame').src = mapUrl;
-        
-        // Remove active class from all map buttons
-        document.querySelectorAll('.map-btn').forEach(btn => btn.classList.remove('active'));
-        
-        // Add active class to clicked button
-        btnElement.classList.add('active');
-    };
+
 
     // Services Carousel Logic (True Circular Queue 3D)
     const servicesContainer = document.querySelector('.services-carousel-container');

@@ -70,80 +70,96 @@
         </div>
     </section>
 
-    <section id="services" style="width: 100%; padding: 0 5%;">
+    <section id="about" class="about-section" style="padding: 80px 5%;">
         <div class="section-title">
-            <h2>Our <span>Services</span></h2>
-            <p>Everything your car needs under one roof.</p>
+            <h2>About <span>Us</span></h2>
+            <p>Welcome to Car Saloon, Dhamtari's premier automotive care center.</p>
         </div>
-        <div class="services-carousel-container">
-            <div class="service-card" onclick="centerCard(this)"
-                style="background-image: linear-gradient(rgba(18, 18, 18, 0.75), rgba(18, 18, 18, 0.85)), url('assets/images/services/washing.jpeg'); background-size: cover; background-position: center; border: none; box-shadow: inset 0 0 0 1px var(--border-color);">
-                <i class="fas fa-soap" style="text-shadow: 0 2px 4px rgba(0,0,0,0.5);"></i>
-                <h3 style="text-shadow: 0 2px 4px rgba(0,0,0,0.5);">Washing & Cleaning</h3>
-                <p style="text-shadow: 0 1px 3px rgba(0,0,0,0.5);">Choose from our standard foam wash, foam wash
-                    with premium wax, or our ultimate foam wash with UV wax protection.</p>
+        <div class="about-content"
+            style="display: flex; align-items: center; justify-content: center; gap: 50px; max-width: 90%; margin: auto; flex-wrap: wrap; padding: 0 20px;">
+            <div style="flex: 1.2; min-width: 350px; text-align: left;">
+                <div style="margin-bottom: 30px;">
+                    <h3 style="color: var(--primary-green); margin-bottom: 10px; font-size: 1.5rem;">Our Mission</h3>
+                    <p style="color: var(--text-gray); font-size: 1.05rem; line-height: 1.7;">
+                        At Car Saloon, our mission is to redefine automotive care by delivering unmatched quality,
+                        precision, and attention to detail in every service we offer. We are committed to enhancing the
+                        appearance, protection, and overall value of every vehicle that comes through our doors. By
+                        combining cutting-edge technology, premium-grade products, and the expertise of our passionate
+                        detailing professionals, we strive to achieve results that not only meet but exceed customer
+                        expectations. Every car we handle is treated with the same care and respect as our own, ensuring
+                        a flawless finish and long-lasting shine.
+                    </p>
+                </div>
+                <div>
+                    <h3 style="color: var(--primary-green); margin-bottom: 10px; font-size: 1.5rem;">Our Vision</h3>
+                    <p style="color: var(--text-gray); font-size: 1.05rem; line-height: 1.7;">
+                        Our vision is to establish Car Saloon as the most trusted, innovative, and customer-centric
+                        automotive care destination in Dhamtari and beyond. We aspire to set new benchmarks in the
+                        industry by continuously improving our techniques, embracing modern advancements like ceramic
+                        coatings and paint protection solutions, and maintaining the highest standards of service
+                        excellence. We believe in building long-term relationships with our customers through
+                        transparency, reliability, and consistent performance. As we grow, our goal is to become
+                        synonymous with quality car care, where customers feel confident that their vehicles are in the
+                        best hands and will always leave looking their absolute best.
+                    </p>
+                </div>
             </div>
-            <div class="service-card" onclick="centerCard(this)"
-                style="background-image: linear-gradient(rgba(18, 18, 18, 0.75), rgba(18, 18, 18, 0.85)), url('assets/images/services/polishing.jpeg'); background-size: cover; background-position: center; border: none; box-shadow: inset 0 0 0 1px var(--border-color);">
-                <i class="fas fa-shield-alt" style="text-shadow: 0 2px 4px rgba(0,0,0,0.5);"></i>
-                <h3 style="text-shadow: 0 2px 4px rgba(0,0,0,0.5);">Detailing & Coatings</h3>
-                <p style="text-shadow: 0 1px 3px rgba(0,0,0,0.5);">Ultimate paint protection and showroom shine
-                    featuring advanced Ceramic, Teflon, Graphene, and other high-end protective coatings.</p>
+            <div style="flex: 1; min-width: 350px; display: flex; justify-content: center;">
+                <img src="assets/background.gif" alt="About Car Saloon"
+                    style="width: 100%; height: 600px; border-radius: 20px; box-shadow: 0 20px 50px rgba(74, 222, 128, 0.25); object-fit: cover;">
             </div>
-            <div class="service-card" onclick="centerCard(this)"
-                style="background-image: linear-gradient(rgba(18, 18, 18, 0.75), rgba(18, 18, 18, 0.85)), url('assets/images/services/interiorcleaning.jpeg'); background-size: cover; background-position: center; border: none; box-shadow: inset 0 0 0 1px var(--border-color);">
-                <i class="fas fa-broom" style="text-shadow: 0 2px 4px rgba(0,0,0,0.5);"></i>
-                <h3 style="text-shadow: 0 2px 4px rgba(0,0,0,0.5);">Interior Cleaning</h3>
-                <p style="text-shadow: 0 1px 3px rgba(0,0,0,0.5);">Comprehensive cabin care offering Classic
-                    Interior, Premium Interior, Germ Clean Interior, and specialized Sofa Cleaning services.</p>
-            </div>
-            <div class="service-card" onclick="centerCard(this)"
-                style="background-image: linear-gradient(rgba(18, 18, 18, 0.75), rgba(18, 18, 18, 0.85)), url('assets/images/services/lightchange.jpeg'); background-size: cover; background-position: center; border: none; box-shadow: inset 0 0 0 1px var(--border-color);">
-                <i class="fas fa-tools" style="text-shadow: 0 2px 4px rgba(0,0,0,0.5);"></i>
-                <h3 style="text-shadow: 0 2px 4px rgba(0,0,0,0.5);">General Service</h3>
-                <p style="text-shadow: 0 1px 3px rgba(0,0,0,0.5);">Complete mechanical maintenance including precise
-                    oil changes, thorough engine care, and highly convenient Door Step Service.</p>
-            </div>
-            <div class="service-card" onclick="centerCard(this)"
-                style="background-image: linear-gradient(rgba(18, 18, 18, 0.75), rgba(18, 18, 18, 0.85)), url('assets/images/services/dentingpainting.jpeg'); background-size: cover; background-position: center; border: none; box-shadow: inset 0 0 0 1px var(--border-color);">
-                <i class="fas fa-paint-roller" style="text-shadow: 0 2px 4px rgba(0,0,0,0.5);"></i>
-                <h3 style="text-shadow: 0 2px 4px rgba(0,0,0,0.5);">Denting & Painting</h3>
-                <p style="text-shadow: 0 1px 3px rgba(0,0,0,0.5);">Professional dent removal and high-quality paint
-                    matching using premium paints and clear coats for a flawless finish.</p>
-            </div>
-            <div class="service-card" onclick="centerCard(this)"
-                style="background-image: linear-gradient(rgba(18, 18, 18, 0.75), rgba(18, 18, 18, 0.85)), url('assets/images/services/bodyworks.jpeg'); background-size: cover; background-position: center; border: none; box-shadow: inset 0 0 0 1px var(--border-color);">
-                <i class="fas fa-car-crash" style="text-shadow: 0 2px 4px rgba(0,0,0,0.5);"></i>
-                <h3 style="text-shadow: 0 2px 4px rgba(0,0,0,0.5);">Body Works</h3>
-                <p style="text-shadow: 0 1px 3px rgba(0,0,0,0.5);">Comprehensive body repairs, structural fixes, and
-                    precise replacement of headlamps, tail lights, and side mirrors.</p>
-            </div>
-        </div>
-        </div>
         </div>
     </section>
 
     <div class="container">
-        <section id="about" class="about-section" style="padding: 80px 0;">
+
+        <section id="services" style="width: 100%; padding: 60px 0;">
             <div class="section-title">
-                <h2>About <span>Us</span></h2>
-                <p>Welcome to Car Saloon, Dhamtari's premier automotive care center.</p>
+                <h2>Our <span>Services</span></h2>
+                <p>Everything your car needs under one roof.</p>
             </div>
-            <div class="about-content"
-                style="display: flex; align-items: center; justify-content: center; gap: 40px; max-width: 80%; margin: auto; flex-wrap: wrap; padding: 0 20px;">
-                <div style="flex: 1; min-width: 300px; text-align: left;">
-                    <p style="color: var(--text-gray); font-size: 1.15rem; line-height: 1.8;">
-                        We specialize in bringing out the ultimate shine in your vehicle. With top-of-the-line
-                        equipment,
-                        premium products, and a team of passionate detailers, we promise to treat every car like it's
-                        our
-                        own. From basic washing to advanced ceramic coatings and denting/painting, we are committed to
-                        excellence and customer satisfaction.
-                    </p>
+            <div class="services-carousel-container">
+                <div class="service-card" onclick="centerCard(this)"
+                    style="background-image: linear-gradient(rgba(18, 18, 18, 0.75), rgba(18, 18, 18, 0.85)), url('assets/images/services/washing.jpeg'); background-size: cover; background-position: center; border: none; box-shadow: inset 0 0 0 1px var(--border-color);">
+                    <i class="fas fa-soap" style="text-shadow: 0 2px 4px rgba(0,0,0,0.5);"></i>
+                    <h3 style="text-shadow: 0 2px 4px rgba(0,0,0,0.5);">Washing & Cleaning</h3>
+                    <p style="text-shadow: 0 1px 3px rgba(0,0,0,0.5);">Choose from our standard foam wash, foam wash
+                        with premium wax, or our ultimate foam wash with UV wax protection.</p>
                 </div>
-                <div style="flex: 1; min-width: 300px; display: flex; justify-content: center;">
-                    <img src="assets/background.gif" alt="About Car Saloon"
-                        style="max-width: 100%; border-radius: 20px; box-shadow: 0 15px 40px rgba(74, 222, 128, 0.2); object-fit: cover;">
+                <div class="service-card" onclick="centerCard(this)"
+                    style="background-image: linear-gradient(rgba(18, 18, 18, 0.75), rgba(18, 18, 18, 0.85)), url('assets/images/services/polishing.jpeg'); background-size: cover; background-position: center; border: none; box-shadow: inset 0 0 0 1px var(--border-color);">
+                    <i class="fas fa-shield-alt" style="text-shadow: 0 2px 4px rgba(0,0,0,0.5);"></i>
+                    <h3 style="text-shadow: 0 2px 4px rgba(0,0,0,0.5);">Detailing & Coatings</h3>
+                    <p style="text-shadow: 0 1px 3px rgba(0,0,0,0.5);">Ultimate paint protection and showroom shine
+                        featuring advanced Ceramic, Teflon, Graphene, and other high-end protective coatings.</p>
+                </div>
+                <div class="service-card" onclick="centerCard(this)"
+                    style="background-image: linear-gradient(rgba(18, 18, 18, 0.75), rgba(18, 18, 18, 0.85)), url('assets/images/services/interiorcleaning.jpeg'); background-size: cover; background-position: center; border: none; box-shadow: inset 0 0 0 1px var(--border-color);">
+                    <i class="fas fa-broom" style="text-shadow: 0 2px 4px rgba(0,0,0,0.5);"></i>
+                    <h3 style="text-shadow: 0 2px 4px rgba(0,0,0,0.5);">Interior Cleaning</h3>
+                    <p style="text-shadow: 0 1px 3px rgba(0,0,0,0.5);">Comprehensive cabin care offering Classic
+                        Interior, Premium Interior, Germ Clean Interior, and specialized Sofa Cleaning services.</p>
+                </div>
+                <div class="service-card" onclick="centerCard(this)"
+                    style="background-image: linear-gradient(rgba(18, 18, 18, 0.75), rgba(18, 18, 18, 0.85)), url('assets/images/services/lightchange.jpeg'); background-size: cover; background-position: center; border: none; box-shadow: inset 0 0 0 1px var(--border-color);">
+                    <i class="fas fa-tools" style="text-shadow: 0 2px 4px rgba(0,0,0,0.5);"></i>
+                    <h3 style="text-shadow: 0 2px 4px rgba(0,0,0,0.5);">General Service</h3>
+                    <p style="text-shadow: 0 1px 3px rgba(0,0,0,0.5);">Complete mechanical maintenance including precise
+                        oil changes, thorough engine care, and highly convenient Door Step Service.</p>
+                </div>
+                <div class="service-card" onclick="centerCard(this)"
+                    style="background-image: linear-gradient(rgba(18, 18, 18, 0.75), rgba(18, 18, 18, 0.85)), url('assets/images/services/dentingpainting.jpeg'); background-size: cover; background-position: center; border: none; box-shadow: inset 0 0 0 1px var(--border-color);">
+                    <i class="fas fa-paint-roller" style="text-shadow: 0 2px 4px rgba(0,0,0,0.5);"></i>
+                    <h3 style="text-shadow: 0 2px 4px rgba(0,0,0,0.5);">Denting & Painting</h3>
+                    <p style="text-shadow: 0 1px 3px rgba(0,0,0,0.5);">Professional dent removal and high-quality paint
+                        matching using premium paints and clear coats for a flawless finish.</p>
+                </div>
+                <div class="service-card" onclick="centerCard(this)"
+                    style="background-image: linear-gradient(rgba(18, 18, 18, 0.75), rgba(18, 18, 18, 0.85)), url('assets/images/services/bodyworks.jpeg'); background-size: cover; background-position: center; border: none; box-shadow: inset 0 0 0 1px var(--border-color);">
+                    <i class="fas fa-car-crash" style="text-shadow: 0 2px 4px rgba(0,0,0,0.5);"></i>
+                    <h3 style="text-shadow: 0 2px 4px rgba(0,0,0,0.5);">Body Works</h3>
+                    <p style="text-shadow: 0 1px 3px rgba(0,0,0,0.5);">Comprehensive body repairs, structural fixes, and
+                        precise replacement of headlamps, tail lights, and side mirrors.</p>
                 </div>
             </div>
         </section>
@@ -252,197 +268,230 @@
         <section id="reviews" class="reviews-section">
             <div class="section-title">
                 <h2>What Our <span>Clients Say</span></h2>
-                <p>Authentic feedback from our customers in Dhamtari.</p>
+                <p>Select a branch to see reviews from that location.</p>
             </div>
 
-            <div class="reviews-carousel-container">
-                <div class="reviews-track-container">
-                    <div class="reviews-track">
-                        <!-- 5 Star Reviews -->
-                        <div class="review-card">
-                            <div class="reviewer-header">
-                                <div class="reviewer-avatar">R</div>
-                                <div class="reviewer-info">
-                                    <h4>Rahul Sharma</h4>
-                                    <div class="stars">
-                                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i
-                                            class="fas fa-star"></i><i class="fas fa-star"></i><i
-                                            class="fas fa-star"></i>
-                                    </div>
-                                </div>
-                            </div>
-                            <p class="review-text">"Best detailing experience in Dhamtari. Got the ceramic coating done
-                                for my Safari, and the finish is mirror-like. Highly recommend!"</p>
-                        </div>
+            <!-- Branch Selector -->
+            <div style="display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; margin-bottom: 40px;">
+                <button class="map-btn active" id="rev-btn-dhamtari" onclick="switchBranch('dhamtari')">📍 Dhamtari</button>
+                <button class="map-btn" id="rev-btn-kanker" onclick="switchBranch('kanker')">📍 Kanker</button>
+                <button class="map-btn" id="rev-btn-bilaspur" onclick="switchBranch('bilaspur')">📍 Bilaspur</button>
+            </div>
 
-                        <div class="review-card">
-                            <div class="reviewer-header">
-                                <div class="reviewer-avatar">P</div>
-                                <div class="reviewer-info">
-                                    <h4>Priya Gupta</h4>
-                                    <div class="stars">
-                                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i
-                                            class="fas fa-star"></i><i class="fas fa-star"></i><i
-                                            class="fas fa-star"></i>
+            <!-- ===== DHAMTARI REVIEWS ===== -->
+            <div id="reviews-dhamtari">
+                <div class="reviews-carousel-container">
+                    <div class="reviews-track-container">
+                        <div class="reviews-track" id="track-dhamtari">
+                            <div class="review-card">
+                                <div class="reviewer-header">
+                                    <div class="reviewer-avatar">R</div>
+                                    <div class="reviewer-info">
+                                        <h4>Rahul Sharma</h4>
+                                        <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                                        <div class="branch-location" style="font-size:0.75rem;color:var(--primary-green);margin-top:4px;">📍 Dhamtari Branch</div>
                                     </div>
                                 </div>
+                                <p class="review-text">"Best detailing experience in Dhamtari. Got the ceramic coating done for my Safari, and the finish is mirror-like. Highly recommend!"</p>
                             </div>
-                            <p class="review-text">"Affordable yet high-quality washing. They really care about the
-                                details, especially the interior deep cleaning. Great job!"</p>
-                        </div>
-
-                        <div class="review-card">
-                            <div class="reviewer-header">
-                                <div class="reviewer-avatar">A</div>
-                                <div class="reviewer-info">
-                                    <h4>Amit Patel</h4>
-                                    <div class="stars">
-                                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i
-                                            class="fas fa-star"></i><i class="fas fa-star"></i><i
-                                            class="fas fa-star"></i>
+                            <div class="review-card">
+                                <div class="reviewer-header">
+                                    <div class="reviewer-avatar">M</div>
+                                    <div class="reviewer-info">
+                                        <h4>Manoj Gupta</h4>
+                                        <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i></div>
+                                        <div class="branch-location" style="font-size:0.75rem;color:var(--primary-green);margin-top:4px;">📍 Dhamtari Branch</div>
                                     </div>
                                 </div>
+                                <p class="review-text">"Work is excellent but they took 2 hours more than promised. Car looks great though, definitely worth the wait but timing needs improvement."</p>
                             </div>
-                            <p class="review-text">"Professional staff and a very sophisticated workshop. My 5-year old
-                                Swift looks brand new again. Truly the best auto care saloon in town."</p>
-                        </div>
-
-                        <!-- Authentic 3-4 Star Reviews -->
-                        <div class="review-card">
-                            <div class="reviewer-header">
-                                <div class="reviewer-avatar">M</div>
-                                <div class="reviewer-info">
-                                    <h4>Manoj Gupta</h4>
-                                    <div class="stars">
-                                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i
-                                            class="fas fa-star"></i><i class="fas fa-star"></i><i
-                                            class="far fa-star"></i>
+                            <div class="review-card">
+                                <div class="reviewer-header">
+                                    <div class="reviewer-avatar">H</div>
+                                    <div class="reviewer-info">
+                                        <h4>Harish Patel</h4>
+                                        <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i></div>
+                                        <div class="branch-location" style="font-size:0.75rem;color:var(--primary-green);margin-top:4px;">📍 Dhamtari Branch</div>
                                     </div>
                                 </div>
+                                <p class="review-text">"Ceramic coating is perfect. Only issue was a slight delay in the pickup time. Make sure to call before going to collect your car."</p>
                             </div>
-                            <p class="review-text">"Work is excellent but they took 2 hours more than promised. Car
-                                looks great though, definitely worth the wait but timing needs improvement."</p>
-                        </div>
-
-                        <div class="review-card">
-                            <div class="reviewer-header">
-                                <div class="reviewer-avatar">S</div>
-                                <div class="reviewer-info">
-                                    <h4>Sunny Raj</h4>
-                                    <div class="stars">
-                                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i
-                                            class="fas fa-star"></i><i class="fas fa-star"></i><i
-                                            class="far fa-star"></i>
+                            <div class="review-card">
+                                <div class="reviewer-header">
+                                    <div class="reviewer-avatar">V</div>
+                                    <div class="reviewer-info">
+                                        <h4>Vikram Singh</h4>
+                                        <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                                        <div class="branch-location" style="font-size:0.75rem;color:var(--primary-green);margin-top:4px;">📍 Dhamtari Branch</div>
                                     </div>
                                 </div>
+                                <p class="review-text">"Absolutely love the full interior cleaning they did on my Creta. Smells fresh and looks brand new inside. Great team at Dhamtari!"</p>
                             </div>
-                            <p class="review-text">"Good cleaning, but the waiting lounge could be better. A bit crowded
-                                on weekends, so make sure to book an appointment early."</p>
-                        </div>
-
-                        <div class="review-card">
-                            <div class="reviewer-header">
-                                <div class="reviewer-avatar">N</div>
-                                <div class="reviewer-info">
-                                    <h4>Neha Taneja</h4>
-                                    <div class="stars">
-                                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i
-                                            class="fas fa-star"></i><i class="far fa-star"></i><i
-                                            class="far fa-star"></i>
-                                    </div>
-                                </div>
-                            </div>
-                            <p class="review-text">"Staff is skilled but very busy. Had to wait 30 mins even with an
-                                appointment. Cleaning was top notch, but they should manage slots better."</p>
-                        </div>
-
-                        <div class="review-card">
-                            <div class="reviewer-header">
-                                <div class="reviewer-avatar">H</div>
-                                <div class="reviewer-info">
-                                    <h4>Harish Patel</h4>
-                                    <div class="stars">
-                                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i
-                                            class="fas fa-star"></i><i class="fas fa-star"></i><i
-                                            class="far fa-star"></i>
-                                    </div>
-                                </div>
-                            </div>
-                            <p class="review-text">"Ceramic coating is perfect. Only issue was a slight delay in the
-                                pickup time. Make sure to call before going to collect your car."</p>
-                        </div>
-
-                        <!-- More 5 Star Reviews -->
-                        <div class="review-card">
-                            <div class="reviewer-header">
-                                <div class="reviewer-avatar">D</div>
-                                <div class="reviewer-info">
-                                    <h4>Deepak Verma</h4>
-                                    <div class="stars">
-                                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i
-                                            class="fas fa-star"></i><i class="fas fa-star"></i><i
-                                            class="fas fa-star"></i>
-                                    </div>
-                                </div>
-                            </div>
-                            <p class="review-text">"Got my Kia Seltos ceramic coated here. The results are amazing. The
-                                car looks even better than when it was in the showroom!"</p>
-                        </div>
-
-                        <div class="review-card">
-                            <div class="reviewer-header">
-                                <div class="reviewer-avatar">J</div>
-                                <div class="reviewer-info">
-                                    <h4>Jeevan Lal</h4>
-                                    <div class="stars">
-                                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i
-                                            class="fas fa-star"></i><i class="fas fa-star"></i><i
-                                            class="fas fa-star"></i>
-                                    </div>
-                                </div>
-                            </div>
-                            <p class="review-text">"Top-notch car premium salon. The attention to detail is what sets
-                                them apart. My Fortuner looks brand new every single time."</p>
                         </div>
                     </div>
+                    <button class="reviews-btn prev" onclick="slideReviews('dhamtari', -1)" aria-label="Previous"><i class="fas fa-chevron-left"></i></button>
+                    <button class="reviews-btn next" onclick="slideReviews('dhamtari', 1)" aria-label="Next"><i class="fas fa-chevron-right"></i></button>
                 </div>
-                <button class="reviews-btn prev" aria-label="Previous Review"><i
-                        class="fas fa-chevron-left"></i></button>
-                <button class="reviews-btn next" aria-label="Next Review"><i class="fas fa-chevron-right"></i></button>
+                <div class="google-review-badge">
+                    <a href="https://share.google/YNrugGWf8nXV2l7XF" target="_blank" class="btn-review"><i class="fab fa-google"></i> View all Reviews</a>
+                    <a href="https://www.justdial.com/Dhamtari/Car-Saloon-Beside-Aakash-Ganga-Colony-Dhamtari-I-Ward/9999P7722-7722-190912194757-B8M9_BZDET/writereview?city=Dhamtari&area=Dhamtari+I+Ward&fid=&prevRating=0&company_name=Car+Saloon&nav=1&tapToRate=1" target="_blank" class="btn-review" style="border-color:var(--primary-green);color:var(--primary-green);"><i class="fas fa-star"></i> Rate us on JustDial</a>
+                </div>
             </div>
 
-            <div class="google-review-badge">
-                <a href="https://share.google/YNrugGWf8nXV2l7XF" target="_blank" class="btn-review">
-                    <i class="fab fa-google"></i> View all Reviews
-                </a>
-                <a href="https://www.justdial.com/Dhamtari/Car-Saloon-Beside-Aakash-Ganga-Colony-Dhamtari-I-Ward/9999P7722-7722-190912194757-B8M9_BZDET/writereview?city=Dhamtari&area=Dhamtari+I+Ward&fid=&prevRating=0&company_name=Car+Saloon&nav=1&tapToRate=1"
-                    target="_blank" class="btn-review"
-                    style="border-color: var(--primary-green); color: var(--primary-green);">
-                    <i class="fas fa-star"></i> Rate us on JustDial
-                </a>
+            <!-- ===== KANKER REVIEWS ===== -->
+            <div id="reviews-kanker" style="display:none;">
+                <div class="reviews-carousel-container">
+                    <div class="reviews-track-container">
+                        <div class="reviews-track" id="track-kanker">
+                            <div class="review-card">
+                                <div class="reviewer-header">
+                                    <div class="reviewer-avatar">P</div>
+                                    <div class="reviewer-info">
+                                        <h4>Priya Gupta</h4>
+                                        <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                                        <div class="branch-location" style="font-size:0.75rem;color:var(--primary-green);margin-top:4px;">📍 Kanker Branch</div>
+                                    </div>
+                                </div>
+                                <p class="review-text">"Affordable yet high-quality washing. They really care about the details, especially the interior deep cleaning. Great job at Kanker!"</p>
+                            </div>
+                            <div class="review-card">
+                                <div class="reviewer-header">
+                                    <div class="reviewer-avatar">S</div>
+                                    <div class="reviewer-info">
+                                        <h4>Sunny Raj</h4>
+                                        <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i></div>
+                                        <div class="branch-location" style="font-size:0.75rem;color:var(--primary-green);margin-top:4px;">📍 Kanker Branch</div>
+                                    </div>
+                                </div>
+                                <p class="review-text">"Good cleaning, but the waiting lounge could be better. A bit crowded on weekends, so make sure to book an appointment early."</p>
+                            </div>
+                            <div class="review-card">
+                                <div class="reviewer-header">
+                                    <div class="reviewer-avatar">D</div>
+                                    <div class="reviewer-info">
+                                        <h4>Deepak Verma</h4>
+                                        <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                                        <div class="branch-location" style="font-size:0.75rem;color:var(--primary-green);margin-top:4px;">📍 Kanker Branch</div>
+                                    </div>
+                                </div>
+                                <p class="review-text">"Got my Kia Seltos ceramic coated here. The results are amazing. The car looks even better than when it was in the showroom!"</p>
+                            </div>
+                            <div class="review-card">
+                                <div class="reviewer-header">
+                                    <div class="reviewer-avatar">L</div>
+                                    <div class="reviewer-info">
+                                        <h4>Lokesh Sahu</h4>
+                                        <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                                        <div class="branch-location" style="font-size:0.75rem;color:var(--primary-green);margin-top:4px;">📍 Kanker Branch</div>
+                                    </div>
+                                </div>
+                                <p class="review-text">"Extremely satisfied with the Teflon coating on my Bolero. The finish is superb and the staff in Kanker are very professional."</p>
+                            </div>
+                        </div>
+                    </div>
+                    <button class="reviews-btn prev" onclick="slideReviews('kanker', -1)" aria-label="Previous"><i class="fas fa-chevron-left"></i></button>
+                    <button class="reviews-btn next" onclick="slideReviews('kanker', 1)" aria-label="Next"><i class="fas fa-chevron-right"></i></button>
+                </div>
+                <div class="google-review-badge">
+                    <a href="https://share.google/ZRnRqvDYphMBNcuJb" target="_blank" class="btn-review"><i class="fab fa-google"></i> View all Reviews</a>
+                    <a href="https://www.justdial.com/Kanker/Car-Saloon-Kanker-Kodabhat-Near-Durga-Mandir-Bardebhata-Kanker-Road/9999P7868-7868-250221095508-P8J3_BZDET" target="_blank" class="btn-review" style="border-color:var(--primary-green);color:var(--primary-green);"><i class="fas fa-star"></i> Rate us on JustDial</a>
+                </div>
+            </div>
+
+            <!-- ===== BILASPUR REVIEWS ===== -->
+            <div id="reviews-bilaspur" style="display:none;">
+                <div class="reviews-carousel-container">
+                    <div class="reviews-track-container">
+                        <div class="reviews-track" id="track-bilaspur">
+                            <div class="review-card">
+                                <div class="reviewer-header">
+                                    <div class="reviewer-avatar">A</div>
+                                    <div class="reviewer-info">
+                                        <h4>Amit Patel</h4>
+                                        <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                                        <div class="branch-location" style="font-size:0.75rem;color:var(--primary-green);margin-top:4px;">📍 Bilaspur Branch</div>
+                                    </div>
+                                </div>
+                                <p class="review-text">"Professional staff and a very sophisticated workshop. My 5-year old Swift looks brand new again. Truly the best auto care saloon in town."</p>
+                            </div>
+                            <div class="review-card">
+                                <div class="reviewer-header">
+                                    <div class="reviewer-avatar">N</div>
+                                    <div class="reviewer-info">
+                                        <h4>Neha Taneja</h4>
+                                        <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i></div>
+                                        <div class="branch-location" style="font-size:0.75rem;color:var(--primary-green);margin-top:4px;">📍 Bilaspur Branch</div>
+                                    </div>
+                                </div>
+                                <p class="review-text">"Staff is skilled but very busy. Had to wait 30 mins even with an appointment. Cleaning was top notch, but they should manage slots better."</p>
+                            </div>
+                            <div class="review-card">
+                                <div class="reviewer-header">
+                                    <div class="reviewer-avatar">J</div>
+                                    <div class="reviewer-info">
+                                        <h4>Jeevan Lal</h4>
+                                        <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                                        <div class="branch-location" style="font-size:0.75rem;color:var(--primary-green);margin-top:4px;">📍 Bilaspur Branch</div>
+                                    </div>
+                                </div>
+                                <p class="review-text">"Top-notch car premium salon. The attention to detail is what sets them apart. My Fortuner looks brand new every single time."</p>
+                            </div>
+                            <div class="review-card">
+                                <div class="reviewer-header">
+                                    <div class="reviewer-avatar">K</div>
+                                    <div class="reviewer-info">
+                                        <h4>Kavita Sharma</h4>
+                                        <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                                        <div class="branch-location" style="font-size:0.75rem;color:var(--primary-green);margin-top:4px;">📍 Bilaspur Branch</div>
+                                    </div>
+                                </div>
+                                <p class="review-text">"Visited the Bilaspur branch for body work and denting. Absolutely flawless finish. Their team is skilled, quick and very courteous!"</p>
+                            </div>
+                        </div>
+                    </div>
+                    <button class="reviews-btn prev" onclick="slideReviews('bilaspur', -1)" aria-label="Previous"><i class="fas fa-chevron-left"></i></button>
+                    <button class="reviews-btn next" onclick="slideReviews('bilaspur', 1)" aria-label="Next"><i class="fas fa-chevron-right"></i></button>
+                </div>
+                <div class="google-review-badge">
+                    <a href="https://share.google/ydaP3KbQBbgaRI4BH" target="_blank" class="btn-review"><i class="fab fa-google"></i> View all Reviews</a>
+                    <a href="https://www.justdial.com/Bilaspur-Chhattisgarh/Car-Saloon-Vyapar-Vihar-Road/9999P7752-7752-181124163744-X1J3_BZDET" target="_blank" class="btn-review" style="border-color:var(--primary-green);color:var(--primary-green);"><i class="fas fa-star"></i> Rate us on JustDial</a>
+                </div>
             </div>
         </section>
+
 
         <section id="booking" class="booking-form-container">
             <h2 style="text-align: center; margin-bottom: 20px;">Book Your <span>Service</span></h2>
             <form id="car-service-form">
                 <div class="form-group"><input type="text" name="user_name" placeholder="Full Name" required></div>
-                <div class="form-group"><input type="email" name="user_email" placeholder="Email Address" required>
-                </div>
+                <div class="form-group"><input type="email" name="user_email" placeholder="Email Address" required></div>
                 <div class="form-group"><input type="tel" name="user_phone" placeholder="Phone Number" required></div>
+
+                <div class="form-group">
+                    <select name="branch_location" id="branchLocationSelect" required>
+                        <option value="">Select Branch / Location</option>
+                        <option value="Dhamtari">📍 Dhamtari Branch</option>
+                        <option value="Kanker">📍 Kanker Branch</option>
+                        <option value="Bilaspur">📍 Bilaspur Branch</option>
+                    </select>
+                </div>
 
                 <div class="form-group">
                     <select name="service_type" required>
                         <option value="">Select Service</option>
-                        <option value="Body works">Body works</option>
+                        <option value="Body Works">Body Works</option>
                         <option value="Washing and Cleaning">Washing and Cleaning</option>
-                        <option value="Denting Painting">Denting Painting</option>
+                        <option value="Denting and Painting">Denting and Painting</option>
                         <option value="Car Polishing">Car Polishing</option>
                         <option value="Interior Cleaning">Interior Cleaning</option>
                         <option value="Light Changing">Light Changing</option>
                         <option value="Mirror Replacement">Mirror Replacement</option>
                         <option value="General Service">General Service</option>
-                        <option value="Coating">Coating</option>
+                        <option value="Ceramic Coating">Ceramic Coating</option>
+                        <option value="Teflon Coating">Teflon Coating</option>
+                        <option value="Graphene Coating">Graphene Coating</option>
+                        <option value="PPF (Paint Protection Film)">PPF (Paint Protection Film)</option>
+                        <option value="Other">Other</option>
                     </select>
                 </div>
 
@@ -515,79 +564,61 @@
                 <div style="text-align: center;">
                     <img src="assets/images/logo-removebg-preview.png" alt="Car Saloon"
                         style="height: 60px; margin-bottom: 20px;">
-                    <h2 style="color: var(--text-white); font-size: 2.5rem; margin-bottom: 10px;">Contact
-                        <span>Us</span>
-                    </h2>
-                    <p style="color: var(--text-gray);">Find us or get in touch for more information.</p>
+                    <h2 style="color: var(--text-white); font-size: 2.5rem; margin-bottom: 10px;">Contact <span>Us</span></h2>
+                    <p style="color: var(--text-gray); margin-bottom: 24px;">Select a branch to view its location details.</p>
+                    <!-- Branch selector drives contact details + map -->
+                    <div style="display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; margin-bottom: 10px;">
+                        <button class="map-btn active" id="contact-btn-dhamtari" onclick="switchBranch('dhamtari')">📍 Dhamtari</button>
+                        <button class="map-btn" id="contact-btn-kanker" onclick="switchBranch('kanker')">📍 Kanker</button>
+                        <button class="map-btn" id="contact-btn-bilaspur" onclick="switchBranch('bilaspur')">📍 Bilaspur</button>
+                    </div>
                 </div>
 
                 <div class="locate-grid"
                     style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px; text-align: left;">
 
+                    <!-- Contact details panel -->
                     <div class="contact-details"
                         style="background: rgba(255, 255, 255, 0.05); padding: 30px; border-radius: 20px; border: 1px solid var(--border-color);">
                         <div style="display: flex; align-items: center; gap: 20px; margin-bottom: 25px;">
                             <img src="assets/images/owner.jpeg" alt="Chitrasen Sinha"
                                 style="width: 80px; height: 80px; border-radius: 50%; object-fit: cover; border: 2px solid var(--primary-green);">
                             <div>
-                                <h3 style="color: var(--primary-green); margin-bottom: 5px; font-size: 1.5rem;">
-                                    Chitrasen Sinha</h3>
+                                <h3 style="color: var(--primary-green); margin-bottom: 5px; font-size: 1.5rem;">Chitrasen Sinha</h3>
                                 <p style="color: var(--text-gray); font-size: 0.9rem; margin-bottom: 0;">Owner</p>
                             </div>
                         </div>
-                        <p style="margin-bottom: 15px;"><i class="fas fa-map-marker-alt"
-                                style="color: var(--primary-green); width: 25px;"></i>
-                            <strong>Address:</strong><br>Beside
-                            Akash Ganga Colony, Rudri Road, Dhamtari, CG
+                        <p style="margin-bottom: 15px;" id="contact-address">
+                            <i class="fas fa-map-marker-alt" style="color: var(--primary-green); width: 25px;"></i>
+                            <strong>Address:</strong><br>Beside Akash Ganga Colony, Rudri Road, Dhamtari, CG
                         </p>
-                        <p style="margin-bottom: 15px;"><i class="fas fa-phone"
-                                style="color: var(--primary-green); width: 25px;"></i> <strong>Phone:</strong><br><a
-                                href="tel:9617205555"
-                                style="color: var(--text-white); text-decoration: none;">9617205555</a> / <a
-                                href="tel:9993923000"
-                                style="color: var(--text-white); text-decoration: none;">9993923000</a></p>
-                        <p style="margin-bottom: 15px;"><i class="fas fa-envelope"
-                                style="color: var(--primary-green); width: 25px;"></i> <strong>Email:</strong><br><a
-                                href="mailto:chitrasen_sinha@rediffmail.com"
-                                style="color: var(--text-white); text-decoration: none;">chitrasen_sinha@rediffmail.com</a>
+                        <p style="margin-bottom: 15px;" id="contact-phone">
+                            <i class="fas fa-phone" style="color: var(--primary-green); width: 25px;"></i>
+                            <strong>Phone:</strong><br>
+                            <a href="tel:9617205555" style="color: var(--text-white); text-decoration: none;">9617205555</a> /
+                            <a href="tel:9993923000" style="color: var(--text-white); text-decoration: none;">9993923000</a>
                         </p>
-                        <p style="margin-bottom: 15px;"><i class="fas fa-id-card"
-                                style="color: var(--primary-green); width: 25px;"></i> <strong>GST
-                                NO:</strong><br>22BQVPS8778P1ZC</p>
-                        <div class="social-links"
-                            style="justify-content: flex-start; margin-top: 20px; display: flex; gap: 15px;">
-                            <a href="https://www.facebook.com/p/Car-Saloon-Dhamtari-100063695454438/?hr=1&wtsid=rdr_1l7mdJ3HjMUIJtcbO"
-                                target="_blank" style="color: inherit; font-size: 1.5rem;" title="Facebook"><i
-                                    class="fab fa-facebook"></i></a>
-                            <a href="https://www.instagram.com/car_saloon_dmt?igsh=MWtucjZhejRlM3pldg==" target="_blank"
-                                style="color: inherit; font-size: 1.5rem;" title="Instagram"><i
-                                    class="fab fa-instagram"></i></a>
-                            <a href="https://www.justdial.com/Dhamtari/Car-Saloon-Beside-Akashganga-Colony-Opposite-Amaltas-Puram-Colony-Dhamtari-I-Ward/9999P7722-7722-190912194757-B8M9_BZDET"
-                                target="_blank"
-                                style="color: inherit; text-decoration: none; font-size: 1.1rem; display: flex; align-items: center;"
-                                title="Justdial"><img src="assets/Favicon/justdial.com-favicon-32x32.com" alt="JustDial"
-                                    style="width: 24px; height: 24px; border-radius: 50%;"></a>
-                            <a href="https://www.youtube.com/@CarSaloon-YT" target="_blank"
-                                style="color: inherit; font-size: 1.5rem;" title="YouTube"><i
-                                    class="fab fa-youtube"></i></a>
+                        <p style="margin-bottom: 15px;">
+                            <i class="fas fa-envelope" style="color: var(--primary-green); width: 25px;"></i>
+                            <strong>Email:</strong><br>
+                            <a href="mailto:chitrasen_sinha@rediffmail.com" style="color: var(--text-white); text-decoration: none;">chitrasen_sinha@rediffmail.com</a>
+                        </p>
+                        <p style="margin-bottom: 15px;">
+                            <i class="fas fa-id-card" style="color: var(--primary-green); width: 25px;"></i>
+                            <strong>GST NO:</strong><br>22BQVPS8778P1ZC
+                        </p>
+                        <div class="social-links" style="justify-content: flex-start; margin-top: 20px; display: flex; gap: 15px;">
+                            <a href="https://www.facebook.com/p/Car-Saloon-Dhamtari-100063695454438/?hr=1&wtsid=rdr_1l7mdJ3HjMUIJtcbO" target="_blank" style="color: inherit; font-size: 1.5rem;" title="Facebook"><i class="fab fa-facebook"></i></a>
+                            <a href="https://www.instagram.com/car_saloon_dmt?igsh=MWtucjZhejRlM3pldg==" target="_blank" style="color: inherit; font-size: 1.5rem;" title="Instagram"><i class="fab fa-instagram"></i></a>
+                            <a id="contact-justdial-link" href="https://www.justdial.com/Dhamtari/Car-Saloon-Beside-Akashganga-Colony-Opposite-Amaltas-Puram-Colony-Dhamtari-I-Ward/9999P7722-7722-190912194757-B8M9_BZDET" target="_blank" style="color: inherit; text-decoration: none; font-size: 1.1rem; display: flex; align-items: center;" title="Justdial"><img src="assets/Favicon/justdial.com-favicon-32x32.com" alt="JustDial" style="width: 24px; height: 24px; border-radius: 50%;"></a>
+                            <a href="https://www.youtube.com/@CarSaloon-YT" target="_blank" style="color: inherit; font-size: 1.5rem;" title="YouTube"><i class="fab fa-youtube"></i></a>
                         </div>
                     </div>
 
+                    <!-- Map panel -->
                     <div style="display: flex; flex-direction: column; gap: 15px; width: 100%;">
-                        <div style="display: flex; flex-wrap: wrap; gap: 10px;">
-                            <button class="map-btn active"
-                                onclick="changeMap(this, 'https://www.google.com/maps?q=20.6925308,81.5478162&z=17&output=embed')">📍
-                                Dhamtari</button>
-                            <button class="map-btn"
-                                onclick="changeMap(this, 'https://www.google.com/maps?q=22.1064259,82.1647232&z=17&output=embed')">📍
-                                Bilaspur</button>
-                            <button class="map-btn"
-                                onclick="changeMap(this, 'https://www.google.com/maps?q=CAR+SALOON+KANKER&output=embed')">📍
-                                Kanker</button>
-                        </div>
-
                         <div class="map-container"
-                            style="border-radius: 20px; overflow: hidden; border: 1px solid var(--border-color); height: 320px;">
+                            style="border-radius: 20px; overflow: hidden; border: 1px solid var(--border-color); height: 400px;">
                             <iframe id="mapFrame"
                                 src="https://www.google.com/maps?q=20.6925308,81.5478162&z=17&output=embed" width="100%"
                                 height="100%" style="border:0;" allowfullscreen="" loading="lazy"
