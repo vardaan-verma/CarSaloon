@@ -187,8 +187,8 @@ nav {
 }
 
 .container {
-    padding: 0 20px;
-    max-width: 1000px;
+    padding: 0 5%;
+    max-width: 100%;
     margin: auto;
 }
 
@@ -202,12 +202,12 @@ nav {
     align-items: center;
     position: relative;
     border-bottom: 1px solid var(--border-color);
-    background-size: 100% 100%;
+    background-size: cover;
 }
 
 @media (max-width: 600px) {
     .hero {
-        background-size: 200% 100%;
+        background-size: cover;
     }
 }
 
@@ -253,9 +253,9 @@ nav {
     position: absolute;
     background: var(--card-bg);
     padding: 30px;
-    border-radius: 20px;
+    border-radius: 10px;
     border: 1px solid var(--border-color);
-    width: 320px;
+    width: 350px;
     height: 400px;
     transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
     cursor: pointer;
@@ -283,7 +283,8 @@ nav {
     background: var(--card-bg);
     padding: 40px;
     border-radius: 24px;
-    margin: 60px 0;
+    margin: 60px auto;
+    max-width: 1200px;
     border: 1px solid var(--border-color);
     background-image: url(./assets/images/graphics/graphic.jpg);
 }
@@ -398,97 +399,47 @@ footer {
     margin-top: 10px;
 }
 
-.carousel-container {
+/* Work Carousel (3D Circular Queue) */
+.work-carousel-container {
     position: relative;
-    max-width: 900px;
-    margin: 0 auto;
-    overflow: hidden;
-    border-radius: 24px;
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
-    border: 1px solid var(--border-color);
-}
-
-.carousel-track {
-    display: flex;
-    transition: transform 0.6s cubic-bezier(0.7, 0, 0.3, 1);
-}
-
-.carousel-slide {
-    min-width: 100%;
-}
-
-.carousel-slide img {
     width: 100%;
-    height: 500px;
-    object-fit: cover;
-    display: block;
-}
-
-.carousel-slide video {
-    width: 100%;
-    height: 500px;
-    object-fit: contain;
-    outline: none;
-    border: none;
-    background: #000;
-}
-
-.carousel-btn {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    background: rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(8px);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    color: white;
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    cursor: pointer;
+    height: 550px;
     display: flex;
-    align-items: center;
     justify-content: center;
-    font-size: 1.2rem;
-    transition: all 0.3s ease;
-    z-index: 10;
+    align-items: center;
+    margin: 40px 0 80px 0;
+    overflow: hidden;
 }
 
-.carousel-btn:hover {
-    background: var(--primary-green);
-    color: black;
-    transform: translateY(-50%) scale(1.1);
-}
-
-.prev-btn {
-    left: 20px;
-}
-
-.next-btn {
-    right: 20px;
-}
-
-.carousel-dots {
+.work-carousel-container .work-card {
     position: absolute;
-    bottom: 20px;
-    left: 50%;
-    transform: translateX(-50%);
-    display: flex;
-    gap: 10px;
-}
-
-.dot {
-    width: 10px;
-    height: 10px;
-    border-radius: 50%;
-    background: rgba(255, 255, 255, 0.3);
+    background: var(--card-bg);
+    border-radius: 20px;
+    border: 1px solid var(--border-color);
+    width: 600px;
+    height: 500px;
+    transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
     cursor: pointer;
-    transition: all 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    transform-origin: center center;
+    opacity: 0;
+    overflow: hidden;
 }
 
-.dot.active {
-    background: var(--primary-green);
-    width: 30px;
-    border-radius: 10px;
+.work-carousel-container .work-card.active-slide {
+    box-shadow: 0 15px 40px rgba(74, 222, 128, 0.3);
+    border-color: var(--primary-green);
+}
+
+.work-card img,
+.work-card video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
 
 @media (max-width: 768px) {
@@ -522,8 +473,12 @@ footer {
         display: flex;
     }
 
-    .carousel-slide img,
-    .video-carousel-slide video {
+    .work-carousel-container {
+        height: 400px;
+    }
+
+    .work-carousel-container .work-card {
+        width: 320px;
         height: 350px;
     }
 }
@@ -544,7 +499,7 @@ footer {
 
 .reviews-carousel-container {
     position: relative;
-    max-width: 1200px;
+    max-width: 1600px;
     margin: 40px auto;
     padding: 0 50px;
 }

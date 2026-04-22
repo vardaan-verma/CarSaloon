@@ -87,115 +87,133 @@ document.addEventListener('DOMContentLoaded', () => {
                 submitBtn.disabled = false;
             });
     });
-    // Carousel Logic
-    const track = document.querySelector('.carousel-track');
-    const slides = Array.from(track.children);
-    const nextButton = document.querySelector('.next-btn');
-    const prevButton = document.querySelector('.prev-btn');
-    const dotsContainer = document.querySelector('.carousel-dots');
-    const dots = Array.from(dotsContainer.children);
-
-    let currentIndex = 0;
-    const slideInterval = 5000; // 5 seconds
-    let autoPlay;
-
-    const stopAllVideos = () => {
-        slides.forEach(slide => {
-            const video = slide.querySelector('video');
-            if (video) {
-                video.pause();
-                video.currentTime = 0; // reset video to start
-            }
-        });
-    };
-
-    const nextSlide = () => {
-        const nextIndex = (currentIndex + 1) % slides.length;
-        updateCarousel(nextIndex);
-    };
-
-    const updateCarousel = (index) => {
-        track.style.transform = `translateX(-${index * 100}%)`;
-        dots.forEach((dot, i) => {
-            dot.classList.toggle('active', i === index);
-        });
-        currentIndex = index;
-        
-        stopAllVideos();
-        clearInterval(autoPlay);
-
-        const currentSlide = slides[currentIndex];
-        const video = currentSlide.querySelector('video');
-        
-        if (video) {
-            video.muted = true; // Ensure it starts muted automatically
-            const playPromise = video.play();
-            if (playPromise !== undefined) {
-                playPromise.catch(error => {
-                    console.log("Autoplay blocked by browser. Proceeding normal interval:", error);
-                    autoPlay = setInterval(nextSlide, slideInterval);
-                });
-            }
-            // Trigger next slide exclusively when the video naturally ends
-            video.onended = () => {
-                nextSlide();
-            };
-        } else {
-            // Normal 5 second flip for images
-            autoPlay = setInterval(nextSlide, slideInterval);
-        }
-    };
-
-    nextButton.addEventListener('click', () => {
-        nextSlide();
-    });
-
-    prevButton.addEventListener('click', () => {
-        const prevIndex = (currentIndex - 1 + slides.length) % slides.length;
-        updateCarousel(prevIndex);
-    });
-
-    dots.forEach((dot, index) => {
-        dot.addEventListener('click', () => {
-            updateCarousel(index);
-        });
-    });
-
-    // Pause auto-play timers on hover
-    const carouselContainer = document.querySelector('.carousel-container');
-    carouselContainer.addEventListener('mouseenter', () => clearInterval(autoPlay));
+        // Work Carousel Logic (3D Circular Queue)
+    const workContainer = document.querySelector('.work-carousel-container');
+    const workCards = document.querySelectorAll('.work-card');
     
-    carouselContainer.addEventListener('mouseleave', () => {
-        const currentSlide = slides[currentIndex];
-        const video = currentSlide.querySelector('video');
-        // Resume timer only if an image is showing, or if video is paused/done
-        if (!video || video.paused || video.ended) {
-            autoPlay = setInterval(nextSlide, slideInterval);
-        }
-    });
+    if (workContainer && workCards.length > 0) {
+        let currentWorkIndex = 0;
+        let workAutoPlayInterval;
 
-    // Swipe logic for Our Work
-    let startX = 0;
-    let endX = 0;
-    track.addEventListener('touchstart', e => {
-        startX = e.touches[0].clientX;
-    }, {passive: true});
-    track.addEventListener('touchmove', e => {
-        endX = e.touches[0].clientX;
-    }, {passive: true});
-    track.addEventListener('touchend', () => {
-        if (startX > endX + 50) {
-            nextSlide();
-        } else if (startX < endX - 50 && endX !== 0) {
-            const prevIndex = (currentIndex - 1 + slides.length) % slides.length;
-            updateCarousel(prevIndex);
-        }
-        startX = 0;
-        endX = 0;
-    });
+        const stopAllWorkVideos = () => {
+            workCards.forEach(card => {
+                const video = card.querySelector('video');
+                if (video) {
+                    video.pause();
+                    video.currentTime = 0; // reset video to start
+                }
+            });
+        };
 
-    // Boot up the carousel properly
-    updateCarousel(0);
+        function updateWorkCarousel() {
+            workCards.forEach((card, i) => {
+                let diff = i - currentWorkIndex;
+                const halfLength = Math.floor(workCards.length / 2);
+                
+                if (diff > halfLength) diff -= workCards.length;
+                if (diff < -halfLength) diff += workCards.length;
+
+                const translateX = diff * 400; // Spread distance horizontally
+                const scale = 1 - Math.abs(diff) * 0.15; // Cards shrink as they move away
+                const zIndex = 20 - Math.abs(diff); // Center card is always top
+                const opacity = Math.abs(diff) > 2 ? 0 : 1 - (Math.abs(diff) * 0.3); // Cards fade out
+                
+                if(window.innerWidth < 768) {
+                    card.style.transform = `translateX(${diff * 220}px) scale(${scale})`;
+                } else {
+                    card.style.transform = `translateX(${translateX}px) scale(${scale})`;
+                }
+                
+                card.style.zIndex = zIndex;
+                card.style.opacity = opacity;
+
+                if (diff === 0) {
+                    card.classList.add('active-slide');
+                } else {
+                    card.classList.remove('active-slide');
+                }
+            });
+            
+            stopAllWorkVideos();
+            clearInterval(workAutoPlayInterval);
+            
+            const currentCard = workCards[currentWorkIndex];
+            const video = currentCard.querySelector('video');
+            
+            if (video) {
+                video.muted = true;
+                const playPromise = video.play();
+                if (playPromise !== undefined) {
+                    playPromise.catch(error => {
+                        console.log("Autoplay blocked. Proceeding interval:", error);
+                        startWorkAutoPlay();
+                    });
+                }
+                video.onended = () => {
+                    currentWorkIndex = (currentWorkIndex + 1) % workCards.length;
+                    updateWorkCarousel();
+                };
+            } else {
+                startWorkAutoPlay();
+            }
+        }
+
+        const startWorkAutoPlay = () => {
+            clearInterval(workAutoPlayInterval);
+            workAutoPlayInterval = setInterval(() => {
+                currentWorkIndex = (currentWorkIndex + 1) % workCards.length;
+                updateWorkCarousel();
+            }, 3500);
+        };
+
+        const stopWorkAutoPlay = () => clearInterval(workAutoPlayInterval);
+        
+        workContainer.addEventListener('mouseenter', stopWorkAutoPlay);
+        workContainer.addEventListener('mouseleave', () => {
+            const currentCard = workCards[currentWorkIndex];
+            const video = currentCard.querySelector('video');
+            if (!video || video.paused || video.ended) {
+                startWorkAutoPlay();
+            }
+        });
+        
+        let workStartX = 0;
+        let workEndX = 0;
+        
+        workContainer.addEventListener('touchstart', e => {
+            stopWorkAutoPlay();
+            workStartX = e.touches[0].clientX;
+        }, {passive: true});
+
+        workContainer.addEventListener('touchmove', e => {
+            workEndX = e.touches[0].clientX;
+        }, {passive: true});
+
+        workContainer.addEventListener('touchend', () => {
+            if (workStartX > workEndX + 50 && workEndX !== 0) {
+                currentWorkIndex = (currentWorkIndex + 1) % workCards.length;
+                updateWorkCarousel();
+            } else if (workStartX < workEndX - 50 && workEndX !== 0) {
+                currentWorkIndex = (currentWorkIndex - 1 + workCards.length) % workCards.length;
+                updateWorkCarousel();
+            }
+            workStartX = 0;
+            workEndX = 0;
+        });
+
+        window.centerWorkCard = function(clickedElement) {
+            const idx = Array.from(workCards).indexOf(clickedElement);
+            if (idx > -1 && idx !== currentWorkIndex) {
+                currentWorkIndex = idx;
+                updateWorkCarousel();
+            }
+        };
+
+        setTimeout(() => {
+            updateWorkCarousel();
+        }, 100);
+    }
+
     // Reviews Carousel Logic
     const reviewsTrack = document.querySelector('.reviews-track');
     const reviewsNext = document.querySelector('.reviews-btn.next');
@@ -358,7 +376,7 @@ document.addEventListener('DOMContentLoaded', () => {
             autoPlayInterval = setInterval(() => {
                 currentIndex = (currentIndex + 1) % cards.length;
                 updateCarousel();
-            }, 2000);
+            }, 4000);
         };
 
         const stopAutoPlay = () => clearInterval(autoPlayInterval);
@@ -402,7 +420,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 updateCarousel();
                 stopAutoPlay();
                 // We do not instantly restart to give them time to read if they clicked
-                setTimeout(startAutoPlay, 2000);
+                setTimeout(startAutoPlay, 4000);
             }
         };
 
