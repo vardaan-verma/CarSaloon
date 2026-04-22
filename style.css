@@ -193,21 +193,26 @@ nav {
 }
 
 .hero {
-    text-align: center;
-    padding: 120px 20px;
-    min-height: 70vh;
+    text-align: left;
+    padding: 120px 5%;
+    min-height: 100vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start;
     position: relative;
     border-bottom: 1px solid var(--border-color);
+    background-image: linear-gradient(to right, rgba(8, 8, 8, 0.95), rgba(8, 8, 8, 0.4)), url('assets/images/bg.png');
     background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
 }
 
-@media (max-width: 600px) {
+@media (max-width: 768px) {
     .hero {
-        background-size: cover;
+        background-position: 80% center; /* Shows more of the right portion on mobile */
+        padding-top: 150px;
+        min-height: 90vh;
     }
 }
 
