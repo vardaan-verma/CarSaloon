@@ -317,18 +317,20 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Counter Animation Logic
     const counters = document.querySelectorAll('.counter');
-    const speed = 200;
+    const duration = 3000; // 3 seconds
 
     counters.forEach(counter => {
         const updateCount = () => {
             const target = +counter.getAttribute('data-target');
-            const count = +counter.innerText;
-            const inc = target / speed;
+            const count = +counter.innerText.replace(/,/g, '');
+            const stepTime = 20;
+            const steps = duration / stepTime;
+            const inc = target / steps;
 
             if (count < target) {
                 const nextCount = Math.ceil(count + inc);
-                counter.innerText = nextCount > target ? target.toLocaleString() : nextCount.toLocaleString();
-                setTimeout(updateCount, 20);
+                counter.innerText = nextCount >= target ? target.toLocaleString() : nextCount.toLocaleString();
+                setTimeout(updateCount, stepTime);
             } else {
                 counter.innerText = target.toLocaleString();
             }

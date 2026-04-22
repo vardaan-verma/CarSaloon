@@ -54,7 +54,7 @@ nav {
 
 .nav-logo img {
     height: 50px;
-    object-fit: fill;
+    object-fit: contain;
     filter: drop-shadow(0 0 10px rgba(74, 222, 128, 0.3));
 }
 
@@ -196,7 +196,7 @@ nav {
     position: relative;
     overflow: hidden;
     border-bottom: 1px solid var(--border-color);
-    background-image: linear-gradient(to right, rgba(8, 8, 8, 0.95) 0%, rgba(8, 8, 8, 0.7) 50%, rgba(8, 8, 8, 0.3) 100%), url('assets/images/bg_new.jpg');
+    background-image: linear-gradient(to right, rgba(0, 0, 0, 0.98) 0%, rgba(8, 8, 8, 0.4) 50%, rgba(8, 8, 8, 0.5) 100%), url('assets/images/bg_new.png');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -290,13 +290,15 @@ nav {
 }
 
 /* Scroll Reveal Animations (for other elements) */
-.reveal-text, .reveal-item {
+.reveal-text,
+.reveal-item {
     opacity: 0;
     transform: translateY(30px);
     transition: opacity 0.8s ease-out, transform 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
 }
 
-.reveal-text.active, .reveal-item.active {
+.reveal-text.active,
+.reveal-item.active {
     opacity: 1;
     transform: translateY(0);
 }
