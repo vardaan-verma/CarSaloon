@@ -237,7 +237,7 @@ document.addEventListener('DOMContentLoaded', () => {
         },
         bilaspur: {
             address: '<i class="fas fa-map-marker-alt" style="color: var(--primary-green); width: 25px;"></i> <strong>Address:</strong><br>Beside S.B.I.S.M.E, Vyapar Vihar Road, Bilaspur, Chhattisgarh 495001',
-            phone: '<i class="fas fa-phone" style="color: var(--primary-green); width: 25px;"></i> <strong>Phone:</strong><br><a href="tel:1234567890" style="color:#fff;text-decoration:none;">1234567890</a>',
+            phone: '<i class="fas fa-phone" style="color: var(--primary-green); width: 25px;"></i> <strong>Phone:</strong><br><a href="tel:9617205555" style="color:#fff;text-decoration:none;">9617205555</a> / <a href="tel:9993923000" style="color:#fff;text-decoration:none;">9993923000</a>',
             mapSrc: 'https://www.google.com/maps?q=22.1064259,82.1647232&z=17&output=embed',
             justdial: 'https://www.justdial.com/Bilaspur-Chhattisgarh/Car-Saloon-Vyapar-Vihar-Road/9999P7752-7752-181124163744-X1J3_BZDET'
         }
