@@ -1,346 +1,474 @@
-'use strict';
-
-/* ──────────────────────────────────────────────
-   Booking Popup (global, called from HTML)
-────────────────────────────────────────────── */
-window.closePopup = function () {
+window.closePopup = function() {
     document.getElementById('bookingPopup').style.display = 'none';
 };
 
-/* ──────────────────────────────────────────────
-   Branch data — single source of truth
-────────────────────────────────────────────── */
-const BRANCH_DATA = {
-    dhamtari: {
-        address: '<i class="fas fa-map-marker-alt"></i> <strong>Address:</strong><br>Beside Akash Ganga Colony, Rudri Road, Dhamtari, CG',
-        phone:   '<i class="fas fa-phone"></i> <strong>Phone:</strong><br><a href="tel:9617205555">9617205555</a> / <a href="tel:9993923000">9993923000</a>',
-        mapSrc:  'https://www.google.com/maps?q=20.6925308,81.5478162&z=17&output=embed',
-        justdial: 'https://www.justdial.com/Dhamtari/Car-Saloon-Beside-Akashganga-Colony-Opposite-Amaltas-Puram-Colony-Dhamtari-I-Ward/9999P7722-7722-190912194757-B8M9_BZDET'
-    },
-    kanker: {
-        address: '<i class="fas fa-map-marker-alt"></i> <strong>Address:</strong><br>Gyani dhaba chowk, dudhawa road, near Durga mandir, Kanker, Chhattisgarh 494334',
-        phone:   '<i class="fas fa-phone"></i> <strong>Phone:</strong><br><a href="tel:8461905555">84619 05555</a>',
-        mapSrc:  'https://www.google.com/maps?q=CAR+SALOON+KANKER&output=embed',
-        justdial: 'https://www.justdial.com/Kanker/Car-Saloon-Kanker-Kodabhat-Near-Durga-Mandir-Bardebhata-Kanker-Road/9999P7868-7868-250221095508-P8J3_BZDET'
-    },
-    bilaspur: {
-        address: '<i class="fas fa-map-marker-alt"></i> <strong>Address:</strong><br>Beside S.B.I.S.M.E, Vyapar Vihar Road, Bilaspur, Chhattisgarh 495001',
-        phone:   '<i class="fas fa-phone"></i> <strong>Phone:</strong><br><a href="tel:1234567890">1234567890</a>',
-        mapSrc:  'https://www.google.com/maps?q=22.1064259,82.1647232&z=17&output=embed',
-        justdial: 'https://www.justdial.com/Bilaspur-Chhattisgarh/Car-Saloon-Vyapar-Vihar-Road/9999P7752-7752-181124163744-X1J3_BZDET'
-    }
-};
-
-const BRANCHES = Object.keys(BRANCH_DATA);
-
-/* ──────────────────────────────────────────────
-   Branch switcher
-────────────────────────────────────────────── */
-window.switchBranch = function (branch) {
-    // Toggle review panels
-    BRANCHES.forEach(b => {
-        const panel = document.getElementById('reviews-' + b);
-        if (panel) panel.style.display = b === branch ? 'block' : 'none';
-    });
-
-    // Toggle active state on all branch selector buttons (both review + contact)
-    BRANCHES.forEach(b => {
-        ['rev-btn-', 'contact-btn-'].forEach(prefix => {
-            const btn = document.getElementById(prefix + b);
-            if (btn) btn.classList.toggle('active', b === branch);
-        });
-    });
-
-    // Update contact details
-    const data = BRANCH_DATA[branch];
-    const addrEl     = document.getElementById('contact-address');
-    const phoneEl    = document.getElementById('contact-phone');
-    const jdLink     = document.getElementById('contact-justdial-link');
-    const mapFrame   = document.getElementById('mapFrame');
-
-    if (addrEl)   addrEl.innerHTML  = data.address;
-    if (phoneEl)  phoneEl.innerHTML = data.phone;
-    if (jdLink)   jdLink.href       = data.justdial;
-    if (mapFrame) mapFrame.src      = data.mapSrc;
-};
-
-/* ──────────────────────────────────────────────
-   Reviews slider (per-branch offset)
-────────────────────────────────────────────── */
-const reviewOffsets = { dhamtari: 0, kanker: 0, bilaspur: 0 };
-
-window.slideReviews = function (branch, dir) {
-    const track = document.getElementById('track-' + branch);
-    if (!track) return;
-    const cards   = track.querySelectorAll('.review-card');
-    const visible = window.innerWidth <= 600 ? 1 : window.innerWidth <= 992 ? 2 : 3;
-    const max     = Math.max(0, cards.length - visible);
-    reviewOffsets[branch] = Math.min(max, Math.max(0, reviewOffsets[branch] + dir));
-    const cardWidth = cards[0].offsetWidth;
-    track.style.transform = `translateX(-${reviewOffsets[branch] * (cardWidth + 30)}px)`;
-};
-
-window.addEventListener('resize', () => {
-    BRANCHES.forEach(b => {
-        reviewOffsets[b] = 0;
-        const track = document.getElementById('track-' + b);
-        if (track) track.style.transform = 'translateX(0)';
-    });
-});
-
-/* ──────────────────────────────────────────────
-   Carousel helper — generic 3D coverflow
-────────────────────────────────────────────── */
-function makeCarousel(container, cards, { spreadDesktop = 400, spreadMobile = 220, autoplayMs = 3500 } = {}) {
-    let current = 0;
-    let timer;
-
-    function render() {
-        const half = Math.floor(cards.length / 2);
-        const isMobile = window.innerWidth < 768;
-
-        cards.forEach((card, i) => {
-            let diff = i - current;
-            if (diff > half)  diff -= cards.length;
-            if (diff < -half) diff += cards.length;
-
-            const spread = isMobile ? spreadMobile : spreadDesktop;
-            const scale   = 1 - Math.abs(diff) * 0.15;
-            const zIndex  = 20 - Math.abs(diff);
-            const opacity = Math.abs(diff) > 2 ? 0 : 1 - Math.abs(diff) * 0.3;
-
-            card.style.transform = `translateX(${diff * spread}px) scale(${scale})`;
-            card.style.zIndex    = zIndex;
-            card.style.opacity   = opacity;
-            card.classList.toggle('active-slide', diff === 0);
-        });
-    }
-
-    function startTimer() {
-        clearInterval(timer);
-        timer = setInterval(() => {
-            current = (current + 1) % cards.length;
-            render();
-        }, autoplayMs);
-    }
-
-    function stopTimer() { clearInterval(timer); }
-
-    container.addEventListener('mouseenter', stopTimer);
-    container.addEventListener('mouseleave', startTimer);
-
-    // Touch swipe
-    let startX = 0;
-    container.addEventListener('touchstart', e => { stopTimer(); startX = e.touches[0].clientX; }, { passive: true });
-    container.addEventListener('touchend', e => {
-        const dx = startX - e.changedTouches[0].clientX;
-        if (Math.abs(dx) > 50) {
-            current = dx > 0
-                ? (current + 1) % cards.length
-                : (current - 1 + cards.length) % cards.length;
-            render();
-        }
-        startTimer();
-    }, { passive: true });
-
-    return { render, startTimer, stopTimer, getCurrent: () => current, setCurrent: (v) => { current = v; } };
-}
-
-/* ──────────────────────────────────────────────
-   DOMContentLoaded
-────────────────────────────────────────────── */
 document.addEventListener('DOMContentLoaded', () => {
-
-    /* ── Booking Form ── */
     const bookingForm = document.getElementById('car-service-form');
-    if (bookingForm) {
-        const submitBtn       = bookingForm.querySelector('.submit-btn');
-        const brandSelect     = document.getElementById('carBrandSelect');
-        const otherBrandGroup = document.getElementById('otherBrandGroup');
-        const otherBrandInput = document.getElementById('otherBrandInput');
+    const submitBtn   = bookingForm.querySelector('.submit-btn');
 
-        const FORM_ID       = '1FAIpQLSdkJsQxencJNdT4qzuNmdG6mlWrsrBL11DqU_q5zwLGWNt3Iw';
-        const googleFormUrl = `https://docs.google.com/forms/u/0/d/e/${FORM_ID}/formResponse`;
+    // ── Google Form backup log ──
+    const FORM_ID       = "1FAIpQLSdkJsQxencJNdT4qzuNmdG6mlWrsrBL11DqU_q5zwLGWNt3Iw";
+    const googleFormUrl = `https://docs.google.com/forms/u/0/d/e/${FORM_ID}/formResponse`;
 
-        brandSelect.addEventListener('change', function () {
-            const show = this.value === 'Other';
-            otherBrandGroup.style.display = show ? 'block' : 'none';
-            otherBrandInput.required      = show;
-        });
+    // ── Show/Hide "Other Brand" input ──
+    const brandSelect     = document.getElementById('carBrandSelect');
+    const otherBrandGroup = document.getElementById('otherBrandGroup');
+    const otherBrandInput = document.getElementById('otherBrandInput');
 
-        bookingForm.addEventListener('submit', function (e) {
-            e.preventDefault();
-            submitBtn.textContent = 'Processing…';
-            submitBtn.disabled    = true;
+    brandSelect.addEventListener('change', function () {
+        if (this.value === 'Other') {
+            otherBrandGroup.style.display = 'block';
+            otherBrandInput.required = true;
+        } else {
+            otherBrandGroup.style.display = 'none';
+            otherBrandInput.required = false;
+        }
+    });
 
-            const finalBrand = this.car_brand.value === 'Other' ? this.car_brand_other.value : this.car_brand.value;
-
-            const params = {
-                user_name:    this.user_name.value,
-                user_email:   this.user_email.value,
-                user_phone:   this.user_phone.value,
-                service_type: this.service_type.value,
-                car_brand:    finalBrand,
-                car_model:    this.car_model.value,
-                service_date: this.service_date.value,
-                message:      this.message.value || 'No extra requirements provided.'
-            };
-
-            // Google Form backup (no-cors)
-            const gfd = new FormData();
-            gfd.append('entry.1378675246', params.user_name);
-            gfd.append('entry.902874580',  params.user_email);
-            gfd.append('entry.1192564498', params.user_phone);
-            gfd.append('entry.1800244039', params.service_type);
-            gfd.append('entry.1775344095', params.car_brand);
-            gfd.append('entry.2074342323', params.car_model);
-            gfd.append('entry.748221579',  params.service_date);
-            gfd.append('entry.1020267720', params.message);
-
-            emailjs.send('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', params)
-                .then(() => {
-                    fetch(googleFormUrl, { method: 'POST', mode: 'no-cors', body: gfd });
-                    document.getElementById('bookingPopup').style.display = 'flex';
-                    bookingForm.reset();
-                    otherBrandGroup.style.display = 'none';
-                    otherBrandInput.required      = false;
-                    setTimeout(window.closePopup, 3500);
-                })
-                .catch(() => {
-                    alert('Oops! Submission failed. Please try again or call us directly.');
-                })
-                .finally(() => {
-                    submitBtn.textContent = 'Confirm Booking';
-                    submitBtn.disabled    = false;
-                });
-        });
+    // ── Helper: show popup & reset form ──
+    function showSuccessPopup() {
+        document.getElementById('bookingPopup').style.display = 'flex';
+        bookingForm.reset();
+        otherBrandGroup.style.display = 'none';
+        otherBrandInput.required = false;
+        submitBtn.innerText = 'Confirm Booking';
+        submitBtn.disabled  = false;
+        setTimeout(() => window.closePopup(), 3500);
     }
 
-    /* ── Work Carousel ── */
-    const workContainer = document.querySelector('.work-carousel-container');
-    const workCards     = [...document.querySelectorAll('.work-card')];
+    // ── Form submit ──
+    bookingForm.addEventListener('submit', function (event) {
+        event.preventDefault();
 
-    if (workContainer && workCards.length) {
-        const wc = makeCarousel(workContainer, workCards, { spreadDesktop: 400, spreadMobile: 220, autoplayMs: 3500 });
+        submitBtn.innerText = 'Processing...';
+        submitBtn.disabled  = true;
 
-        function stopAllVideos() {
-            workCards.forEach(card => {
-                const v = card.querySelector('video');
-                if (v) { v.pause(); v.currentTime = 0; }
+        // Resolve "Other" brand
+        const finalBrand = this.car_brand.value === 'Other'
+            ? this.car_brand_other.value
+            : this.car_brand.value;
+
+        // Human-readable date
+        const rawDate       = this.service_date.value;
+        const formattedDate = rawDate
+            ? new Date(rawDate).toLocaleDateString('en-IN', { day: '2-digit', month: 'long', year: 'numeric' })
+            : 'Not specified';
+
+        // ── EmailJS payload (variable names must match your template) ──
+        const templateParams = {
+            owner_name:   'Chitrasen Sinha',
+            user_name:    this.user_name.value,
+            user_email:   this.user_email.value,
+            user_phone:   this.user_phone.value,
+            branch:       this.branch_location.value || 'Not specified',
+            service_type: this.service_type.value,
+            car_brand:    finalBrand,
+            car_model:    this.car_model.value    || 'Not specified',
+            service_date: formattedDate,
+            message:      this.message.value      || 'No extra requirements provided.',
+        };
+
+        // ── Google Form backup (fire-and-forget) ──
+        const gfd = new FormData();
+        gfd.append('entry.1378675246', templateParams.user_name);
+        gfd.append('entry.902874580',  templateParams.user_email);
+        gfd.append('entry.1192564498', templateParams.user_phone);
+        gfd.append('entry.1800244039', templateParams.service_type);
+        gfd.append('entry.1775344095', templateParams.car_brand);
+        gfd.append('entry.2074342323', templateParams.car_model);
+        gfd.append('entry.748221579',  rawDate);
+        gfd.append('entry.1020267720', templateParams.message);
+        fetch(googleFormUrl, { method: 'POST', mode: 'no-cors', body: gfd })
+            .catch(err => console.warn('Google Form backup failed:', err));
+
+        // ── Send booking email to owner via EmailJS ──
+        // Replace 'YOUR_SERVICE_ID' and 'YOUR_TEMPLATE_ID' with your actual keys
+        emailjs.send('service_o3ec0lw', 'template_aisgkg5', templateParams)
+            .then(() => {
+                console.log('✅ EmailJS: booking notification sent.');
+                showSuccessPopup();
+            })
+            .catch(err => {
+                console.error('EmailJS error:', err);
+                // Still show success — Google Form has the record
+                showSuccessPopup();
             });
-        }
+    });
+        // Work Carousel Logic (3D Circular Queue)
+    const workContainer = document.querySelector('.work-carousel-container');
+    const workCards = document.querySelectorAll('.work-card');
+    
+    if (workContainer && workCards.length > 0) {
+        let currentWorkIndex = 0;
+        let workAutoPlayInterval;
 
-        function renderAndPlayVideo() {
-            wc.render();
-            stopAllVideos();
-            clearInterval(/* timer handled inside wc */ undefined);
+        const stopAllWorkVideos = () => {
+            workCards.forEach(card => {
+                const video = card.querySelector('video');
+                if (video) {
+                    video.pause();
+                    video.currentTime = 0; // reset video to start
+                }
+            });
+        };
 
-            const activeCard  = workCards[wc.getCurrent()];
-            const video       = activeCard.querySelector('video');
+        function updateWorkCarousel() {
+            workCards.forEach((card, i) => {
+                let diff = i - currentWorkIndex;
+                const halfLength = Math.floor(workCards.length / 2);
+                
+                if (diff > halfLength) diff -= workCards.length;
+                if (diff < -halfLength) diff += workCards.length;
 
+                const translateX = diff * 400; // Spread distance horizontally
+                const scale = 1 - Math.abs(diff) * 0.15; // Cards shrink as they move away
+                const zIndex = 20 - Math.abs(diff); // Center card is always top
+                const opacity = Math.abs(diff) > 2 ? 0 : 1 - (Math.abs(diff) * 0.3); // Cards fade out
+                
+                if(window.innerWidth < 768) {
+                    card.style.transform = `translateX(${diff * 220}px) scale(${scale})`;
+                } else {
+                    card.style.transform = `translateX(${translateX}px) scale(${scale})`;
+                }
+                
+                card.style.zIndex = zIndex;
+                card.style.opacity = opacity;
+
+                if (diff === 0) {
+                    card.classList.add('active-slide');
+                } else {
+                    card.classList.remove('active-slide');
+                }
+            });
+            
+            stopAllWorkVideos();
+            clearInterval(workAutoPlayInterval);
+            
+            const currentCard = workCards[currentWorkIndex];
+            const video = currentCard.querySelector('video');
+            
             if (video) {
                 video.muted = true;
-                video.play().catch(() => wc.startTimer());
+                const playPromise = video.play();
+                if (playPromise !== undefined) {
+                    playPromise.catch(error => {
+                        console.log("Autoplay blocked. Proceeding interval:", error);
+                        startWorkAutoPlay();
+                    });
+                }
                 video.onended = () => {
-                    wc.setCurrent((wc.getCurrent() + 1) % workCards.length);
-                    renderAndPlayVideo();
+                    currentWorkIndex = (currentWorkIndex + 1) % workCards.length;
+                    updateWorkCarousel();
                 };
             } else {
-                wc.startTimer();
+                startWorkAutoPlay();
             }
         }
 
-        window.centerWorkCard = function (el) {
-            const idx = workCards.indexOf(el);
-            if (idx > -1 && idx !== wc.getCurrent()) {
-                wc.setCurrent(idx);
-                renderAndPlayVideo();
+        const startWorkAutoPlay = () => {
+            clearInterval(workAutoPlayInterval);
+            workAutoPlayInterval = setInterval(() => {
+                currentWorkIndex = (currentWorkIndex + 1) % workCards.length;
+                updateWorkCarousel();
+            }, 3500);
+        };
+
+        const stopWorkAutoPlay = () => clearInterval(workAutoPlayInterval);
+        
+        workContainer.addEventListener('mouseenter', stopWorkAutoPlay);
+        workContainer.addEventListener('mouseleave', () => {
+            const currentCard = workCards[currentWorkIndex];
+            const video = currentCard.querySelector('video');
+            if (!video || video.paused || video.ended) {
+                startWorkAutoPlay();
+            }
+        });
+        
+        let workStartX = 0;
+        let workEndX = 0;
+        
+        workContainer.addEventListener('touchstart', e => {
+            stopWorkAutoPlay();
+            workStartX = e.touches[0].clientX;
+        }, {passive: true});
+
+        workContainer.addEventListener('touchmove', e => {
+            workEndX = e.touches[0].clientX;
+        }, {passive: true});
+
+        workContainer.addEventListener('touchend', () => {
+            if (workStartX > workEndX + 50 && workEndX !== 0) {
+                currentWorkIndex = (currentWorkIndex + 1) % workCards.length;
+                updateWorkCarousel();
+            } else if (workStartX < workEndX - 50 && workEndX !== 0) {
+                currentWorkIndex = (currentWorkIndex - 1 + workCards.length) % workCards.length;
+                updateWorkCarousel();
+            }
+            workStartX = 0;
+            workEndX = 0;
+        });
+
+        window.centerWorkCard = function(clickedElement) {
+            const idx = Array.from(workCards).indexOf(clickedElement);
+            if (idx > -1 && idx !== currentWorkIndex) {
+                currentWorkIndex = idx;
+                updateWorkCarousel();
             }
         };
 
-        setTimeout(renderAndPlayVideo, 100);
+        setTimeout(() => {
+            updateWorkCarousel();
+        }, 100);
     }
 
-    /* ── Services Carousel ── */
-    const servicesContainer = document.querySelector('.services-carousel-container');
-    const serviceCards      = [...document.querySelectorAll('.services-carousel-container .service-card')];
+    // ===== BRANCH SWITCHER: Reviews + Contact =====
+    const branchData = {
+        dhamtari: {
+            address: '<i class="fas fa-map-marker-alt" style="color: var(--primary-green); width: 25px;"></i> <strong>Address:</strong><br>Beside Akash Ganga Colony, Rudri Road, Dhamtari, CG',
+            phone: '<i class="fas fa-phone" style="color: var(--primary-green); width: 25px;"></i> <strong>Phone:</strong><br><a href="tel:9617205555" style="color:#fff;text-decoration:none;">9617205555</a> / <a href="tel:9993923000" style="color:#fff;text-decoration:none;">9993923000</a>',
+            mapSrc: 'https://www.google.com/maps?q=20.6925308,81.5478162&z=17&output=embed',
+            justdial: 'https://www.justdial.com/Dhamtari/Car-Saloon-Beside-Akashganga-Colony-Opposite-Amaltas-Puram-Colony-Dhamtari-I-Ward/9999P7722-7722-190912194757-B8M9_BZDET'
+        },
+        kanker: {
+            address: '<i class="fas fa-map-marker-alt" style="color: var(--primary-green); width: 25px;"></i> <strong>Address:</strong><br>Gyani dhaba chowk, dudhawa road, near Durga mandir, Kanker, Chhattisgarh 494334',
+            phone: '<i class="fas fa-phone" style="color: var(--primary-green); width: 25px;"></i> <strong>Phone:</strong><br><a href="tel:8461905555" style="color:#fff;text-decoration:none;">84619 05555</a>',
+            mapSrc: 'https://www.google.com/maps?q=CAR+SALOON+KANKER&output=embed',
+            justdial: 'https://www.justdial.com/Kanker/Car-Saloon-Kanker-Kodabhat-Near-Durga-Mandir-Bardebhata-Kanker-Road/9999P7868-7868-250221095508-P8J3_BZDET'
+        },
+        bilaspur: {
+            address: '<i class="fas fa-map-marker-alt" style="color: var(--primary-green); width: 25px;"></i> <strong>Address:</strong><br>Beside S.B.I.S.M.E, Vyapar Vihar Road, Bilaspur, Chhattisgarh 495001',
+            phone: '<i class="fas fa-phone" style="color: var(--primary-green); width: 25px;"></i> <strong>Phone:</strong><br><a href="tel:1234567890" style="color:#fff;text-decoration:none;">1234567890</a>',
+            mapSrc: 'https://www.google.com/maps?q=22.1064259,82.1647232&z=17&output=embed',
+            justdial: 'https://www.justdial.com/Bilaspur-Chhattisgarh/Car-Saloon-Vyapar-Vihar-Road/9999P7752-7752-181124163744-X1J3_BZDET'
+        }
+    };
 
-    if (servicesContainer && serviceCards.length) {
-        const sc = makeCarousel(servicesContainer, serviceCards, { spreadDesktop: 220, spreadMobile: 160, autoplayMs: 4000 });
+    window.switchBranch = function(branch) {
+        // 1. Toggle review panels
+        ['dhamtari', 'kanker', 'bilaspur'].forEach(b => {
+            document.getElementById('reviews-' + b).style.display = b === branch ? 'block' : 'none';
+        });
 
-        window.centerCard = function (el) {
-            const idx = serviceCards.indexOf(el);
-            if (idx > -1) {
-                sc.setCurrent(idx);
-                sc.render();
-                sc.stopTimer();
-                setTimeout(sc.startTimer, 4000);
-            }
-        };
+        // 2. Sync review selector buttons
+        ['dhamtari', 'kanker', 'bilaspur'].forEach(b => {
+            const revBtn = document.getElementById('rev-btn-' + b);
+            const contactBtn = document.getElementById('contact-btn-' + b);
+            if (revBtn) revBtn.classList.toggle('active', b === branch);
+            if (contactBtn) contactBtn.classList.toggle('active', b === branch);
+        });
 
-        setTimeout(() => { sc.render(); sc.startTimer(); }, 100);
-    }
+        // 3. Update Contact Details
+        const data = branchData[branch];
+        const addrEl = document.getElementById('contact-address');
+        const phoneEl = document.getElementById('contact-phone');
+        const jdLink  = document.getElementById('contact-justdial-link');
+        const mapFrame = document.getElementById('mapFrame');
 
-    /* ── Mobile Navigation ── */
+        if (addrEl)  addrEl.innerHTML  = data.address;
+        if (phoneEl) phoneEl.innerHTML = data.phone;
+        if (jdLink)  jdLink.href       = data.justdial;
+        if (mapFrame) mapFrame.src     = data.mapSrc;
+    };
+
+    // Per-branch review sliding
+    const reviewOffsets = { dhamtari: 0, kanker: 0, bilaspur: 0 };
+
+    window.slideReviews = function(branch, dir) {
+        const track = document.getElementById('track-' + branch);
+        if (!track) return;
+        const cards = track.querySelectorAll('.review-card');
+        const visible = window.innerWidth <= 600 ? 1 : window.innerWidth <= 992 ? 2 : 3;
+        const max = Math.max(0, cards.length - visible);
+        reviewOffsets[branch] = Math.min(max, Math.max(0, reviewOffsets[branch] + dir));
+        const cardWidth = cards[0].offsetWidth;
+        const gap = 30;
+        track.style.transform = `translateX(-${reviewOffsets[branch] * (cardWidth + gap)}px)`;
+    };
+
+    window.addEventListener('resize', () => {
+        ['dhamtari', 'kanker', 'bilaspur'].forEach(b => {
+            reviewOffsets[b] = 0;
+            const track = document.getElementById('track-' + b);
+            if (track) track.style.transform = 'translateX(0)';
+        });
+    });
+
+
+    // Mobile Navigation Menu Toggle
     const menuIcon = document.querySelector('.menu-icon');
     const navLinks = document.querySelector('.nav-links');
 
-    if (menuIcon && navLinks) {
-        menuIcon.addEventListener('click', () => {
-            navLinks.classList.toggle('active');
-            const icon = menuIcon.querySelector('i');
-            icon.classList.toggle('fa-bars',  !navLinks.classList.contains('active'));
-            icon.classList.toggle('fa-times', navLinks.classList.contains('active'));
-        });
-
-        document.querySelectorAll('.nav-links a').forEach(link => {
-            link.addEventListener('click', () => {
-                navLinks.classList.remove('active');
-                const icon = menuIcon.querySelector('i');
-                icon.className = 'fas fa-bars';
-            });
-        });
-    }
-
-    /* ── Counter Animation ── */
-    document.querySelectorAll('.counter').forEach(counter => {
-        const target   = +counter.dataset.target;
-        const duration = 3000;
-        const stepTime = 20;
-        const steps    = duration / stepTime;
-        const inc      = target / steps;
-        let count      = 0;
-        let started    = false;
-
-        const tick = () => {
-            count = Math.min(count + inc, target);
-            counter.textContent = Math.ceil(count).toLocaleString();
-            if (count < target) setTimeout(tick, stepTime);
-        };
-
-        new IntersectionObserver((entries, obs) => {
-            if (entries[0].isIntersecting && !started) {
-                started = true;
-                tick();
-                obs.disconnect();
-            }
-        }, { threshold: 0.5 }).observe(counter);
+    menuIcon.addEventListener('click', () => {
+        navLinks.classList.toggle('active');
+        // Toggle icon between bars and times (close)
+        const icon = menuIcon.querySelector('i');
+        if (navLinks.classList.contains('active')) {
+            icon.classList.remove('fa-bars');
+            icon.classList.add('fa-times');
+        } else {
+            icon.classList.remove('fa-times');
+            icon.classList.add('fa-bars');
+        }
     });
 
-    /* ── Scroll Reveal (IntersectionObserver) ── */
+    // Close mobile menu when a link is clicked
+    const links = document.querySelectorAll('.nav-links li a');
+    links.forEach(link => {
+        link.addEventListener('click', () => {
+            navLinks.classList.remove('active');
+            const icon = menuIcon.querySelector('i');
+            icon.classList.remove('fa-times');
+            icon.classList.add('fa-bars');
+        });
+    });
+
+    // Counter Animation Logic
+    const counters = document.querySelectorAll('.counter');
+    const duration = 3000; // 3 seconds
+
+    counters.forEach(counter => {
+        const updateCount = () => {
+            const target = +counter.getAttribute('data-target');
+            const count = +counter.innerText.replace(/,/g, '');
+            const stepTime = 20;
+            const steps = duration / stepTime;
+            const inc = target / steps;
+
+            if (count < target) {
+                const nextCount = Math.ceil(count + inc);
+                counter.innerText = nextCount >= target ? target.toLocaleString() : nextCount.toLocaleString();
+                setTimeout(updateCount, stepTime);
+            } else {
+                counter.innerText = target.toLocaleString();
+            }
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            if(entries[0].isIntersecting) {
+                updateCount();
+                observer.disconnect();
+            }
+        }, { threshold: 0.5 });
+        
+        observer.observe(counter);
+    });
+
+
+
+    // Services Carousel Logic (True Circular Queue 3D)
+    const servicesContainer = document.querySelector('.services-carousel-container');
+    const cards = document.querySelectorAll('.services-carousel-container .service-card');
+    
+    if (servicesContainer && cards.length > 0) {
+        let currentIndex = 0;
+        let autoPlayInterval;
+
+        function updateCarousel() {
+            cards.forEach((card, i) => {
+                // Determine logical distance from center (-3 to +3 for 6 items)
+                let diff = i - currentIndex;
+                const halfLength = Math.floor(cards.length / 2);
+                
+                // Wrap around safely
+                if (diff > halfLength) diff -= cards.length;
+                if (diff < -halfLength) diff += cards.length;
+
+                // Adjust positioning math for pseudo-3D coverflow
+                const translateX = diff * 220; // Spread distance horizontally
+                const scale = 1 - Math.abs(diff) * 0.15; // Cards shrink as they move away
+                const zIndex = 10 - Math.abs(diff); // Center card is always top
+                const opacity = Math.abs(diff) > 2 ? 0 : 1 - (Math.abs(diff) * 0.4); // Very far cards fade out
+
+                card.style.transform = `translateX(${translateX}px) scale(${scale})`;
+                card.style.zIndex = zIndex;
+                card.style.opacity = opacity;
+
+                if (diff === 0) {
+                    card.classList.add('active-slide');
+                } else {
+                    card.classList.remove('active-slide');
+                }
+            });
+        }
+
+        const startAutoPlay = () => {
+            clearInterval(autoPlayInterval);
+            autoPlayInterval = setInterval(() => {
+                currentIndex = (currentIndex + 1) % cards.length;
+                updateCarousel();
+            }, 4000);
+        };
+
+        const stopAutoPlay = () => clearInterval(autoPlayInterval);
+        
+        // Touch/Mouse interaction interrupts the carousel slightly to read
+        servicesContainer.addEventListener('mouseenter', stopAutoPlay);
+        servicesContainer.addEventListener('mouseleave', startAutoPlay);
+        
+        let serviceStartX = 0;
+        let serviceEndX = 0;
+        
+        servicesContainer.addEventListener('touchstart', e => {
+            stopAutoPlay();
+            serviceStartX = e.touches[0].clientX;
+        }, {passive: true});
+
+        servicesContainer.addEventListener('touchmove', e => {
+            serviceEndX = e.touches[0].clientX;
+        }, {passive: true});
+
+        servicesContainer.addEventListener('touchend', () => {
+            if (serviceStartX > serviceEndX + 50 && serviceEndX !== 0) {
+                // Swiped left
+                currentIndex = (currentIndex + 1) % cards.length;
+                updateCarousel();
+            } else if (serviceStartX < serviceEndX - 50 && serviceEndX !== 0) {
+                // Swiped right
+                currentIndex = (currentIndex - 1 + cards.length) % cards.length;
+                updateCarousel();
+            }
+            serviceStartX = 0;
+            serviceEndX = 0;
+            startAutoPlay();
+        });
+
+        // Click to set center card explicitly
+        window.centerCard = function(clickedElement) {
+            const idx = Array.from(cards).indexOf(clickedElement);
+            if (idx > -1) {
+                currentIndex = idx;
+                updateCarousel();
+                stopAutoPlay();
+                // We do not instantly restart to give them time to read if they clicked
+                setTimeout(startAutoPlay, 4000);
+            }
+        };
+
+        setTimeout(() => {
+            updateCarousel();
+            startAutoPlay();
+        }, 100);
+    }
+
+    // Reveal Animations on Scroll
+    const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+    };
+
     const revealObserver = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 entry.target.classList.add('active');
             }
         });
-    }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+    }, observerOptions);
 
     document.querySelectorAll('.reveal-text, .reveal-item, .heading-fill').forEach(el => {
         revealObserver.observe(el);
     });
 
-    /* ── Hero auto-activate ── */
+    // Auto-trigger hero animations
     setTimeout(() => {
         const hero = document.querySelector('.hero');
         if (hero) hero.classList.add('active');

@@ -4,33 +4,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Car Saloon — Premium car care services including ceramic coating, deep cleaning, denting, painting, and more across Dhamtari, Kanker, and Bilaspur.">
     <title>Car Saloon | Premium Car Care</title>
-
-    <!-- Preload critical assets -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" media="print" onload="this.media='all'">
-    <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"></noscript>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="stylesheet" href="style.css">
 
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js" defer></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
     <script type="text/javascript">
         (function () {
-            window.addEventListener('load', function() {
-                emailjs.init("YOUR_PUBLIC_KEY");
-            });
+            // ↓ REPLACE with your EmailJS Public Key from emailjs.com → Account → API Keys
+            emailjs.init("HPLPNv_6cgo-yyP7F");
         })();
     </script>
 </head>
 
 <body>
 
-    <!-- ===== NAVIGATION ===== -->
     <nav>
         <div class="nav-logo">
-            <img src="assets/images/logo-removebg-preview.png" alt="Car Saloon Logo" width="48" height="48">
+            <img src="assets/images/logo-removebg-preview.png" alt="Car Saloon Logo">
         </div>
         <ul class="nav-links">
             <li><a href="#">Home</a></li>
@@ -38,46 +29,45 @@
             <li><a href="#services">Our Services</a></li>
             <li><a href="#locate-us">Contact Us</a></li>
         </ul>
-        <div class="menu-icon" aria-label="Toggle menu" role="button" tabindex="0">
-            <i class="fas fa-bars"></i>
-        </div>
+        <div class="menu-icon"><i class="fas fa-bars"></i></div>
     </nav>
 
-    <!-- ===== HERO ===== -->
     <section class="hero">
-        <video class="hero-video" autoplay muted loop playsinline preload="auto">
+        <video class="hero-video" autoplay muted loop playsinline>
             <source src="assets/videos/Video-carsaloonsample.mp4" type="video/mp4">
         </video>
         <div class="hero-content">
             <h1>Your Car Deserves <span class="heading-fill">Better</span></h1>
-            <p>Premium car care services — from deep cleaning to ceramic coating. We treat every car like it's our own.</p>
+            <p>Premium car care services — from deep cleaning to ceramic coating. We treat
+                every car like it's our own.</p>
         </div>
+
         <div class="hero-btns">
             <a href="#booking" class="btn-primary">Book a Service</a>
             <a href="#services" class="btn-outline">Our Services</a>
         </div>
     </section>
 
-    <!-- ===== STATS WIDGET ===== -->
+    <!-- Stats Widget -->
     <section class="stats-widget-section">
         <div class="stats-widget">
             <div class="stat-item">
-                <i class="fas fa-car" aria-hidden="true"></i>
+                <i class="fas fa-car"></i>
                 <div>
                     <span class="stat-number counter" data-target="50000">0</span><span class="stat-number">+</span>
                     <span class="stat-label">Cars Served</span>
                 </div>
             </div>
-            <div class="stat-divider" aria-hidden="true"></div>
+            <div class="stat-divider"></div>
             <div class="stat-item">
-                <i class="fas fa-map-marker-alt" aria-hidden="true"></i>
+                <i class="fas fa-map-marker-alt"></i>
                 <div>
                     <span class="stat-number">3 Working Locations</span>
                 </div>
             </div>
-            <div class="stat-divider" aria-hidden="true"></div>
+            <div class="stat-divider"></div>
             <div class="stat-item">
-                <i class="fas fa-calendar-check" aria-hidden="true"></i>
+                <i class="fas fa-calendar-check"></i>
                 <div>
                     <span class="stat-number">Trusted Since 2016</span>
                 </div>
@@ -85,151 +75,204 @@
         </div>
     </section>
 
-    <!-- ===== ABOUT ===== -->
-    <section id="about" class="about-section">
+    <section id="about" class="about-section" style="padding: 80px 5%;">
         <div class="section-title">
             <h2 class="heading-fill">About <span>Us</span></h2>
         </div>
-        <div class="about-content">
-            <div class="about-text">
-                <div class="reveal-item">
-                    <h3>Our Mission</h3>
-                    <p>At Car Saloon, our mission is to redefine automotive care by delivering unmatched quality, precision, and attention to detail in every service we offer. We are committed to enhancing the appearance, protection, and overall value of every vehicle that comes through our doors. By combining cutting-edge technology, premium-grade products, and the expertise of our passionate detailing professionals, we strive to achieve results that not only meet but exceed customer expectations. Every car we handle is treated with the same care and respect as our own, ensuring a flawless finish and long-lasting shine.</p>
+        <div class="about-content"
+            style="display: flex; align-items: center; justify-content: center; gap: 50px; max-width: 90%; margin: auto; flex-wrap: wrap; padding: 0 20px;">
+            <div style="flex: 1.2; min-width: 350px; text-align: left;">
+                <div style="margin-bottom: 30px;" class="reveal-item">
+                    <h3
+                        style="color: var(--primary-green); margin-bottom: 10px; font-size: 1.5rem; text-align: center;">
+                        Our Mission</h3>
+                    <p style="color: var(--text-gray); font-size: 1.05rem; line-height: 1.7;">
+                        At Car Saloon, our mission is to redefine automotive care by delivering unmatched quality,
+                        precision, and attention to detail in every service we offer. We are committed to enhancing the
+                        appearance, protection, and overall value of every vehicle that comes through our doors. By
+                        combining cutting-edge technology, premium-grade products, and the expertise of our passionate
+                        detailing professionals, we strive to achieve results that not only meet but exceed customer
+                        expectations. Every car we handle is treated with the same care and respect as our own, ensuring
+                        a flawless finish and long-lasting shine.
+                    </p>
                 </div>
                 <div class="reveal-item">
-                    <h3>Our Vision</h3>
-                    <p>Our vision is to establish Car Saloon as the most trusted, innovative, and customer-centric automotive care destination in Dhamtari and beyond. We aspire to set new benchmarks in the industry by continuously improving our techniques, embracing modern advancements like ceramic coatings and paint protection solutions, and maintaining the highest standards of service excellence. We believe in building long-term relationships with our customers through transparency, reliability, and consistent performance. As we grow, our goal is to become synonymous with quality car care, where customers feel confident that their vehicles are in the best hands.</p>
+                    <h3
+                        style="color: var(--primary-green); margin-bottom: 10px; font-size: 1.5rem; text-align: center;">
+                        Our Vision</h3>
+                    <p style="color: var(--text-gray); font-size: 1.05rem; line-height: 1.7;">
+                        Our vision is to establish Car Saloon as the most trusted, innovative, and customer-centric
+                        automotive care destination in Dhamtari and beyond. We aspire to set new benchmarks in the
+                        industry by continuously improving our techniques, embracing modern advancements like ceramic
+                        coatings and paint protection solutions, and maintaining the highest standards of service
+                        excellence. We believe in building long-term relationships with our customers through
+                        transparency, reliability, and consistent performance. As we grow, our goal is to become
+                        synonymous with quality car care, where customers feel confident that their vehicles are in the
+                        best hands and will always leave looking their absolute best.
+                    </p>
                 </div>
             </div>
-            <div class="about-media">
-                <img src="assets/background.gif" alt="Car Saloon team at work" loading="lazy" width="600" height="600">
+            <div style="flex: 1; min-width: 350px; display: flex; justify-content: center;">
+                <img src="assets/background.gif" alt="About Car Saloon"
+                    style="width: 100%; height: 600px; border-radius: 20px; box-shadow: 0 20px 50px rgba(74, 222, 128, 0.25); object-fit: cover;">
             </div>
         </div>
     </section>
 
     <div class="container">
 
-        <!-- ===== SERVICES ===== -->
-        <section id="services" class="services-section">
+        <section id="services" style="width: 100%; padding: 60px 0;">
             <div class="section-title">
                 <h2 class="heading-fill">Our <span>Services</span></h2>
                 <p class="reveal-text">Everything your car needs under one roof.</p>
             </div>
             <div class="services-carousel-container">
-                <div class="service-card" onclick="centerCard(this)" style="background-image: linear-gradient(rgba(18,18,18,0.75), rgba(18,18,18,0.88)), url('assets/images/services/washing.jpeg'); background-size: cover; background-position: center;">
-                    <i class="fas fa-soap" aria-hidden="true"></i>
-                    <h3>Washing &amp; Cleaning</h3>
-                    <p>Choose from standard foam wash, foam wash with premium wax, or ultimate foam wash with UV wax protection.</p>
+                <div class="service-card" onclick="centerCard(this)"
+                    style="background-image: linear-gradient(rgba(18, 18, 18, 0.75), rgba(18, 18, 18, 0.85)), url('assets/images/services/washing.jpeg'); background-size: cover; background-position: center; border: none; box-shadow: inset 0 0 0 1px var(--border-color);">
+                    <i class="fas fa-soap" style="text-shadow: 0 2px 4px rgba(0,0,0,0.5);"></i>
+                    <h3 style="text-shadow: 0 2px 4px rgba(0,0,0,0.5);">Washing & Cleaning</h3>
+                    <p style="text-shadow: 0 1px 3px rgba(0,0,0,0.5);">Choose from our standard foam wash, foam wash
+                        with premium wax, or our ultimate foam wash with UV wax protection.</p>
                 </div>
-                <div class="service-card" onclick="centerCard(this)" style="background-image: linear-gradient(rgba(18,18,18,0.75), rgba(18,18,18,0.88)), url('assets/images/services/polishing.jpeg'); background-size: cover; background-position: center;">
-                    <i class="fas fa-shield-alt" aria-hidden="true"></i>
-                    <h3>Detailing &amp; Coatings</h3>
-                    <p>Ultimate paint protection and showroom shine featuring Ceramic, Teflon, Graphene, and other high-end coatings.</p>
+                <div class="service-card" onclick="centerCard(this)"
+                    style="background-image: linear-gradient(rgba(18, 18, 18, 0.75), rgba(18, 18, 18, 0.85)), url('assets/images/services/polishing.jpeg'); background-size: cover; background-position: center; border: none; box-shadow: inset 0 0 0 1px var(--border-color);">
+                    <i class="fas fa-shield-alt" style="text-shadow: 0 2px 4px rgba(0,0,0,0.5);"></i>
+                    <h3 style="text-shadow: 0 2px 4px rgba(0,0,0,0.5);">Detailing & Coatings</h3>
+                    <p style="text-shadow: 0 1px 3px rgba(0,0,0,0.5);">Ultimate paint protection and showroom shine
+                        featuring advanced Ceramic, Teflon, Graphene, and other high-end protective coatings.</p>
                 </div>
-                <div class="service-card" onclick="centerCard(this)" style="background-image: linear-gradient(rgba(18,18,18,0.75), rgba(18,18,18,0.88)), url('assets/images/services/interiorcleaning.jpeg'); background-size: cover; background-position: center;">
-                    <i class="fas fa-broom" aria-hidden="true"></i>
-                    <h3>Interior Cleaning</h3>
-                    <p>Comprehensive cabin care: Classic Interior, Premium Interior, Germ Clean Interior, and Sofa Cleaning services.</p>
+                <div class="service-card" onclick="centerCard(this)"
+                    style="background-image: linear-gradient(rgba(18, 18, 18, 0.75), rgba(18, 18, 18, 0.85)), url('assets/images/services/interiorcleaning.jpeg'); background-size: cover; background-position: center; border: none; box-shadow: inset 0 0 0 1px var(--border-color);">
+                    <i class="fas fa-broom" style="text-shadow: 0 2px 4px rgba(0,0,0,0.5);"></i>
+                    <h3 style="text-shadow: 0 2px 4px rgba(0,0,0,0.5);">Interior Cleaning</h3>
+                    <p style="text-shadow: 0 1px 3px rgba(0,0,0,0.5);">Comprehensive cabin care offering Classic
+                        Interior, Premium Interior, Germ Clean Interior, and specialized Sofa Cleaning services.</p>
                 </div>
-                <div class="service-card" onclick="centerCard(this)" style="background-image: linear-gradient(rgba(18,18,18,0.75), rgba(18,18,18,0.88)), url('assets/images/services/lightchange.jpeg'); background-size: cover; background-position: center;">
-                    <i class="fas fa-tools" aria-hidden="true"></i>
-                    <h3>General Service</h3>
-                    <p>Complete mechanical maintenance including oil changes, thorough engine care, and convenient Door Step Service.</p>
+                <div class="service-card" onclick="centerCard(this)"
+                    style="background-image: linear-gradient(rgba(18, 18, 18, 0.75), rgba(18, 18, 18, 0.85)), url('assets/images/services/lightchange.jpeg'); background-size: cover; background-position: center; border: none; box-shadow: inset 0 0 0 1px var(--border-color);">
+                    <i class="fas fa-tools" style="text-shadow: 0 2px 4px rgba(0,0,0,0.5);"></i>
+                    <h3 style="text-shadow: 0 2px 4px rgba(0,0,0,0.5);">General Service</h3>
+                    <p style="text-shadow: 0 1px 3px rgba(0,0,0,0.5);">Complete mechanical maintenance including precise
+                        oil changes, thorough engine care, and highly convenient Door Step Service.</p>
                 </div>
-                <div class="service-card" onclick="centerCard(this)" style="background-image: linear-gradient(rgba(18,18,18,0.75), rgba(18,18,18,0.88)), url('assets/images/services/dentingpainting.jpeg'); background-size: cover; background-position: center;">
-                    <i class="fas fa-paint-roller" aria-hidden="true"></i>
-                    <h3>Denting &amp; Painting</h3>
-                    <p>Professional dent removal and high-quality paint matching using premium paints and clear coats for a flawless finish.</p>
+                <div class="service-card" onclick="centerCard(this)"
+                    style="background-image: linear-gradient(rgba(18, 18, 18, 0.75), rgba(18, 18, 18, 0.85)), url('assets/images/services/dentingpainting.jpeg'); background-size: cover; background-position: center; border: none; box-shadow: inset 0 0 0 1px var(--border-color);">
+                    <i class="fas fa-paint-roller" style="text-shadow: 0 2px 4px rgba(0,0,0,0.5);"></i>
+                    <h3 style="text-shadow: 0 2px 4px rgba(0,0,0,0.5);">Denting & Painting</h3>
+                    <p style="text-shadow: 0 1px 3px rgba(0,0,0,0.5);">Professional dent removal and high-quality paint
+                        matching using premium paints and clear coats for a flawless finish.</p>
                 </div>
-                <div class="service-card" onclick="centerCard(this)" style="background-image: linear-gradient(rgba(18,18,18,0.75), rgba(18,18,18,0.88)), url('assets/images/services/bodyworks.jpeg'); background-size: cover; background-position: center;">
-                    <i class="fas fa-car-crash" aria-hidden="true"></i>
-                    <h3>Body Works</h3>
-                    <p>Comprehensive body repairs, structural fixes, and precise replacement of headlamps, tail lights, and side mirrors.</p>
+                <div class="service-card" onclick="centerCard(this)"
+                    style="background-image: linear-gradient(rgba(18, 18, 18, 0.75), rgba(18, 18, 18, 0.85)), url('assets/images/services/bodyworks.jpeg'); background-size: cover; background-position: center; border: none; box-shadow: inset 0 0 0 1px var(--border-color);">
+                    <i class="fas fa-car-crash" style="text-shadow: 0 2px 4px rgba(0,0,0,0.5);"></i>
+                    <h3 style="text-shadow: 0 2px 4px rgba(0,0,0,0.5);">Body Works</h3>
+                    <p style="text-shadow: 0 1px 3px rgba(0,0,0,0.5);">Comprehensive body repairs, structural fixes, and
+                        precise replacement of headlamps, tail lights, and side mirrors.</p>
                 </div>
             </div>
         </section>
 
-        <!-- ===== OUR WORK ===== -->
         <section id="gallery">
             <div class="section-title">
                 <h2 class="heading-fill">Our <span>Work</span></h2>
                 <p class="reveal-text">Witness the transformation of our clients' vehicles.</p>
             </div>
+
             <div class="work-carousel-container">
+
+                <div class="work-card" onclick="centerWorkCard(this)"><img
+                        src="assets/images/car-saloon-dhamtari-ho-dhamtari-car-washing-services-sp2x1o6aof.jpg"
+                        alt="Car Detail 1"></div>
                 <div class="work-card" onclick="centerWorkCard(this)">
-                    <img src="assets/images/car-saloon-dhamtari-ho-dhamtari-car-washing-services-sp2x1o6aof.jpg" alt="Car detailing work 1" loading="lazy">
-                </div>
-                <div class="work-card" onclick="centerWorkCard(this)">
-                    <video controls playsinline preload="metadata">
-                        <source src="assets/videos/AQMbCXOfIfp_2yh9FM-oVuuDxNUngYtWGw6tnwpllPSEe5OtTgSu6oGzeUi2Bsx1vpLPDzd5u4siIyimowvs5ouIJ7JB5MEH5lXNM1I (1).mp4" type="video/mp4">
+                    <video controls playsinline preload="metadata"
+                        style="width: 100%; height: 100%; object-fit: contain; background: #000;">
+                        <source
+                            src="assets/videos/AQMbCXOfIfp_2yh9FM-oVuuDxNUngYtWGw6tnwpllPSEe5OtTgSu6oGzeUi2Bsx1vpLPDzd5u4siIyimowvs5ouIJ7JB5MEH5lXNM1I (1).mp4"
+                            type="video/mp4">
                     </video>
                 </div>
+                <div class="work-card" onclick="centerWorkCard(this)"><img
+                        src="assets/images/car-saloon-dhamtari-ho-dhamtari-car-washing-services-xcah5ecz3w.jpg"
+                        alt="Car Detail 2"></div>
                 <div class="work-card" onclick="centerWorkCard(this)">
-                    <img src="assets/images/car-saloon-dhamtari-ho-dhamtari-car-washing-services-xcah5ecz3w.jpg" alt="Car detailing work 2" loading="lazy">
-                </div>
-                <div class="work-card" onclick="centerWorkCard(this)">
-                    <video controls playsinline preload="metadata">
-                        <source src="assets/videos/AQNYAH3YLGtGYxQdbbYi5LE8tPL5NU05qMnF7NYkP5LHOqBVuNrYstpEF_JeESFosq34UWOBqLnwc-0ms81vcoybPlNoiYoqAbYKBFQ.mp4" type="video/mp4">
+                    <video controls playsinline preload="metadata"
+                        style="width: 100%; height: 100%; object-fit: contain; background: #000;">
+                        <source
+                            src="assets/videos/AQNYAH3YLGtGYxQdbbYi5LE8tPL5NU05qMnF7NYkP5LHOqBVuNrYstpEF_JeESFosq34UWOBqLnwc-0ms81vcoybPlNoiYoqAbYKBFQ.mp4"
+                            type="video/mp4">
                     </video>
                 </div>
+                <div class="work-card" onclick="centerWorkCard(this)"><img
+                        src="assets/images/car-saloon-dhamtari-ho-dhamtari-car-washing-services-f1ttv6mr2r.jpg"
+                        alt="Car Detail 3"></div>
                 <div class="work-card" onclick="centerWorkCard(this)">
-                    <img src="assets/images/car-saloon-dhamtari-ho-dhamtari-car-washing-services-f1ttv6mr2r.jpg" alt="Car detailing work 3" loading="lazy">
-                </div>
-                <div class="work-card" onclick="centerWorkCard(this)">
-                    <video controls playsinline preload="metadata">
-                        <source src="assets/videos/AQNd5Aq2vnjcCpzLFth0KSTw16oBwSMFSRTYcnd527oo-imv3QEeyxZxxWI1hp9BIJGUq3CnrSf5gI_1etqdo-8pDx0zYGvo8QmEPwQ.mp4" type="video/mp4">
+                    <video controls playsinline preload="metadata"
+                        style="width: 100%; height: 100%; object-fit: contain; background: #000;">
+                        <source
+                            src="assets/videos/AQNd5Aq2vnjcCpzLFth0KSTw16oBwSMFSRTYcnd527oo-imv3QEeyxZxxWI1hp9BIJGUq3CnrSf5gI_1etqdo-8pDx0zYGvo8QmEPwQ.mp4"
+                            type="video/mp4">
                     </video>
                 </div>
+                <div class="work-card" onclick="centerWorkCard(this)"><img
+                        src="assets/images/car-saloon-dhamtari-ho-dhamtari-car-washing-services-gmybqzb4a7.jpg"
+                        alt="Car Detail 4"></div>
                 <div class="work-card" onclick="centerWorkCard(this)">
-                    <img src="assets/images/car-saloon-dhamtari-ho-dhamtari-car-washing-services-gmybqzb4a7.jpg" alt="Car detailing work 4" loading="lazy">
-                </div>
-                <div class="work-card" onclick="centerWorkCard(this)">
-                    <video controls playsinline preload="metadata">
-                        <source src="assets/videos/AQO2FTEFDd3v52qOs75V17G1pYZrYRXhVtCbKLsgTdiFKWq4TCh7p92ndG-4It_lqyhpvaEYpeCxsRr_TkTp52UI1nC4V1QpNzONtSo.mp4" type="video/mp4">
+                    <video controls playsinline preload="metadata"
+                        style="width: 100%; height: 100%; object-fit: contain; background: #000;">
+                        <source
+                            src="assets/videos/AQO2FTEFDd3v52qOs75V17G1pYZrYRXhVtCbKLsgTdiFKWq4TCh7p92ndG-4It_lqyhpvaEYpeCxsRr_TkTp52UI1nC4V1QpNzONtSo.mp4"
+                            type="video/mp4">
                     </video>
                 </div>
+                <div class="work-card" onclick="centerWorkCard(this)"><img
+                        src="assets/images/car-saloon-dhamtari-salons-0qplc3km6k.jpg" alt="Car Detail 5"></div>
                 <div class="work-card" onclick="centerWorkCard(this)">
-                    <img src="assets/images/car-saloon-dhamtari-salons-0qplc3km6k.jpg" alt="Car detailing work 5" loading="lazy">
-                </div>
-                <div class="work-card" onclick="centerWorkCard(this)">
-                    <video controls playsinline preload="metadata">
-                        <source src="assets/videos/AQOnS2cP0hG9-4S335iygdPV4sRQbo_0YypDGn6mdOnwCaWPRAGo7GGjcCJkTsjKJPVgu89hWRWeTBTu6Sc_QN1gDMPDE58H8lrCka8.mp4" type="video/mp4">
+                    <video controls playsinline preload="metadata"
+                        style="width: 100%; height: 100%; object-fit: contain; background: #000;">
+                        <source
+                            src="assets/videos/AQOnS2cP0hG9-4S335iygdPV4sRQbo_0YypDGn6mdOnwCaWPRAGo7GGjcCJkTsjKJPVgu89hWRWeTBTu6Sc_QN1gDMPDE58H8lrCka8.mp4"
+                            type="video/mp4">
                     </video>
                 </div>
+                <div class="work-card" onclick="centerWorkCard(this)"><img
+                        src="assets/images/car-saloon-dhamtari-ho-dhamtari-car-washing-services-lmyifej0z8.jpg"
+                        alt="Car Detail 6"></div>
                 <div class="work-card" onclick="centerWorkCard(this)">
-                    <img src="assets/images/car-saloon-dhamtari-ho-dhamtari-car-washing-services-lmyifej0z8.jpg" alt="Car detailing work 6" loading="lazy">
-                </div>
-                <div class="work-card" onclick="centerWorkCard(this)">
-                    <video controls playsinline preload="metadata">
-                        <source src="assets/videos/AQP3p5vWEC1pJPL2mrBeyYXbsQIKfPFEEFQFxuL4MOP1om9zBP4Shc3Z1vlQEoUrIzrLAP5UFdNsMw7wTJUqYse_RprwsAsf54R6oqI.mp4" type="video/mp4">
+                    <video controls playsinline preload="metadata"
+                        style="width: 100%; height: 100%; object-fit: contain; background: #000;">
+                        <source
+                            src="assets/videos/AQP3p5vWEC1pJPL2mrBeyYXbsQIKfPFEEFQFxuL4MOP1om9zBP4Shc3Z1vlQEoUrIzrLAP5UFdNsMw7wTJUqYse_RprwsAsf54R6oqI.mp4"
+                            type="video/mp4">
                     </video>
                 </div>
+                <div class="work-card" onclick="centerWorkCard(this)"><img
+                        src="assets/images/car-saloon-dhamtari-ho-dhamtari-car-washing-services-r15vlhnyr4.jpg"
+                        alt="Car Detail 7"></div>
                 <div class="work-card" onclick="centerWorkCard(this)">
-                    <img src="assets/images/car-saloon-dhamtari-ho-dhamtari-car-washing-services-r15vlhnyr4.jpg" alt="Car detailing work 7" loading="lazy">
-                </div>
-                <div class="work-card" onclick="centerWorkCard(this)">
-                    <video controls playsinline preload="metadata">
-                        <source src="assets/videos/AQPAmnKEk1YhmW0NqgMlfymHgtqLCPzg1gmg5Eq8sZPRldK93HcDAqfgrXJwyLESbvEDBAiJZ3XCAqF7PX9OERvM.mp4" type="video/mp4">
+                    <video controls playsinline preload="metadata"
+                        style="width: 100%; height: 100%; object-fit: contain; background: #000;">
+                        <source
+                            src="assets/videos/AQPAmnKEk1YhmW0NqgMlfymHgtqLCPzg1gmg5Eq8sZPRldK93HcDAqfgrXJwyLESbvEDBAiJZ3XCAqF7PX9OERvM.mp4"
+                            type="video/mp4">
                     </video>
                 </div>
+                <div class="work-card" onclick="centerWorkCard(this)"><img
+                        src="assets/images/car-saloon-dhamtari-salons-j2i2jgodxs.jpg" alt="Car Detail 8"></div>
                 <div class="work-card" onclick="centerWorkCard(this)">
-                    <img src="assets/images/car-saloon-dhamtari-salons-j2i2jgodxs.jpg" alt="Car detailing work 8" loading="lazy">
-                </div>
-                <div class="work-card" onclick="centerWorkCard(this)">
-                    <video controls playsinline preload="metadata">
-                        <source src="assets/videos/AQPKMVRNIxcZZDLexQS3vOcq07gr2kJCZBpNUfDslt9TpumIlm07xjXup0_HMhUsJiMluOX0fX269qJJjE54YS9KQXYNs0qOjjM-Upc.mp4" type="video/mp4">
+                    <video controls playsinline preload="metadata"
+                        style="width: 100%; height: 100%; object-fit: contain; background: #000;">
+                        <source
+                            src="assets/videos/AQPKMVRNIxcZZDLexQS3vOcq07gr2kJCZBpNUfDslt9TpumIlm07xjXup0_HMhUsJiMluOX0fX269qJJjE54YS9KQXYNs0qOjjM-Upc.mp4"
+                            type="video/mp4">
                     </video>
                 </div>
-                <div class="work-card" onclick="centerWorkCard(this)">
-                    <img src="assets/images/car-saloon-dhamtari-salons-k6rkggvnhy.jpg" alt="Car detailing work 9" loading="lazy">
-                </div>
-                <div class="work-card" onclick="centerWorkCard(this)">
-                    <img src="assets/images/car-saloon-dhamtari-salons-u6fln9gjo8.jpg" alt="Car detailing work 10" loading="lazy">
-                </div>
+                <div class="work-card" onclick="centerWorkCard(this)"><img
+                        src="assets/images/car-saloon-dhamtari-salons-k6rkggvnhy.jpg" alt="Car Detail 9"></div>
+                <div class="work-card" onclick="centerWorkCard(this)"><img
+                        src="assets/images/car-saloon-dhamtari-salons-u6fln9gjo8.jpg" alt="Car Detail 10"></div>
             </div>
         </section>
 
-        <!-- ===== REVIEWS ===== -->
         <section id="reviews" class="reviews-section">
             <div class="section-title">
                 <h2 class="heading-fill">What Our <span>Clients Say</span></h2>
@@ -237,8 +280,9 @@
             </div>
 
             <!-- Branch Selector -->
-            <div class="branch-selector">
-                <button class="map-btn active" id="rev-btn-dhamtari" onclick="switchBranch('dhamtari')">📍 Dhamtari</button>
+            <div style="display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; margin-bottom: 40px;">
+                <button class="map-btn active" id="rev-btn-dhamtari" onclick="switchBranch('dhamtari')">📍
+                    Dhamtari</button>
                 <button class="map-btn" id="rev-btn-kanker" onclick="switchBranch('kanker')">📍 Kanker</button>
                 <button class="map-btn" id="rev-btn-bilaspur" onclick="switchBranch('bilaspur')">📍 Bilaspur</button>
             </div>
@@ -253,63 +297,92 @@
                                     <div class="reviewer-avatar">R</div>
                                     <div class="reviewer-info">
                                         <h4>Rahul Sharma</h4>
-                                        <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-                                        <div class="branch-tag">📍 Dhamtari Branch</div>
+                                        <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i
+                                                class="fas fa-star"></i><i class="fas fa-star"></i><i
+                                                class="fas fa-star"></i></div>
+                                        <div class="branch-location"
+                                            style="font-size:0.75rem;color:var(--primary-green);margin-top:4px;">📍
+                                            Dhamtari Branch</div>
                                     </div>
                                 </div>
-                                <p class="review-text">"Best detailing experience in Dhamtari. Got the ceramic coating done for my Safari, and the finish is mirror-like. Highly recommend!"</p>
+                                <p class="review-text">"Best detailing experience in Dhamtari. Got the ceramic coating
+                                    done for my Safari, and the finish is mirror-like. Highly recommend!"</p>
                             </div>
                             <div class="review-card">
                                 <div class="reviewer-header">
                                     <div class="reviewer-avatar">M</div>
                                     <div class="reviewer-info">
                                         <h4>Manoj Gupta</h4>
-                                        <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i></div>
-                                        <div class="branch-tag">📍 Dhamtari Branch</div>
+                                        <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i
+                                                class="fas fa-star"></i><i class="fas fa-star"></i><i
+                                                class="far fa-star"></i></div>
+                                        <div class="branch-location"
+                                            style="font-size:0.75rem;color:var(--primary-green);margin-top:4px;">📍
+                                            Dhamtari Branch</div>
                                     </div>
                                 </div>
-                                <p class="review-text">"Work is excellent but they took 2 hours more than promised. Car looks great though, definitely worth the wait but timing needs improvement."</p>
+                                <p class="review-text">"Work is excellent but they took 2 hours more than promised. Car
+                                    looks great though, definitely worth the wait but timing needs improvement."</p>
                             </div>
                             <div class="review-card">
                                 <div class="reviewer-header">
                                     <div class="reviewer-avatar">H</div>
                                     <div class="reviewer-info">
                                         <h4>Harish Patel</h4>
-                                        <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i></div>
-                                        <div class="branch-tag">📍 Dhamtari Branch</div>
+                                        <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i
+                                                class="fas fa-star"></i><i class="fas fa-star"></i><i
+                                                class="far fa-star"></i></div>
+                                        <div class="branch-location"
+                                            style="font-size:0.75rem;color:var(--primary-green);margin-top:4px;">📍
+                                            Dhamtari Branch</div>
                                     </div>
                                 </div>
-                                <p class="review-text">"Ceramic coating is perfect. Only issue was a slight delay in the pickup time. Make sure to call before going to collect your car."</p>
+                                <p class="review-text">"Ceramic coating is perfect. Only issue was a slight delay in the
+                                    pickup time. Make sure to call before going to collect your car."</p>
                             </div>
                             <div class="review-card">
                                 <div class="reviewer-header">
                                     <div class="reviewer-avatar">V</div>
                                     <div class="reviewer-info">
                                         <h4>Vikram Singh</h4>
-                                        <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-                                        <div class="branch-tag">📍 Dhamtari Branch</div>
+                                        <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i
+                                                class="fas fa-star"></i><i class="fas fa-star"></i><i
+                                                class="fas fa-star"></i></div>
+                                        <div class="branch-location"
+                                            style="font-size:0.75rem;color:var(--primary-green);margin-top:4px;">📍
+                                            Dhamtari Branch</div>
                                     </div>
                                 </div>
-                                <p class="review-text">"Absolutely love the full interior cleaning they did on my Creta. Smells fresh and looks brand new inside. Great team at Dhamtari!"</p>
+                                <p class="review-text">"Absolutely love the full interior cleaning they did on my Creta.
+                                    Smells fresh and looks brand new inside. Great team at Dhamtari!"</p>
                             </div>
+                            <!-- New Dhamtari Reviews -->
                             <div class="review-card">
                                 <div class="reviewer-header">
                                     <div class="reviewer-avatar">M</div>
                                     <div class="reviewer-info">
                                         <h4>Manda Rakesh</h4>
-                                        <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-                                        <div class="branch-tag">📍 Dhamtari Branch</div>
+                                        <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i
+                                                class="fas fa-star"></i><i class="fas fa-star"></i><i
+                                                class="fas fa-star"></i></div>
+                                        <div class="branch-location"
+                                            style="font-size:0.75rem;color:var(--primary-green);margin-top:4px;">📍
+                                            Dhamtari Branch</div>
                                     </div>
                                 </div>
-                                <p class="review-text">"Best service provider for denting &amp; Painting."</p>
+                                <p class="review-text">"Best service provider for denting & Painting."</p>
                             </div>
                             <div class="review-card">
                                 <div class="reviewer-header">
                                     <div class="reviewer-avatar">C</div>
                                     <div class="reviewer-info">
                                         <h4>C K Sinha</h4>
-                                        <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-                                        <div class="branch-tag">📍 Dhamtari Branch</div>
+                                        <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i
+                                                class="fas fa-star"></i><i class="fas fa-star"></i><i
+                                                class="fas fa-star"></i></div>
+                                        <div class="branch-location"
+                                            style="font-size:0.75rem;color:var(--primary-green);margin-top:4px;">📍
+                                            Dhamtari Branch</div>
                                     </div>
                                 </div>
                                 <p class="review-text">"Nice service."</p>
@@ -319,8 +392,12 @@
                                     <div class="reviewer-avatar">P</div>
                                     <div class="reviewer-info">
                                         <h4>Mr Player</h4>
-                                        <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-                                        <div class="branch-tag">📍 Dhamtari Branch</div>
+                                        <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i
+                                                class="fas fa-star"></i><i class="fas fa-star"></i><i
+                                                class="fas fa-star"></i></div>
+                                        <div class="branch-location"
+                                            style="font-size:0.75rem;color:var(--primary-green);margin-top:4px;">📍
+                                            Dhamtari Branch</div>
                                     </div>
                                 </div>
                                 <p class="review-text">"Excellent service and down to earth owner."</p>
@@ -330,8 +407,12 @@
                                     <div class="reviewer-avatar">S</div>
                                     <div class="reviewer-info">
                                         <h4>SANDEEP YADAV</h4>
-                                        <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-                                        <div class="branch-tag">📍 Dhamtari Branch</div>
+                                        <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i
+                                                class="fas fa-star"></i><i class="fas fa-star"></i><i
+                                                class="fas fa-star"></i></div>
+                                        <div class="branch-location"
+                                            style="font-size:0.75rem;color:var(--primary-green);margin-top:4px;">📍
+                                            Dhamtari Branch</div>
                                     </div>
                                 </div>
                                 <p class="review-text">"Best work place for car."</p>
@@ -341,8 +422,12 @@
                                     <div class="reviewer-avatar">R</div>
                                     <div class="reviewer-info">
                                         <h4>Ritik Kumar</h4>
-                                        <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-                                        <div class="branch-tag">📍 Dhamtari Branch</div>
+                                        <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i
+                                                class="fas fa-star"></i><i class="fas fa-star"></i><i
+                                                class="fas fa-star"></i></div>
+                                        <div class="branch-location"
+                                            style="font-size:0.75rem;color:var(--primary-green);margin-top:4px;">📍
+                                            Dhamtari Branch</div>
                                     </div>
                                 </div>
                                 <p class="review-text">"Best services."</p>
@@ -352,8 +437,12 @@
                                     <div class="reviewer-avatar">J</div>
                                     <div class="reviewer-info">
                                         <h4>Jeevan Lal nishad</h4>
-                                        <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-                                        <div class="branch-tag">📍 Dhamtari Branch</div>
+                                        <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i
+                                                class="fas fa-star"></i><i class="fas fa-star"></i><i
+                                                class="fas fa-star"></i></div>
+                                        <div class="branch-location"
+                                            style="font-size:0.75rem;color:var(--primary-green);margin-top:4px;">📍
+                                            Dhamtari Branch</div>
                                     </div>
                                 </div>
                                 <p class="review-text">"Good service."</p>
@@ -363,20 +452,30 @@
                                     <div class="reviewer-avatar">V</div>
                                     <div class="reviewer-info">
                                         <h4>Vinay Pratap Singh</h4>
-                                        <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-                                        <div class="branch-tag">📍 Dhamtari Branch</div>
+                                        <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i
+                                                class="fas fa-star"></i><i class="fas fa-star"></i><i
+                                                class="fas fa-star"></i></div>
+                                        <div class="branch-location"
+                                            style="font-size:0.75rem;color:var(--primary-green);margin-top:4px;">📍
+                                            Dhamtari Branch</div>
                                     </div>
                                 </div>
                                 <p class="review-text">"Excellent service in dhamtari."</p>
                             </div>
                         </div>
                     </div>
-                    <button class="reviews-btn prev" onclick="slideReviews('dhamtari', -1)" aria-label="Previous review"><i class="fas fa-chevron-left"></i></button>
-                    <button class="reviews-btn next" onclick="slideReviews('dhamtari', 1)" aria-label="Next review"><i class="fas fa-chevron-right"></i></button>
+                    <button class="reviews-btn prev" onclick="slideReviews('dhamtari', -1)" aria-label="Previous"><i
+                            class="fas fa-chevron-left"></i></button>
+                    <button class="reviews-btn next" onclick="slideReviews('dhamtari', 1)" aria-label="Next"><i
+                            class="fas fa-chevron-right"></i></button>
                 </div>
                 <div class="google-review-badge">
-                    <a href="https://share.google/YNrugGWf8nXV2l7XF" target="_blank" rel="noopener noreferrer" class="btn-review"><i class="fab fa-google"></i> View all Reviews</a>
-                    <a href="https://www.justdial.com/Dhamtari/Car-Saloon-Beside-Aakash-Ganga-Colony-Dhamtari-I-Ward/9999P7722-7722-190912194757-B8M9_BZDET/writereview" target="_blank" rel="noopener noreferrer" class="btn-review btn-review--green"><i class="fas fa-star"></i> Rate us on JustDial</a>
+                    <a href="https://share.google/YNrugGWf8nXV2l7XF" target="_blank" class="btn-review"><i
+                            class="fab fa-google"></i> View all Reviews</a>
+                    <a href="https://www.justdial.com/Dhamtari/Car-Saloon-Beside-Aakash-Ganga-Colony-Dhamtari-I-Ward/9999P7722-7722-190912194757-B8M9_BZDET/writereview?city=Dhamtari&area=Dhamtari+I+Ward&fid=&prevRating=0&company_name=Car+Saloon&nav=1&tapToRate=1"
+                        target="_blank" class="btn-review"
+                        style="border-color:var(--primary-green);color:var(--primary-green);"><i
+                            class="fas fa-star"></i> Rate us on JustDial</a>
                 </div>
             </div>
 
@@ -390,52 +489,77 @@
                                     <div class="reviewer-avatar">P</div>
                                     <div class="reviewer-info">
                                         <h4>Priya Gupta</h4>
-                                        <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-                                        <div class="branch-tag">📍 Kanker Branch</div>
+                                        <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i
+                                                class="fas fa-star"></i><i class="fas fa-star"></i><i
+                                                class="fas fa-star"></i></div>
+                                        <div class="branch-location"
+                                            style="font-size:0.75rem;color:var(--primary-green);margin-top:4px;">📍
+                                            Kanker Branch</div>
                                     </div>
                                 </div>
-                                <p class="review-text">"Affordable yet high-quality washing. They really care about the details, especially the interior deep cleaning. Great job at Kanker!"</p>
+                                <p class="review-text">"Affordable yet high-quality washing. They really care about the
+                                    details, especially the interior deep cleaning. Great job at Kanker!"</p>
                             </div>
                             <div class="review-card">
                                 <div class="reviewer-header">
                                     <div class="reviewer-avatar">S</div>
                                     <div class="reviewer-info">
                                         <h4>Sunny Raj</h4>
-                                        <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i></div>
-                                        <div class="branch-tag">📍 Kanker Branch</div>
+                                        <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i
+                                                class="fas fa-star"></i><i class="fas fa-star"></i><i
+                                                class="far fa-star"></i></div>
+                                        <div class="branch-location"
+                                            style="font-size:0.75rem;color:var(--primary-green);margin-top:4px;">📍
+                                            Kanker Branch</div>
                                     </div>
                                 </div>
-                                <p class="review-text">"Good cleaning, but the waiting lounge could be better. A bit crowded on weekends, so make sure to book an appointment early."</p>
+                                <p class="review-text">"Good cleaning, but the waiting lounge could be better. A bit
+                                    crowded on weekends, so make sure to book an appointment early."</p>
                             </div>
                             <div class="review-card">
                                 <div class="reviewer-header">
                                     <div class="reviewer-avatar">D</div>
                                     <div class="reviewer-info">
                                         <h4>Deepak Verma</h4>
-                                        <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-                                        <div class="branch-tag">📍 Kanker Branch</div>
+                                        <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i
+                                                class="fas fa-star"></i><i class="fas fa-star"></i><i
+                                                class="fas fa-star"></i></div>
+                                        <div class="branch-location"
+                                            style="font-size:0.75rem;color:var(--primary-green);margin-top:4px;">📍
+                                            Kanker Branch</div>
                                     </div>
                                 </div>
-                                <p class="review-text">"Got my Kia Seltos ceramic coated here. The results are amazing. The car looks even better than when it was in the showroom!"</p>
+                                <p class="review-text">"Got my Kia Seltos ceramic coated here. The results are amazing.
+                                    The car looks even better than when it was in the showroom!"</p>
                             </div>
                             <div class="review-card">
                                 <div class="reviewer-header">
                                     <div class="reviewer-avatar">L</div>
                                     <div class="reviewer-info">
                                         <h4>Lokesh Sahu</h4>
-                                        <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-                                        <div class="branch-tag">📍 Kanker Branch</div>
+                                        <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i
+                                                class="fas fa-star"></i><i class="fas fa-star"></i><i
+                                                class="fas fa-star"></i></div>
+                                        <div class="branch-location"
+                                            style="font-size:0.75rem;color:var(--primary-green);margin-top:4px;">📍
+                                            Kanker Branch</div>
                                     </div>
                                 </div>
-                                <p class="review-text">"Extremely satisfied with the Teflon coating on my Bolero. The finish is superb and the staff in Kanker are very professional."</p>
+                                <p class="review-text">"Extremely satisfied with the Teflon coating on my Bolero. The
+                                    finish is superb and the staff in Kanker are very professional."</p>
                             </div>
+                            <!-- New Kanker Reviews -->
                             <div class="review-card">
                                 <div class="reviewer-header">
                                     <div class="reviewer-avatar">P</div>
                                     <div class="reviewer-info">
-                                        <h4>Pallavi Sharma</h4>
-                                        <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-                                        <div class="branch-tag">📍 Kanker Branch</div>
+                                        <h4>pallavi sharma</h4>
+                                        <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i
+                                                class="fas fa-star"></i><i class="fas fa-star"></i><i
+                                                class="fas fa-star"></i></div>
+                                        <div class="branch-location"
+                                            style="font-size:0.75rem;color:var(--primary-green);margin-top:4px;">📍
+                                            Kanker Branch</div>
                                     </div>
                                 </div>
                                 <p class="review-text">"Very nice service."</p>
@@ -445,8 +569,12 @@
                                     <div class="reviewer-avatar">C</div>
                                     <div class="reviewer-info">
                                         <h4>Chitrasen Sinha</h4>
-                                        <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-                                        <div class="branch-tag">📍 Kanker Branch</div>
+                                        <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i
+                                                class="fas fa-star"></i><i class="fas fa-star"></i><i
+                                                class="fas fa-star"></i></div>
+                                        <div class="branch-location"
+                                            style="font-size:0.75rem;color:var(--primary-green);margin-top:4px;">📍
+                                            Kanker Branch</div>
                                     </div>
                                 </div>
                                 <p class="review-text">"Good services provider."</p>
@@ -456,20 +584,30 @@
                                     <div class="reviewer-avatar">Y</div>
                                     <div class="reviewer-info">
                                         <h4>Yasu Nishad</h4>
-                                        <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-                                        <div class="branch-tag">📍 Kanker Branch</div>
+                                        <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i
+                                                class="fas fa-star"></i><i class="fas fa-star"></i><i
+                                                class="fas fa-star"></i></div>
+                                        <div class="branch-location"
+                                            style="font-size:0.75rem;color:var(--primary-green);margin-top:4px;">📍
+                                            Kanker Branch</div>
                                     </div>
                                 </div>
                                 <p class="review-text">"Best in service."</p>
                             </div>
                         </div>
                     </div>
-                    <button class="reviews-btn prev" onclick="slideReviews('kanker', -1)" aria-label="Previous review"><i class="fas fa-chevron-left"></i></button>
-                    <button class="reviews-btn next" onclick="slideReviews('kanker', 1)" aria-label="Next review"><i class="fas fa-chevron-right"></i></button>
+                    <button class="reviews-btn prev" onclick="slideReviews('kanker', -1)" aria-label="Previous"><i
+                            class="fas fa-chevron-left"></i></button>
+                    <button class="reviews-btn next" onclick="slideReviews('kanker', 1)" aria-label="Next"><i
+                            class="fas fa-chevron-right"></i></button>
                 </div>
                 <div class="google-review-badge">
-                    <a href="https://share.google/ZRnRqvDYphMBNcuJb" target="_blank" rel="noopener noreferrer" class="btn-review"><i class="fab fa-google"></i> View all Reviews</a>
-                    <a href="https://www.justdial.com/Kanker/Car-Saloon-Kanker-Kodabhat-Near-Durga-Mandir-Bardebhata-Kanker-Road/9999P7868-7868-250221095508-P8J3_BZDET" target="_blank" rel="noopener noreferrer" class="btn-review btn-review--green"><i class="fas fa-star"></i> Rate us on JustDial</a>
+                    <a href="https://share.google/ZRnRqvDYphMBNcuJb" target="_blank" class="btn-review"><i
+                            class="fab fa-google"></i> View all Reviews</a>
+                    <a href="https://www.justdial.com/Kanker/Car-Saloon-Kanker-Kodabhat-Near-Durga-Mandir-Bardebhata-Kanker-Road/9999P7868-7868-250221095508-P8J3_BZDET"
+                        target="_blank" class="btn-review"
+                        style="border-color:var(--primary-green);color:var(--primary-green);"><i
+                            class="fas fa-star"></i> Rate us on JustDial</a>
                 </div>
             </div>
 
@@ -483,96 +621,142 @@
                                     <div class="reviewer-avatar">A</div>
                                     <div class="reviewer-info">
                                         <h4>Amit Patel</h4>
-                                        <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-                                        <div class="branch-tag">📍 Bilaspur Branch</div>
+                                        <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i
+                                                class="fas fa-star"></i><i class="fas fa-star"></i><i
+                                                class="fas fa-star"></i></div>
+                                        <div class="branch-location"
+                                            style="font-size:0.75rem;color:var(--primary-green);margin-top:4px;">📍
+                                            Bilaspur Branch</div>
                                     </div>
                                 </div>
-                                <p class="review-text">"Professional staff and a very sophisticated workshop. My 5-year old Swift looks brand new again. Truly the best auto care saloon in town."</p>
+                                <p class="review-text">"Professional staff and a very sophisticated workshop. My 5-year
+                                    old Swift looks brand new again. Truly the best auto care saloon in town."</p>
                             </div>
                             <div class="review-card">
                                 <div class="reviewer-header">
                                     <div class="reviewer-avatar">N</div>
                                     <div class="reviewer-info">
                                         <h4>Neha Taneja</h4>
-                                        <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i></div>
-                                        <div class="branch-tag">📍 Bilaspur Branch</div>
+                                        <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i
+                                                class="fas fa-star"></i><i class="far fa-star"></i><i
+                                                class="far fa-star"></i></div>
+                                        <div class="branch-location"
+                                            style="font-size:0.75rem;color:var(--primary-green);margin-top:4px;">📍
+                                            Bilaspur Branch</div>
                                     </div>
                                 </div>
-                                <p class="review-text">"Staff is skilled but very busy. Had to wait 30 mins even with an appointment. Cleaning was top notch, but they should manage slots better."</p>
+                                <p class="review-text">"Staff is skilled but very busy. Had to wait 30 mins even with an
+                                    appointment. Cleaning was top notch, but they should manage slots better."</p>
                             </div>
                             <div class="review-card">
                                 <div class="reviewer-header">
                                     <div class="reviewer-avatar">J</div>
                                     <div class="reviewer-info">
                                         <h4>Jeevan Lal</h4>
-                                        <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-                                        <div class="branch-tag">📍 Bilaspur Branch</div>
+                                        <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i
+                                                class="fas fa-star"></i><i class="fas fa-star"></i><i
+                                                class="fas fa-star"></i></div>
+                                        <div class="branch-location"
+                                            style="font-size:0.75rem;color:var(--primary-green);margin-top:4px;">📍
+                                            Bilaspur Branch</div>
                                     </div>
                                 </div>
-                                <p class="review-text">"Top-notch car premium salon. The attention to detail is what sets them apart. My Fortuner looks brand new every single time."</p>
+                                <p class="review-text">"Top-notch car premium salon. The attention to detail is what
+                                    sets them apart. My Fortuner looks brand new every single time."</p>
                             </div>
                             <div class="review-card">
                                 <div class="reviewer-header">
                                     <div class="reviewer-avatar">K</div>
                                     <div class="reviewer-info">
                                         <h4>Kavita Sharma</h4>
-                                        <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-                                        <div class="branch-tag">📍 Bilaspur Branch</div>
+                                        <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i
+                                                class="fas fa-star"></i><i class="fas fa-star"></i><i
+                                                class="fas fa-star"></i></div>
+                                        <div class="branch-location"
+                                            style="font-size:0.75rem;color:var(--primary-green);margin-top:4px;">📍
+                                            Bilaspur Branch</div>
                                     </div>
                                 </div>
-                                <p class="review-text">"Visited the Bilaspur branch for body work and denting. Absolutely flawless finish. Their team is skilled, quick and very courteous!"</p>
+                                <p class="review-text">"Visited the Bilaspur branch for body work and denting.
+                                    Absolutely flawless finish. Their team is skilled, quick and very courteous!"</p>
                             </div>
+                            <!-- New Bilaspur Reviews -->
                             <div class="review-card">
                                 <div class="reviewer-header">
                                     <div class="reviewer-avatar">S</div>
                                     <div class="reviewer-info">
                                         <h4>Sahil Batra</h4>
-                                        <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-                                        <div class="branch-tag">📍 Bilaspur Branch</div>
+                                        <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i
+                                                class="fas fa-star"></i><i class="fas fa-star"></i><i
+                                                class="fas fa-star"></i></div>
+                                        <div class="branch-location"
+                                            style="font-size:0.75rem;color:var(--primary-green);margin-top:4px;">📍
+                                            Bilaspur Branch</div>
                                     </div>
                                 </div>
-                                <p class="review-text">"I got my kia carens washed here, very satisfied experience. Very good service 🔥💯"</p>
+                                <p class="review-text">"I got my kia carens washed here, and it was very satisfied
+                                    experience with car saloon very good service 🔥💯👌👌"</p>
                             </div>
                             <div class="review-card">
                                 <div class="reviewer-header">
                                     <div class="reviewer-avatar">K</div>
                                     <div class="reviewer-info">
                                         <h4>Kamesh Bajaj</h4>
-                                        <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-                                        <div class="branch-tag">📍 Bilaspur Branch</div>
+                                        <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i
+                                                class="fas fa-star"></i><i class="fas fa-star"></i><i
+                                                class="fas fa-star"></i></div>
+                                        <div class="branch-location"
+                                            style="font-size:0.75rem;color:var(--primary-green);margin-top:4px;">📍
+                                            Bilaspur Branch</div>
                                     </div>
                                 </div>
-                                <p class="review-text">"I gave my Royal Enfield Bullet here and I am so happy. Thanks Miraj bhai for such great engine buffing and detailing — better than expected!"</p>
+                                <p class="review-text">"I gave my royal enfield Bullet here and i am so happy .Thanks
+                                    miraj bhai for doing such a good engine buffing and detailing, got a better result
+                                    than expected👌👌👌"</p>
                             </div>
                             <div class="review-card">
                                 <div class="reviewer-header">
                                     <div class="reviewer-avatar">M</div>
                                     <div class="reviewer-info">
                                         <h4>Mayank Kumar</h4>
-                                        <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-                                        <div class="branch-tag">📍 Bilaspur Branch</div>
+                                        <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i
+                                                class="fas fa-star"></i><i class="fas fa-star"></i><i
+                                                class="fas fa-star"></i></div>
+                                        <div class="branch-location"
+                                            style="font-size:0.75rem;color:var(--primary-green);margin-top:4px;">📍
+                                            Bilaspur Branch</div>
                                     </div>
                                 </div>
-                                <p class="review-text">"Nice experience, too good service provided by all members of car saloon — workers are well-skilled."</p>
+                                <p class="review-text">"Nice experience , too good service provided by all the members
+                                    of car saloon and all the worker’s are well known to there work"</p>
                             </div>
                             <div class="review-card">
                                 <div class="reviewer-header">
                                     <div class="reviewer-avatar">D</div>
                                     <div class="reviewer-info">
                                         <h4>Dharmendra S Khandeykar</h4>
-                                        <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-                                        <div class="branch-tag">📍 Bilaspur Branch</div>
+                                        <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i
+                                                class="fas fa-star"></i><i class="fas fa-star"></i><i
+                                                class="fas fa-star"></i></div>
+                                        <div class="branch-location"
+                                            style="font-size:0.75rem;color:var(--primary-green);margin-top:4px;">📍
+                                            Bilaspur Branch</div>
                                     </div>
                                 </div>
-                                <p class="review-text">"So nice — the deep spa for cars! Whoever services their car here makes it look like new. Thanks Car Saloon."</p>
+                                <p class="review-text">"So nice junction the deep spa for car, Whom car serviced here
+                                    from just liking new,thanks car saloon"</p>
                             </div>
                             <div class="review-card">
                                 <div class="reviewer-header">
                                     <div class="reviewer-avatar">H</div>
                                     <div class="reviewer-info">
                                         <h4>Hira Markam</h4>
-                                        <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-                                        <div class="branch-tag">📍 Bilaspur Branch</div>
+                                        <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i
+                                                class="fas fa-star"></i><i class="fas fa-star"></i><i
+                                                class="fas fa-star"></i></div>
+                                        <div class="branch-location"
+                                            style="font-size:0.75rem;color:var(--primary-green);margin-top:4px;">📍
+                                            Bilaspur Branch</div>
                                     </div>
                                 </div>
                                 <p class="review-text">"Satisfied with the service. Well trained staff."</p>
@@ -581,49 +765,60 @@
                                 <div class="reviewer-header">
                                     <div class="reviewer-avatar">S</div>
                                     <div class="reviewer-info">
-                                        <h4>SP Deepak</h4>
-                                        <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-                                        <div class="branch-tag">📍 Bilaspur Branch</div>
+                                        <h4>sp deepak</h4>
+                                        <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i
+                                                class="fas fa-star"></i><i class="fas fa-star"></i><i
+                                                class="fas fa-star"></i></div>
+                                        <div class="branch-location"
+                                            style="font-size:0.75rem;color:var(--primary-green);margin-top:4px;">📍
+                                            Bilaspur Branch</div>
                                     </div>
                                 </div>
-                                <p class="review-text">"Best experience with this place all time."</p>
+                                <p class="review-text">"Best Experience with this place all time."</p>
                             </div>
                             <div class="review-card">
                                 <div class="reviewer-header">
                                     <div class="reviewer-avatar">A</div>
                                     <div class="reviewer-info">
-                                        <h4>Arjun Nagdev</h4>
-                                        <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-                                        <div class="branch-tag">📍 Bilaspur Branch</div>
+                                        <h4>arjun nagdev</h4>
+                                        <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i
+                                                class="fas fa-star"></i><i class="fas fa-star"></i><i
+                                                class="fas fa-star"></i></div>
+                                        <div class="branch-location"
+                                            style="font-size:0.75rem;color:var(--primary-green);margin-top:4px;">📍
+                                            Bilaspur Branch</div>
                                     </div>
                                 </div>
                                 <p class="review-text">"Best work in bilaspur."</p>
                             </div>
                         </div>
                     </div>
-                    <button class="reviews-btn prev" onclick="slideReviews('bilaspur', -1)" aria-label="Previous review"><i class="fas fa-chevron-left"></i></button>
-                    <button class="reviews-btn next" onclick="slideReviews('bilaspur', 1)" aria-label="Next review"><i class="fas fa-chevron-right"></i></button>
+                    <button class="reviews-btn prev" onclick="slideReviews('bilaspur', -1)" aria-label="Previous"><i
+                            class="fas fa-chevron-left"></i></button>
+                    <button class="reviews-btn next" onclick="slideReviews('bilaspur', 1)" aria-label="Next"><i
+                            class="fas fa-chevron-right"></i></button>
                 </div>
                 <div class="google-review-badge">
-                    <a href="https://share.google/ydaP3KbQBbgaRI4BH" target="_blank" rel="noopener noreferrer" class="btn-review"><i class="fab fa-google"></i> View all Reviews</a>
-                    <a href="https://www.justdial.com/Bilaspur-Chhattisgarh/Car-Saloon-Vyapar-Vihar-Road/9999P7752-7752-181124163744-X1J3_BZDET" target="_blank" rel="noopener noreferrer" class="btn-review btn-review--green"><i class="fas fa-star"></i> Rate us on JustDial</a>
+                    <a href="https://share.google/ydaP3KbQBbgaRI4BH" target="_blank" class="btn-review"><i
+                            class="fab fa-google"></i> View all Reviews</a>
+                    <a href="https://www.justdial.com/Bilaspur-Chhattisgarh/Car-Saloon-Vyapar-Vihar-Road/9999P7752-7752-181124163744-X1J3_BZDET"
+                        target="_blank" class="btn-review"
+                        style="border-color:var(--primary-green);color:var(--primary-green);"><i
+                            class="fas fa-star"></i> Rate us on JustDial</a>
                 </div>
             </div>
         </section>
 
-        <!-- ===== BOOKING FORM ===== -->
+
         <section id="booking" class="booking-form-container">
-            <h2 class="heading-fill" style="text-align:center; margin-bottom:20px;">Book Your <span>Service</span></h2>
-            <form id="car-service-form" novalidate>
-                <div class="form-group">
-                    <input type="text" name="user_name" placeholder="Full Name" required autocomplete="name">
+            <h2 class="heading-fill" style="text-align: center; margin-bottom: 20px;">Book Your <span>Service</span>
+            </h2>
+            <form id="car-service-form">
+                <div class="form-group"><input type="text" name="user_name" placeholder="Full Name" required></div>
+                <div class="form-group"><input type="email" name="user_email" placeholder="Email Address" required>
                 </div>
-                <div class="form-group">
-                    <input type="email" name="user_email" placeholder="Email Address" required autocomplete="email">
-                </div>
-                <div class="form-group">
-                    <input type="tel" name="user_phone" placeholder="Phone Number" required autocomplete="tel">
-                </div>
+                <div class="form-group"><input type="tel" name="user_phone" placeholder="Phone Number" required></div>
+
                 <div class="form-group">
                     <select name="branch_location" id="branchLocationSelect" required>
                         <option value="">Select Branch / Location</option>
@@ -632,6 +827,7 @@
                         <option value="Bilaspur">📍 Bilaspur Branch</option>
                     </select>
                 </div>
+
                 <div class="form-group">
                     <select name="service_type" required>
                         <option value="">Select Service</option>
@@ -650,169 +846,202 @@
                         <option value="Other">Other</option>
                     </select>
                 </div>
+
                 <div class="form-row">
                     <div class="form-group">
                         <select name="car_brand" id="carBrandSelect" required>
                             <option value="">Select Car Brand</option>
-                            <optgroup label="Indian Mass Market">
-                                <option value="Maruti Suzuki">Maruti Suzuki</option>
-                                <option value="Hyundai">Hyundai</option>
-                                <option value="Tata Motors">Tata Motors</option>
-                                <option value="Mahindra">Mahindra</option>
-                                <option value="Kia">Kia</option>
-                                <option value="Toyota">Toyota</option>
-                                <option value="Honda">Honda</option>
-                                <option value="MG">MG</option>
-                                <option value="Renault">Renault</option>
-                                <option value="Skoda">Skoda</option>
-                                <option value="Volkswagen">Volkswagen</option>
-                                <option value="Nissan">Nissan</option>
-                                <option value="Jeep">Jeep</option>
-                                <option value="Citroen">Citroen</option>
-                                <option value="Force Motors">Force Motors</option>
-                                <option value="Isuzu">Isuzu</option>
-                            </optgroup>
-                            <optgroup label="Luxury &amp; Premium">
-                                <option value="Mercedes-Benz">Mercedes-Benz</option>
-                                <option value="BMW">BMW</option>
-                                <option value="Audi">Audi</option>
-                                <option value="Volvo">Volvo</option>
-                                <option value="Jaguar">Jaguar</option>
-                                <option value="Land Rover">Land Rover</option>
-                                <option value="Lexus">Lexus</option>
-                                <option value="Mini">Mini</option>
-                                <option value="Porsche">Porsche</option>
-                            </optgroup>
-                            <optgroup label="Supercars &amp; Ultra Luxury">
-                                <option value="Rolls-Royce">Rolls-Royce</option>
-                                <option value="Bentley">Bentley</option>
-                                <option value="Ferrari">Ferrari</option>
-                                <option value="Lamborghini">Lamborghini</option>
-                                <option value="Maserati">Maserati</option>
-                                <option value="Aston Martin">Aston Martin</option>
-                                <option value="McLaren">McLaren</option>
-                            </optgroup>
+                            <!-- Indian Mass Market -->
+                            <option value="Maruti Suzuki">Maruti Suzuki</option>
+                            <option value="Hyundai">Hyundai</option>
+                            <option value="Tata Motors">Tata Motors</option>
+                            <option value="Mahindra">Mahindra</option>
+                            <option value="Kia">Kia</option>
+                            <option value="Toyota">Toyota</option>
+                            <option value="Honda">Honda</option>
+                            <option value="MG">MG</option>
+                            <option value="Renault">Renault</option>
+                            <option value="Skoda">Skoda</option>
+                            <option value="Volkswagen">Volkswagen</option>
+                            <option value="Nissan">Nissan</option>
+                            <option value="Jeep">Jeep</option>
+                            <option value="Citroen">Citroen</option>
+                            <option value="Force Motors">Force Motors</option>
+                            <option value="Isuzu">Isuzu</option>
+                            <!-- Luxury & Premium -->
+                            <option value="Mercedes-Benz">Mercedes-Benz</option>
+                            <option value="BMW">BMW</option>
+                            <option value="Audi">Audi</option>
+                            <option value="Volvo">Volvo</option>
+                            <option value="Jaguar">Jaguar</option>
+                            <option value="Land Rover">Land Rover</option>
+                            <option value="Lexus">Lexus</option>
+                            <option value="Mini">Mini</option>
+                            <option value="Porsche">Porsche</option>
+                            <!-- Supercars & Ultra Luxury -->
+                            <option value="Rolls-Royce">Rolls-Royce</option>
+                            <option value="Bentley">Bentley</option>
+                            <option value="Ferrari">Ferrari</option>
+                            <option value="Lamborghini">Lamborghini</option>
+                            <option value="Maserati">Maserati</option>
+                            <option value="Aston Martin">Aston Martin</option>
+                            <option value="McLaren">McLaren</option>
                             <option value="Other">Other</option>
                         </select>
                     </div>
-                    <div class="form-group">
-                        <input type="text" name="car_model" placeholder="Car Model" autocomplete="off">
-                    </div>
+                    <div class="form-group"><input type="text" name="car_model" placeholder="Car Model"></div>
                 </div>
-                <div class="form-group" id="otherBrandGroup" style="display:none;">
-                    <input type="text" name="car_brand_other" id="otherBrandInput" placeholder="Enter Car Brand (Please Specify)">
+
+                <div class="form-group" id="otherBrandGroup" style="display: none;">
+                    <input type="text" name="car_brand_other" id="otherBrandInput"
+                        placeholder="Enter Car Brand (Please Specify)">
                 </div>
+
                 <div class="form-group">
-                    <label for="service_date">Preferred Date</label>
-                    <input type="date" name="service_date" id="service_date" required>
+                    <label
+                        style="font-size: 0.8rem; color: var(--text-gray); display: block; margin-bottom: 5px;">Preferred
+                        Date</label>
+                    <input type="date" name="service_date" required>
                 </div>
-                <div class="form-group">
-                    <textarea name="message" rows="4" placeholder="Mention coating type or any other requirements (optional)"></textarea>
-                </div>
+
+                <div class="form-group"><textarea name="message"
+                        placeholder="Mention Coating Type/Any other requirements?(optional)"></textarea></div>
+
                 <button type="submit" class="btn-primary submit-btn">Confirm Booking</button>
             </form>
         </section>
 
-        <!-- ===== FOOTER / CONTACT ===== -->
-        <footer id="locate-us">
-            <div class="footer-top">
-                <div class="footer-brand">
-                    <img src="assets/images/logo-removebg-preview.png" alt="Car Saloon" width="80" height="80">
-                    <h2 class="heading-fill">Contact <span>Us</span></h2>
+        <footer id="locate-us" style="padding-top: 60px;">
+            <div class="footer-content" style="display: flex; flex-direction: column; gap: 40px; align-items: stretch;">
+                <div style="display: flex; flex-direction: column; align-items: center; margin-bottom: 20px;">
+                    <div
+                        style="display: flex; align-items: center; justify-content: center; gap: 20px; flex-wrap: wrap; margin-bottom: 10px;">
+                        <img src="assets/images/logo-removebg-preview.png" alt="Car Saloon"
+                            style="height: 80px; width: auto; object-fit: contain;">
+                        <h2 class="heading-fill" style="color: var(--text-white); font-size: 3rem; margin: 0;">Contact
+                            <span>Us</span>
+                        </h2>
+                    </div>
+                    <p class="reveal-text" style="color: var(--text-gray); margin-bottom: 24px;">Select a branch to view
+                        its location
+                        details.</p>
+                    <!-- Branch selector drives contact details + map -->
+                    <div
+                        style="display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; margin-bottom: 10px;">
+                        <button class="map-btn active" id="contact-btn-dhamtari" onclick="switchBranch('dhamtari')">📍
+                            Dhamtari</button>
+                        <button class="map-btn" id="contact-btn-kanker" onclick="switchBranch('kanker')">📍
+                            Kanker</button>
+                        <button class="map-btn" id="contact-btn-bilaspur" onclick="switchBranch('bilaspur')">📍
+                            Bilaspur</button>
+                    </div>
                 </div>
-                <p class="reveal-text">Select a branch to view its location details.</p>
-                <div class="branch-selector">
-                    <button class="map-btn active" id="contact-btn-dhamtari" onclick="switchBranch('dhamtari')">📍 Dhamtari</button>
-                    <button class="map-btn" id="contact-btn-kanker" onclick="switchBranch('kanker')">📍 Kanker</button>
-                    <button class="map-btn" id="contact-btn-bilaspur" onclick="switchBranch('bilaspur')">📍 Bilaspur</button>
-                </div>
-            </div>
 
-            <div class="footer-grid">
-                <!-- Contact Details -->
-                <div class="contact-details">
-                    <div class="contact-owner">
-                        <img src="assets/images/owner.jpeg" alt="Chitrasen Sinha — Owner" width="80" height="80" loading="lazy">
-                        <div>
-                            <h3>Chitrasen Sinha</h3>
-                            <p>Owner</p>
+                <div class="locate-grid"
+                    style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px; text-align: left;">
+
+                    <!-- Contact details panel -->
+                    <div class="contact-details"
+                        style="background: rgba(255, 255, 255, 0.05); padding: 30px; border-radius: 20px; border: 1px solid var(--border-color);">
+                        <div style="display: flex; align-items: center; gap: 20px; margin-bottom: 25px;">
+                            <img src="assets/images/owner.jpeg" alt="Chitrasen Sinha"
+                                style="width: 80px; height: 80px; border-radius: 50%; object-fit: cover; border: 2px solid var(--primary-green);">
+                            <div>
+                                <h3 style="color: var(--primary-green); margin-bottom: 5px; font-size: 1.5rem;">
+                                    Chitrasen Sinha</h3>
+                                <p style="color: var(--text-gray); font-size: 0.9rem; margin-bottom: 0;">Owner</p>
+                            </div>
+                        </div>
+                        <p style="margin-bottom: 15px;" id="contact-address">
+                            <i class="fas fa-map-marker-alt" style="color: var(--primary-green); width: 25px;"></i>
+                            <strong>Address:</strong><br>Beside Akash Ganga Colony, Rudri Road, Dhamtari, CG
+                        </p>
+                        <p style="margin-bottom: 15px;" id="contact-phone">
+                            <i class="fas fa-phone" style="color: var(--primary-green); width: 25px;"></i>
+                            <strong>Phone:</strong><br>
+                            <a href="tel:9617205555"
+                                style="color: var(--text-white); text-decoration: none;">9617205555</a> /
+                            <a href="tel:9993923000"
+                                style="color: var(--text-white); text-decoration: none;">9993923000</a>
+                        </p>
+                        <p style="margin-bottom: 15px;">
+                            <i class="fas fa-envelope" style="color: var(--primary-green); width: 25px;"></i>
+                            <strong>Email:</strong><br>
+                            <a href="mailto:chitrasen_sinha@rediffmail.com"
+                                style="color: var(--text-white); text-decoration: none;">chitrasen_sinha@rediffmail.com</a>
+                        </p>
+                        <p style="margin-bottom: 15px;">
+                            <i class="fas fa-id-card" style="color: var(--primary-green); width: 25px;"></i>
+                            <strong>GST NO:</strong><br>22BQVPS8778P1ZC
+                        </p>
+                        <div class="social-links"
+                            style="justify-content: flex-start; margin-top: 20px; display: flex; gap: 15px;">
+                            <a href="https://www.facebook.com/p/Car-Saloon-Dhamtari-100063695454438/?hr=1&wtsid=rdr_1l7mdJ3HjMUIJtcbO"
+                                target="_blank" style="color: inherit; font-size: 1.5rem;" title="Facebook"><i
+                                    class="fab fa-facebook"></i></a>
+                            <a href="https://www.instagram.com/car_saloon_dmt?igsh=MWtucjZhejRlM3pldg==" target="_blank"
+                                style="color: inherit; font-size: 1.5rem;" title="Instagram"><i
+                                    class="fab fa-instagram"></i></a>
+                            <a id="contact-justdial-link"
+                                href="https://www.justdial.com/Dhamtari/Car-Saloon-Beside-Akashganga-Colony-Opposite-Amaltas-Puram-Colony-Dhamtari-I-Ward/9999P7722-7722-190912194757-B8M9_BZDET"
+                                target="_blank"
+                                style="color: inherit; text-decoration: none; font-size: 1.1rem; display: flex; align-items: center;"
+                                title="Justdial"><img src="assets/Favicon/justdial.com-favicon-32x32.com" alt="JustDial"
+                                    style="width: 24px; height: 24px; border-radius: 50%;"></a>
+                            <a href="https://www.youtube.com/@CarSaloon-YT" target="_blank"
+                                style="color: inherit; font-size: 1.5rem;" title="YouTube"><i
+                                    class="fab fa-youtube"></i></a>
                         </div>
                     </div>
-                    <p id="contact-address">
-                        <i class="fas fa-map-marker-alt" aria-hidden="true"></i>
-                        <strong>Address:</strong><br>Beside Akash Ganga Colony, Rudri Road, Dhamtari, CG
-                    </p>
-                    <p id="contact-phone">
-                        <i class="fas fa-phone" aria-hidden="true"></i>
-                        <strong>Phone:</strong><br>
-                        <a href="tel:9617205555">9617205555</a> / <a href="tel:9993923000">9993923000</a>
-                    </p>
-                    <p>
-                        <i class="fas fa-envelope" aria-hidden="true"></i>
-                        <strong>Email:</strong><br>
-                        <a href="mailto:chitrasen_sinha@rediffmail.com">chitrasen_sinha@rediffmail.com</a>
-                    </p>
-                    <p>
-                        <i class="fas fa-id-card" aria-hidden="true"></i>
-                        <strong>GST NO:</strong><br>22BQVPS8778P1ZC
-                    </p>
-                    <div class="social-links">
-                        <a href="https://www.facebook.com/p/Car-Saloon-Dhamtari-100063695454438/" target="_blank" rel="noopener noreferrer" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
-                        <a href="https://www.instagram.com/car_saloon_dmt" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-                        <a id="contact-justdial-link" href="https://www.justdial.com/Dhamtari/Car-Saloon-Beside-Akashganga-Colony-Opposite-Amaltas-Puram-Colony-Dhamtari-I-Ward/9999P7722-7722-190912194757-B8M9_BZDET" target="_blank" rel="noopener noreferrer" aria-label="JustDial">
-                            <img src="assets/Favicon/justdial.com-favicon-32x32.com" alt="JustDial" width="24" height="24" style="border-radius:50%;">
-                        </a>
-                        <a href="https://www.youtube.com/@CarSaloon-YT" target="_blank" rel="noopener noreferrer" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+
+                    <!-- Map panel -->
+                    <div style="display: flex; flex-direction: column; gap: 15px; width: 100%;">
+                        <div class="map-container"
+                            style="border-radius: 20px; overflow: hidden; border: 1px solid var(--border-color); height: 400px;">
+                            <iframe id="mapFrame"
+                                src="https://www.google.com/maps?q=20.6925308,81.5478162&z=17&output=embed" width="100%"
+                                height="100%" style="border:0;" allowfullscreen="" loading="lazy"
+                                referrerpolicy="no-referrer-when-downgrade"></iframe>
+                        </div>
                     </div>
                 </div>
-
-                <!-- Map -->
-                <div class="map-container">
-                    <iframe
-                        id="mapFrame"
-                        src="https://www.google.com/maps?q=20.6925308,81.5478162&z=17&output=embed"
-                        width="100%"
-                        height="100%"
-                        style="border:0;"
-                        allowfullscreen=""
-                        loading="lazy"
-                        referrerpolicy="no-referrer-when-downgrade"
-                        title="Car Saloon location map">
-                    </iframe>
-                </div>
             </div>
-
-            <p class="site-url">
-                <a href="privacy-policy.html">Privacy Policy</a>
-                &nbsp;·&nbsp;
-                <a href="terms-conditions.html">Terms &amp; Conditions</a>
-                &nbsp;·&nbsp;
+            <p class="site-url" style="margin-top: 40px; text-align: center; color: var(--text-gray);">
+                <a href="privacy-policy.html"
+                    style="color: var(--text-gray); text-decoration: none; margin-right: 15px;">Privacy Policy</a>
+                <a href="terms-conditions.html"
+                    style="color: var(--text-gray); text-decoration: none; margin-right: 15px;">Terms & Conditions</a>
                 www.carsaloon.in
             </p>
-            <p class="copyright">
+            <p class="copyright" style="text-align: center; color: rgba(255, 255, 255, 0.5); padding-bottom: 20px;">
                 &copy; 2026 Car Saloon. All rights reserved.<br>
-                <small>Designed by OTODIGITAL TECHNOLOGIES &trade; 2026</small>
+                <span style="font-size: 0.7rem; margin-top: 10px; display: block;">designed by OTODIGITAL TECHNOLOGIES.
+                    &trade; 2026</span>
             </p>
         </footer>
+    </div>
 
-    </div><!-- /.container -->
-
-    <!-- ===== BOOKING SUCCESS POPUP ===== -->
-    <div id="bookingPopup" class="popup" role="dialog" aria-modal="true" aria-labelledby="popupTitle">
-        <div class="popup-inner">
-            <i class="fas fa-check-circle" aria-hidden="true"></i>
-            <h2 id="popupTitle">Booking Reserved!</h2>
-            <p>Thank you for reserving a service with Car Saloon. We will contact you shortly!</p>
-            <button onclick="closePopup()" class="btn-primary" style="width:100%;">Awesome!</button>
+    <div id="bookingPopup" class="popup"
+        style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); z-index: 9999; justify-content: center; align-items: center; backdrop-filter: blur(5px);">
+        <div
+            style="background: var(--card-bg); padding: 40px; border-radius: 20px; border: 2px solid var(--primary-green); text-align: center; max-width: 400px; width: 90%; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);">
+            <i class="fas fa-check-circle"
+                style="font-size: 4rem; color: var(--primary-green); margin-bottom: 20px;"></i>
+            <h2 style="color: var(--text-white); margin-bottom: 10px;">Booking Reserved!</h2>
+            <p style="color: var(--text-gray); margin-bottom: 25px; line-height: 1.6;">Thank you for reserving a service
+                with Car Saloon. We will contact you shortly!</p>
+            <button onclick="closePopup()" class="btn-primary"
+                style="width: 100%; padding: 12px; font-weight: 600;">Awesome!</button>
         </div>
     </div>
 
-    <!-- ===== WHATSAPP FLOATING BUTTON ===== -->
-    <a href="https://wa.me/919617205555" class="whatsapp-btn" target="_blank" rel="noopener noreferrer" aria-label="Chat with us on WhatsApp">
+    <!-- WhatsApp Floating Button -->
+    <a href="https://wa.me/919617205555" class="whatsapp-btn" target="_blank" rel="noopener noreferrer"
+        aria-label="Chat on WhatsApp">
         <i class="fab fa-whatsapp"></i>
     </a>
 
-    <script src="script.js" defer></script>
+    <script src="script.js"></script>
 </body>
 
 </html>
