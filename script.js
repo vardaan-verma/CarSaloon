@@ -58,7 +58,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const templateParams = {
             owner_name:   'Chitrasen Sinha',
             user_name:    this.user_name.value,
-            user_email:   this.user_email.value,
+            user_email:   this.user_email.value || 'Not provided',
             user_phone:   this.user_phone.value,
             branch:       this.branch_location.value || 'Not specified',
             service_type: this.service_type.value,
