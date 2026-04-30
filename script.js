@@ -71,6 +71,7 @@ document.addEventListener('DOMContentLoaded', () => {
         // ── Google Form backup (fire-and-forget) ──
         const gfd = new FormData();
         gfd.append('entry.1378675246', templateParams.user_name);
+        gfd.append('entry.1204975211', templateParams.branch);      // branch field
         gfd.append('entry.902874580',  templateParams.user_email);
         gfd.append('entry.1192564498', templateParams.user_phone);
         gfd.append('entry.1800244039', templateParams.service_type);
@@ -82,17 +83,21 @@ document.addEventListener('DOMContentLoaded', () => {
             .catch(err => console.warn('Google Form backup failed:', err));
 
         // ── Send booking email to owner via EmailJS ──
-        // Replace 'YOUR_SERVICE_ID' and 'YOUR_TEMPLATE_ID' with your actual keys
-        emailjs.send('service_o3ec0lw', 'template_aisgkg5', templateParams)
-            .then(() => {
-                console.log('✅ EmailJS: booking notification sent.');
-                showSuccessPopup();
-            })
-            .catch(err => {
-                console.error('EmailJS error:', err);
-                // Still show success — Google Form has the record
-                showSuccessPopup();
-            });
+        if (typeof emailjs !== 'undefined') {
+            emailjs.send('service_o3ec0lw', 'template_aisgkg5', templateParams)
+                .then(() => {
+                    console.log('✅ EmailJS: booking notification sent.');
+                    showSuccessPopup();
+                })
+                .catch(err => {
+                    console.error('EmailJS error:', err);
+                    // Still show success — Google Form has the record
+                    showSuccessPopup();
+                });
+        } else {
+            // EmailJS not loaded yet but Google Form backup already fired
+            showSuccessPopup();
+        }
     });
         // Work Carousel Logic (3D Circular Queue)
     const workContainer = document.querySelector('.work-carousel-container');
